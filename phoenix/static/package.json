@@ -1,0 +1,38 @@
+{
+  "name": "phoenix-news",
+  "version": "0.0.1",
+  "description": "The frontend code for The Phoenix News website.",
+  "author": "Peter Siemens <peterjsiemens@gmail.com>",
+  "homepage": "https://www.thephoenixnews.com",
+  "main": "./src/js/index.js",
+  "dependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.3",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-es2015": "^6.24.1",
+    "css-loader": "^0.28.10",
+    "eslint": "^4.18.2",
+    "eslint-loader": "^2.0.0",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "node-sass": "^4.7.2",
+    "sass-loader": "^6.0.7",
+    "style-loader": "^0.20.2",
+    "webpack": "3.11.0"
+  },
+  "engines": {
+    "node": ">=5.10"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/psiemens/phoenix"
+  },
+  "bugs": {
+    "url": "https://github.com/psiemens/phoenix"
+  },
+  "scripts": {
+    "setup": "yarn install --force",
+    "start": "webpack --watch --display-error-details --config webpack.dev.config.js",
+    "build": "webpack -p --config webpack.config.js"
+  }
+}
