@@ -1,0 +1,16 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Static file folders
+/media/
+/static/
+/phoenix/static/dist/
+
+node_modules/
+
+phoenix/settings*.py
+
+# Client secret for Travis
+client-secret.json

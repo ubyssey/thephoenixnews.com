@@ -1,0 +1,9 @@
+dispatch==0.4.1
+git+git://github.com/ubyssey/django-google-storage.git
+django-gae-backends
+django-canonical-domain
+mysql-python
+django-phonenumber-field
+beautifulsoup4
+feedparser
+lxml

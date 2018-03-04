@@ -1,0 +1,22 @@
+runtime: python27
+api_version: 1
+threadsafe: yes
+
+handlers:
+- url: /robots.txt
+  static_files: robots.txt
+  upload: robots.txt
+- url: .*
+  script: phoenix.wsgi.application
+  secure: always
+
+libraries:
+- name: MySQLdb
+  version: 1.2.5
+- name: PIL
+  version: 1.1.7
+- name: ssl
+  version: latest
+
+skip_files:
+    - lib/PIL*
