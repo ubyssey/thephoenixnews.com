@@ -32,7 +32,7 @@
   },
   "scripts": {
     "setup": "yarn install --force",
-    "start": "webpack --watch --display-error-details --config webpack.dev.config.js",
+    "start": "webpack --watch --config webpack.dev.config.js",
     "build": "webpack -p --config webpack.config.js"
   }
 }
