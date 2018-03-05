@@ -11,7 +11,6 @@
   background-position: center;
 }
 
-
 .c-article-banner__info {
   // Structure
   padding-top: 1.5rem;
@@ -24,9 +23,27 @@
   text-align: center;
 }
 
+.c-article-banner__headline {
+  // Structure
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+
+  // Text
+  font-family: $font-headline;
+  font-size: 36px;
+  color: #272525;
+  letter-spacing: -0.35px;
+}
+
 .c-article-banner__description {
   // Structure
   max-width: 650px;
   margin-left: auto;
   margin-right: auto;
+
+  // Text
+  font-size: 15px;
+  color: #272525;
+  letter-spacing: -0.2px;
+  line-height: 21px;
 }

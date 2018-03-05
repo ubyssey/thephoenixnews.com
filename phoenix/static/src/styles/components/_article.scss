@@ -2,6 +2,38 @@
 
 }
 
+.c-article__tag {
+  font-weight: bold;
+  font-size: 14px;
+  color: #EB2C2C;
+  letter-spacing: -0.15px;
+}
+
+.c-article__headline {
+  // Structure
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+
+  // Text
+  font-family: $font-headline;
+  font-size: 26px;
+  color: #272525;
+  letter-spacing: -0.3px;
+}
+
+.c-article__meta {
+  font-size: 14px;
+  color: #5C5C5C;
+  letter-spacing: -0.15px;
+}
+
+.c-article__description {
+  // Text
+  font-size: 14px;
+  color: #1A1A1A;
+  line-height: 21px;
+}
+
 .c-article--1,
 .c-article--2, {
   // Structure
@@ -32,5 +64,14 @@
   .c-article__info {
     // Structure
     flex: 3;
+  }
+}
+
+.c-article--4 {
+  // Structure
+  margin-bottom: 1rem;
+
+  &:last-child {
+    margin-bottom: 0;
   }
 }

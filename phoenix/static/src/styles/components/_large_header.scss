@@ -18,18 +18,23 @@
 .c-large-header__logo {
   // Structure
   display: inline-block;
-  height: 60px;
-  width: 337px;
-  margin-bottom: 1rem;
+  height: 72px;
+  width: 320px;
+  margin-bottom: 0.35rem;
 
   // Background
-  background-image: url('../images/phoenix-logo-large.png');
+  background-image: url('../images/phoenix-logo-large.svg');
   background-size: 100%;
+  background-repeat: no-repeat;
 }
 
 .c-large-header__tagline {
   // Structure
   margin: 0;
+
+  // Text
+  font-size: 13px;
+  color: #888888;
 }
 
 .c-large-header__nav {
@@ -54,4 +59,10 @@
   line-height: 50px;
   padding-left: 1rem;
   padding-right: 1rem;
+
+  // Text
+  font-weight: bold;
+  font-size: 14px;
+  color: #272525;
+  letter-spacing: -0.15px;
 }

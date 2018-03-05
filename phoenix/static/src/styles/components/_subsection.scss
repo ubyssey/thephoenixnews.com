@@ -12,7 +12,15 @@
 }
 
 .c-subsection__title {
+  // Structure
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 
+  // Text
+  font-weight: bold;
+  font-size: 28px;
+  color: #272525;
+  letter-spacing: -0.35px;
 }
 
 .c-subsection__body {

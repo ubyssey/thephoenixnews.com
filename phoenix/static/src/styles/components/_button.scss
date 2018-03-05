@@ -1,0 +1,19 @@
+.c-button {
+  // Structure
+  display: inline-block;
+  height: 40px;
+  line-height: 40px;
+  padding-left: 2rem;
+  padding-right: 2rem;
+
+  // Background
+  background: #ff0909;
+  font-size: 15px;
+
+  // Text
+  font-weight: bold;
+  font-size: 15px;
+  color: #fff;
+  letter-spacing: 0.1px;
+  text-transform: uppercase;
+}
