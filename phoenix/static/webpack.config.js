@@ -1,6 +1,7 @@
 var webpack = require('webpack');
 var version = require('./package.json').version;
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var globImporter = require('node-sass-glob-importer');
 
 module.exports = {
   entry: './src/js/index',
@@ -31,7 +32,17 @@ module.exports = {
         exclude: /node_modules/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: ['css-loader', 'sass-loader',],
+          use: [
+            {
+              loader: 'css-loader'
+            },
+            {
+              loader: 'sass-loader',
+              options: {
+                importer: globImporter()
+              }
+            }
+          ]
         }),
       },
       {
@@ -47,6 +58,6 @@ module.exports = {
       }
     }),
     new webpack.optimize.UglifyJsPlugin(),
-    new ExtractTextPlugin('main-' + version + '.css')
+    new ExtractTextPlugin('css/main-' + version + '.css')
   ]
 };

@@ -1,1 +1,14 @@
-homepage
+{% extends 'base.html' %}
+
+{% block body %}
+
+{% include 'components/large-header.html' %}
+
+{% include 'components/banner-article.html' %}
+
+<div class="c-container">
+  {% include 'components/subsection-primary.html' %}
+  {% include 'components/subsection-secondary.html' %}
+</div>
+
+{% endblock %}

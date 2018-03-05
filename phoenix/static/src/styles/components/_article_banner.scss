@@ -1,0 +1,32 @@
+.c-article-banner {
+
+}
+
+.c-article-banner__image {
+  // Structure
+  height: 380px;
+
+  // Background
+  background-size: cover;
+  background-position: center;
+}
+
+
+.c-article-banner__info {
+  // Structure
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+
+  // Extras
+  box-shadow: 0 -2px 2px 0 rgba(0,0,0,0.1);
+
+  // Text
+  text-align: center;
+}
+
+.c-article-banner__description {
+  // Structure
+  width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+}

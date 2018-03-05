@@ -1,0 +1,36 @@
+.c-article {
+
+}
+
+.c-article--1,
+.c-article--2, {
+  // Structure
+  display: flex;
+
+  .c-article__image {
+    // Structure
+    flex: 1.61803398875; // Golden ratio
+    padding-right: 1.5rem;
+
+    img {
+      // Structure
+      width: 100%;
+    }
+  }
+
+  .c-article__info {
+    // Structure
+    flex: 1;
+  }
+}
+
+.c-article--2 {
+  .c-article__image {
+    // Structure
+    flex: 2; // Golden ratio
+  }
+  .c-article__info {
+    // Structure
+    flex: 3;
+  }
+}

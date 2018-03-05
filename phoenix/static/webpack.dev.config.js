@@ -12,7 +12,7 @@ devConfig.plugins = [
       'NODE_ENV': JSON.stringify('development')
     }
   }),
-  new ExtractTextPlugin('main-' + version + '.css')
+  new ExtractTextPlugin('css/main-' + version + '.css')
 ];
 
 module.exports = devConfig;
