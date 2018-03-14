@@ -1,0 +1,16 @@
+.c-embed--image {
+  // Structure
+  max-width: $body-width;
+  width: 100%;
+
+  &:first-child {
+    max-width: 100%;
+  }
+
+  img {
+    // Structure
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+}
