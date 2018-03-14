@@ -14,3 +14,5 @@ phoenix/settings*.py
 
 # Client secret for Travis
 client-secret.json
+
+data/
