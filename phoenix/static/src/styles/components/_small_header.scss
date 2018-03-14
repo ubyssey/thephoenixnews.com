@@ -1,12 +1,14 @@
+$header-height: 57px;
+
 .c-small-header {
   // Structure
-  height: 58px;
+  height: $header-height;
 }
 
 .c-small-header__wrapper {
   // Structure
   position: fixed;
-  height: 58px;
+  height: $header-height;
   width: 100%;
 
   // Background
@@ -26,14 +28,18 @@
 
 .c-small-header__logo {
   // Structure
-  height: 58px;
+  height: $header-height;
   width: 180px;
 
   // Background
-  background-image: url('../images/phoenix-logo-large.svg');
+  background-image: url('../images/phoenix-logo.svg');
   background-size: 85%;
   background-position: left 42%;
   background-repeat: no-repeat;
+
+  &:hover {
+    background-image: url('../images/phoenix-logo-red.svg');
+  }
 }
 
 .c-small-header__nav {
@@ -48,8 +54,8 @@
 .c-small-header__nav__item {
   // Structure
   display: inline-block;
-  height: 58px;
-  line-height: 58px;
+  height: $header-height;
+  line-height: $header-height;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
 

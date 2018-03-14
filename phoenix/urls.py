@@ -14,8 +14,9 @@ urlpatterns = [
 
     url(r'^$', views.homepage, name='homepage'),
     url(r'^section/$', views.section, name='section'),
-    url(r'^article/$', views.article, name='article'),
     url(r'^page/$', views.page, name='page'),
+
+    url(r'^(?P<year>[0-9]{4})/(?P<month>[0-9]{2})/(?P<slug>[-\w]+)/$', views.article, name='article'),
 ]
 
 if settings.DEBUG:

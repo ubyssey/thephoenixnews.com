@@ -1,1 +1,37 @@
-article
+{% extends 'base.html' %}
+
+{% block body %}
+
+{% include 'components/small-header.html' %}
+
+{% include 'components/advertisement-leaderboard.html' %}
+
+<div class="c-container">
+  <article class="c-article c-article--page">
+    <div class="c-article__info">
+      {% if article.topic %}
+      <a class="c-article__tag">{{ article.topic.name }}</a>
+      {% else %}
+      <a class="c-article__tag">{{ article.section.name }}</a>
+      {% endif %}
+      <h2 class="c-article__headline">{{ article.headline }}</h2>
+      <span class="c-article__meta">By Dayne Patterson - News Editor&nbsp;&nbsp;&middot;&nbsp;&nbsp;{{ article.published_at|date:"F d, Y P" }}</span>
+      <div class="c-article__social">
+        <a class="c-article__social__icon"><i class="fab fa-facebook"></i></a>
+        <a class="c-article__social__icon"><i class="fab fa-twitter"></i></a>
+      </div>
+    </div>
+    <div class="c-article__main">
+      <div class="c-article__content">
+        {{ article.html }}
+      </div>
+      <div class="c-article__sidebar">
+        {% include 'components/advertisement-skyscraper.html' %}
+      </div>
+    </div>
+  </article>
+</div>
+
+{% include 'components/footer.html' %}
+
+{% endblock %}
