@@ -1,0 +1,61 @@
+.c-small-header {
+  // Structure
+  height: 58px;
+}
+
+.c-small-header__wrapper {
+  // Structure
+  position: fixed;
+  height: 58px;
+  width: 100%;
+
+  // Background
+  background: #fff;
+
+  // Border
+  border-bottom: 1px solid #E0E0E0;
+
+  // Extras
+  box-shadow: 0 1px 2px 0 rgba(0,0,0,0.1);
+}
+
+.c-small-header__container {
+  // Structure
+  display: flex;
+}
+
+.c-small-header__logo {
+  // Structure
+  height: 58px;
+  width: 180px;
+
+  // Background
+  background-image: url('../images/phoenix-logo-large.svg');
+  background-size: 85%;
+  background-position: left 42%;
+  background-repeat: no-repeat;
+}
+
+.c-small-header__nav {
+  ul {
+    // Structure
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+.c-small-header__nav__item {
+  // Structure
+  display: inline-block;
+  height: 58px;
+  line-height: 58px;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+
+  // Text
+  font-weight: bold;
+  font-size: 14px;
+  color: #272525;
+  letter-spacing: -0.15px;
+}
