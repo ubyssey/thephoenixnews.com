@@ -1,0 +1,40 @@
+.c-related-articles {
+  // Structure
+  margin-bottom: 3rem;
+
+  // Border
+  border-top: 1px solid #EFEFEF;
+}
+
+.c-related-articles__title {
+  // Structure
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+
+  /* More news: */
+  font-size: 28px;
+  color: #272525;
+  letter-spacing: -0.35px;
+}
+
+.c-related-articles__list {
+  // Structure
+  display: flex;
+
+  .c-article {
+    // Structure
+    flex: 1;
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+    &:first-child {
+      // Structure
+      padding-left: 0;
+    }
+
+    &:last-child {
+      // Structure
+      padding-right: 0;
+    }
+  }
+}

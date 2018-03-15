@@ -6,3 +6,87 @@
   // Background
   background: #353535;
 }
+
+.c-footer__logo {
+  // Structure
+  display: block;
+  height: 57px;
+  width: 140px;
+  margin-right: 1rem;
+
+  // Background
+  background-image: url('../images/phoenix-logo-white.svg');
+  background-size: 100%;
+  background-position: left 42%;
+  background-repeat: no-repeat;
+
+  // Extras
+  opacity: 0.75;
+  transition: opacity 0.2s ease-in;
+
+  &:hover {
+    // Extras
+    opacity: 1;
+  }
+}
+
+.c-footer__items {
+  // Structure
+  display: flex;
+}
+
+.c-footer__list {
+  // Structure
+  list-style-type: none;
+  padding: 0;
+  margin-left: 0;
+  margin-top: 1rem;
+  margin-right: 3rem;
+  margin-bottom: 0;
+
+  &:last-child {
+    // Structure
+    flex: 1;
+    text-align: right;
+    margin-right: 0;
+  }
+}
+
+.c-footer__list__item {
+  // Structure
+  margin-bottom: 0.25rem;
+
+  // Text
+  color: #fff;
+  font-size: 13px;
+
+  // Extras
+  opacity: 0.85;
+
+  &:first-child {
+    // Structure
+    margin-bottom: 0.5rem;
+
+    // Text
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  &:last-child {
+    // Structure
+    margin-bottom: 0;
+  }
+}
+
+.c-footer__copyright {
+  // Structure
+  margin-top: 2rem;
+
+  // Text
+  color: #fff;
+  font-size: 13px;
+  text-align: center;
+
+  // Extras
+  opacity: 0.5;
+}

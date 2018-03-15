@@ -1,0 +1,8 @@
+<div class="c-related-articles">
+  <h3 class="c-related-articles__title">More {{ title }}</h3>
+  <div class="c-related-articles__list">
+  {% for article in articles %}
+    {% include 'components/article-5.html' with article=article %}
+  {% endfor %}
+  </div>
+</div>

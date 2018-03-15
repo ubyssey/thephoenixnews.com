@@ -1,7 +1,3 @@
-.c-article {
-
-}
-
 .c-article__tag {
   font-weight: bold;
   font-size: 15px;
@@ -89,6 +85,23 @@
 
   &:last-child {
     margin-bottom: 0;
+  }
+}
+
+.c-article--5 {
+  .c-article__image {
+    // Structure
+    display: block;
+    width: 100%;
+    position: relative;
+    padding-top: 50%;
+    margin-bottom: 1rem;
+    z-index: $z-index-1;
+
+    // Background
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
   }
 }
 

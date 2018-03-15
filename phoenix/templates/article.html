@@ -30,6 +30,7 @@
       </div>
     </div>
   </article>
+  {% include 'components/related-articles.html' with title=article.section.name articles=related %}
 </div>
 
 {% include 'components/footer.html' %}

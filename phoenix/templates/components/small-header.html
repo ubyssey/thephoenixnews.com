@@ -5,7 +5,7 @@
       <a href="{% url 'homepage' %}" class="c-small-header__logo"></a>
       <nav class="c-small-header__nav">
         <ul>
-          <li class="c-small-header__nav__item"><a>About</a></li>
+          <li class="c-small-header__nav__item"><a href="{% url 'page' 'about' %}">About</a></li>
           <li class="c-small-header__nav__item"><a href="{% section_url 'news' %}">News</a></li>
           <li class="c-small-header__nav__item"><a href="{% section_url 'life' %}">Lifestyle</a></li>
           <li class="c-small-header__nav__item"><a href="{% section_url 'features' %}">Features</a></li>

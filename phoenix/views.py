@@ -17,7 +17,8 @@ def homepage(request):
         'features': features,
         'arts': arts,
         'sports': sports,
-        'opinions': opinions
+        'opinions': opinions,
+        'footer': get_footer_context()
     }
 
     return render(request, 'homepage.html', context)
@@ -37,8 +38,14 @@ def article(request, year=0, month=0, slug=None):
     if article.published_at.year != year or article.published_at.month != month:
         raise Http404("Article does not exist")
 
+    related = Article.objects \
+        .filter(section=article.section, is_published=True) \
+        .order_by('-published_at') \
+        .exclude(id__in=[article.id])[:3]
+
     context = {
-        'article': article
+        'article': article,
+        'related': related
     }
 
     return render(request, 'article.html', context)
@@ -46,3 +53,13 @@ def article(request, year=0, month=0, slug=None):
 def page(request, slug=None):
     context = {}
     return render(request, 'page.html', context)
+
+def get_footer_context():
+    sections = ['news', 'life', 'features', 'arts', 'sports', 'opinions']
+    topics = {}
+
+    for section in sections:
+        print Article.objects \
+                    .filter(is_published=True, section__slug=section) \
+                    .values('topic') \
+                    .distinct()
