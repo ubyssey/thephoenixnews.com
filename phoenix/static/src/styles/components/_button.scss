@@ -6,6 +6,9 @@
   padding-left: 2rem;
   padding-right: 2rem;
 
+  // Border
+  border: 2px solid #ff0909;
+
   // Background
   background: #ff0909;
   font-size: 15px;
@@ -16,4 +19,13 @@
   color: #fff;
   letter-spacing: 0.1px;
   text-transform: uppercase;
+  text-decoration: none;
+
+  &:hover {
+    // Background
+    background: #fff;
+
+    // Text
+    color: #ff0909;
+  }
 }

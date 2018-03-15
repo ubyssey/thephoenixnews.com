@@ -1,17 +1,20 @@
+{% load phoenix %}
 <div class="c-subsection c-subsection--primary">
-  <h3 class="c-subsection__title">News</h3>
+  <h3 class="c-subsection__title">{{ title }}</h3>
   <div class="c-subsection__body">
     <div class="c-subsection__left">
-      {% include 'components/article-1.html' %}
+      {% include 'components/article-1.html' with article=articles.0 %}
     </div>
     <div class="c-subsection__right">
-      {% include 'components/article-4.html' %}
-      {% include 'components/article-4.html' %}
+      {% include 'components/article-4.html' with article=articles.1 %}
+      {% include 'components/article-4.html' with article=articles.2 %}
     </div>
   </div>
   <div class="c-subsection__footer">
     <div class="c-subsection__full">
-      <a class="c-button c-button--caret-right">More News</a>
+      <a
+        class="c-button c-button--caret-right"
+        href="{% section_url slug %}">More {{ title }}</a>
     </div>
   </div>
 </div>

@@ -58,6 +58,6 @@ module.exports = {
       }
     }),
     new webpack.optimize.UglifyJsPlugin(),
-    new ExtractTextPlugin('css/main-' + version + '.css')
+    new ExtractTextPlugin('main-' + version + '.css')
   ]
 };

@@ -1,16 +1,24 @@
+{% load phoenix %}
 <div class="c-small-header">
   <header class="c-small-header__wrapper">
     <div class="c-small-header__container c-container">
       <a href="{% url 'homepage' %}" class="c-small-header__logo"></a>
       <nav class="c-small-header__nav">
         <ul>
-          <li class="c-small-header__nav__item">News</li>
-          <li class="c-small-header__nav__item">Arts</li>
-          <li class="c-small-header__nav__item">Lifestyle</li>
-          <li class="c-small-header__nav__item">Sports</li>
-          <li class="c-small-header__nav__item">Opinion</li>
-          <li class="c-small-header__nav__item">Features</li>
-          <li class="c-small-header__nav__item">About</li>
+          <li class="c-small-header__nav__item"><a>About</a></li>
+          <li class="c-small-header__nav__item"><a href="{% section_url 'news' %}">News</a></li>
+          <li class="c-small-header__nav__item"><a href="{% section_url 'life' %}">Lifestyle</a></li>
+          <li class="c-small-header__nav__item"><a href="{% section_url 'features' %}">Features</a></li>
+          <li class="c-small-header__nav__item"><a href="{% section_url 'arts' %}">Arts</a></li>
+          <li class="c-small-header__nav__item"><a href="{% section_url 'sports' %}">Sports</a></li>
+          <li class="c-small-header__nav__item"><a href="{% section_url 'opinions' %}">Opinions</a></li>
+        </ul>
+      </nav>
+      <nav class="c-small-header__social">
+        <ul>
+          <li class="c-small-header__social__item"><a><i class="fab fa-facebook"></i></a></li>
+          <li class="c-small-header__social__item"><a><i class="fab fa-twitter"></i></a></li>
+          <li class="c-small-header__social__item"><a><i class="fab fa-instagram"></i></a></li>
         </ul>
       </nav>
     </div>

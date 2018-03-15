@@ -4,7 +4,7 @@
 
 .c-article__tag {
   font-weight: bold;
-  font-size: 14px;
+  font-size: 15px;
   color: #EB2C2C;
   letter-spacing: -0.15px;
 }
@@ -19,6 +19,17 @@
   font-size: 26px;
   color: #272525;
   letter-spacing: -0.3px;
+  line-height: 1.2em;
+
+  a {
+    // Text
+    color: #272525;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
 
 .c-article__meta {
@@ -29,6 +40,7 @@
   font-size: 14px;
   color: #5C5C5C;
   letter-spacing: -0.15px;
+  line-height: 1.5em;
 }
 
 .c-article__description {
@@ -152,6 +164,11 @@
     // Structure
     flex: 1;
     padding-right: 4rem;
+
+    > *:first-child {
+      // Structure
+      margin-top: 0;
+    }
 
     > p {
       // Structure

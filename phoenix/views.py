@@ -4,17 +4,25 @@ from django.http import Http404
 from dispatch.models import Article
 
 def homepage(request):
-    featured = Article.objects.filter(importance=5, is_published=True).order_by('-published_at')[0]
     news =  Article.objects.filter(section__slug='news', is_published=True).order_by('-published_at')
+    lifestyle = Article.objects.filter(section__slug='life', is_published=True).order_by('-published_at')
+    features = Article.objects.filter(section__slug='features', is_published=True).order_by('-published_at')
+    arts = Article.objects.filter(section__slug='arts', is_published=True).order_by('-published_at')
+    sports = Article.objects.filter(section__slug='sports', is_published=True).order_by('-published_at')
+    opinions = Article.objects.filter(section__slug='opinions', is_published=True).order_by('-published_at')
 
     context = {
-        'featured': featured,
-        'news': news
+        'news': news,
+        'lifestyle': lifestyle,
+        'features': features,
+        'arts': arts,
+        'sports': sports,
+        'opinions': opinions
     }
 
     return render(request, 'homepage.html', context)
 
-def section(request):
+def section(request, slug=None):
     context = {}
     return render(request, 'section.html', context)
 
@@ -35,6 +43,6 @@ def article(request, year=0, month=0, slug=None):
 
     return render(request, 'article.html', context)
 
-def page(request):
+def page(request, slug=None):
     context = {}
     return render(request, 'page.html', context)

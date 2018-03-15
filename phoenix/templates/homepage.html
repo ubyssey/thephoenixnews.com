@@ -1,16 +1,22 @@
 {% extends 'base.html' %}
 
+{% load widgets %}
+
 {% block body %}
 
 {% include 'components/large-header.html' %}
 
-{% include 'components/article-banner.html' with article=featured %}
+{% zone 'homepage' %}
 
 <div class="c-container">
-  {% include 'components/subsection-primary.html' %}
-  {% include 'components/subsection-secondary.html' %}
+  {% include 'components/subsection-primary.html' with title='News' slug='news' articles=news %}
+  {% include 'components/subsection-secondary.html' with title='Lifestyle' slug='life' articles=lifestyle %}
   {% include 'components/advertisement-leaderboard.html' %}
-  {% include 'components/subsection-secondary.html' %}
+  {% include 'components/subsection-primary.html' with title='Features' slug='features' articles=features %}
+  {% include 'components/subsection-secondary.html' with title='Arts' slug='arts' articles=arts %}
+  {% include 'components/advertisement-leaderboard.html' %}
+  {% include 'components/subsection-secondary.html' with title='Sports' slug='sports' articles=sports %}
+  {% include 'components/subsection-primary.html' with title='Opinions' slug='opinions' articles=opinions %}
 </div>
 
 {% include 'components/footer.html' %}

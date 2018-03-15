@@ -15,7 +15,7 @@
       <a class="c-article__tag">{{ article.section.name }}</a>
       {% endif %}
       <h2 class="c-article__headline">{{ article.headline }}</h2>
-      <span class="c-article__meta">By Dayne Patterson - News Editor&nbsp;&nbsp;&middot;&nbsp;&nbsp;{{ article.published_at|date:"F d, Y P" }}</span>
+      <span class="c-article__meta">By {{ article.get_author_string }}&nbsp;&nbsp;&middot;&nbsp;&nbsp;{{ article.published_at|date:"F d, Y P" }}</span>
       <div class="c-article__social">
         <a class="c-article__social__icon"><i class="fab fa-facebook"></i></a>
         <a class="c-article__social__icon"><i class="fab fa-twitter"></i></a>
