@@ -1,6 +1,6 @@
 {% load phoenix %}
 <div class="c-subsection c-subsection--primary">
-  {% if title %}<h3 class="c-subsection__title">{{ title }}</h3>{% endif %}
+  {% if not hidetitle %}<h3 class="c-subsection__title">{{ title }}</h3>{% endif %}
   <div class="c-subsection__body">
     <div class="c-subsection__left">
       {% include 'components/article-1.html' with article=articles.0 %}

@@ -28,6 +28,20 @@
   }
 }
 
+.c-article__image {
+  // Structure
+  display: block;
+  width: 100%;
+  position: relative;
+  padding-top: 25%;
+  z-index: $z-index-1;
+
+  // Background
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 .c-article__meta {
   // Structure
   display: block;
@@ -54,17 +68,12 @@
   .c-article__image {
     // Structure
     flex: 1.61803398875; // Golden ratio
-    padding-right: 1.5rem;
-
-    img {
-      // Structure
-      width: 100%;
-    }
   }
 
   .c-article__info {
     // Structure
     flex: 1;
+    padding-left: 1.5rem;
   }
 }
 
@@ -85,23 +94,6 @@
 
   &:last-child {
     margin-bottom: 0;
-  }
-}
-
-.c-article--5 {
-  .c-article__image {
-    // Structure
-    display: block;
-    width: 100%;
-    position: relative;
-    padding-top: 50%;
-    margin-bottom: 1rem;
-    z-index: $z-index-1;
-
-    // Background
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
   }
 }
 

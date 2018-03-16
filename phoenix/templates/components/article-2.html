@@ -2,8 +2,8 @@
 <article class="c-article c-article--2">
   <a
     class="c-article__image"
-    href="{% article_url article %}">
-    <img src="{{ article.featured_image.image.get_medium_url }}" alt="{{ article.headline }}" />
+    href="{% article_url article %}"
+    style="background-image: url('{{ article.featured_image.image.get_medium_url }}');">
   </a>
   <div class="c-article__info">
     {% if article.topic %}
