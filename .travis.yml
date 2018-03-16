@@ -1,0 +1,43 @@
+sudo: false
+language: python
+python:
+- '2.7'
+before_install:
+- openssl aes-256-cbc -K $encrypted_8ea223bd84f4_key -iv $encrypted_8ea223bd84f4_iv -in client-secret.json.enc -out client-secret.json -d
+- export PYTHONPATH="${PYTHONPATH}:${TRAVIS_BUILD_DIR}/lib"
+install:
+- pip install -r requirements-prd.txt -t lib/
+- pip install requests --upgrade -t lib/
+- cd phoenix/static
+- yarn setup
+script:
+- yarn build
+after_success:
+- rm -rf node_modules
+- cd ${TRAVIS_BUILD_DIR}
+- mv _settings/settings-dpl.py phoenix/settings.py
+- python manage.py collectstatic --noinput
+- find ${TRAVIS_BUILD_DIR}/gcs -type f -exec gzip "{}" \; -exec mv "{}.gz" "{}" \;
+- rm phoenix/settings.py phoenix/settings.pyc
+- mv _settings/settings-prd.py phoenix/settings.py
+deploy:
+  - provider: gcs
+    access_key_id: GOOG6VXJ7FN5TYTTPSQI
+    secret_access_key:
+      secure: cbcoLAJoj6/oH/oDXGowEOQC/HU3EPEJYkQMb3syaL458U5/gVUjQYB1k0KC6u6Md8fvFnmo94uod/S70Q4Mhnka5HDMu3duf8Yk82Tw/6AbrLNXriSZEcM5qzoDXbNlghKvsxOaGjA/jD+wKWQkgEfhWc2+Jodi27jDjBq72MKvTv0gTZn6kNZSuteLEGqpN/JV4DetULsmPb9lHHBs7Ng1/h3aOtNYK2GVOHCklQ8kf78SAcrbT3lr7mJYO6NFT/Yp20cghegEfq1OdPYtNFZKS8alWTUIs1WF/ywErr+lSo8YyRkdEk398w2rpq4EDqdwWs6Ah/LaA60DeP06zfuxptR2ulQfJ2vdij2gq4JG+loF7yrzBcdEOfuqX/Rw2j7OoS08A1ECrmdUyw1966/h5tuqunUoh3bDE6H37H+pPR84adpZ2w94wdluVFQ8mNg3BurCCNUNPyEO3jKzke2paO9MK9CTcHLuPY0xQraQF9JxEXPUT5GBnbQzU4zY4aXyiftxPREtYTvpnk7AQN2zo5lfiWel4vSJOUrQXf1ZtK5iV8SjRWoqxmPbrREZjp0S8K3O7EsOFmIwB3h36YuSP8sm6ktMg/mzt7q/7x4wYJAa3rTxAl2ku0FwIHF45py5B6FnYw93mNd7vg77U2KJoovlCJCzw6tflFIR+O4=
+    bucket: phoenix-news
+    skip_cleanup: true
+    acl: public-read
+    local-dir: ${TRAVIS_BUILD_DIR}/gcs
+    detect_encoding: true
+    cache_control: "max-age=31536000"
+    on:
+      tags: true
+  - provider: gae
+    keyfile: client-secret.json
+    project: phoenix-prd
+    default: true
+    version: phoenix-${TRAVIS_TAG//./-} # Replace periods with hyphens
+    skip_cleanup: true
+    on:
+      tags: true
