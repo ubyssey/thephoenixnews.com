@@ -4,7 +4,7 @@ from phoenix.secrets import Secrets
 
 from dispatch.default_settings import *
 
-BASE_URL = 'https://www.phoenix.ubyssey.ca/'
+BASE_URL = 'https://phoenix-prd.appspot.com/'
 CANONICAL_DOMAIN = 'www.phoenix.ubyssey.ca'
 
 SECRET_KEY = Secrets.get('SECRET_KEY')
