@@ -15,8 +15,6 @@ ALLOWED_HOSTS = [
     'phoenix-prd.appspot.com',
 ]
 
-INSTALLED_APPS += ['phoenix']
-
 ROOT_URLCONF = 'phoenix.urls'
 
 USE_TZ = True
