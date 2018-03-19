@@ -9,6 +9,8 @@ CANONICAL_DOMAIN = 'phoenix-prd.appspot.com'
 
 SECRET_KEY = Secrets.get('SECRET_KEY')
 
+INSTALLED_APPS += ['phoenix']
+
 ALLOWED_HOSTS = [
     'phoenix.ubyssey.ca',
     'www.phoenix.ubyssey.ca',
