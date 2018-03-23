@@ -62,18 +62,26 @@
 
 .c-article--1,
 .c-article--2, {
-  // Structure
-  display: flex;
-
   .c-article__image {
     // Structure
-    flex: 1.61803398875; // Golden ratio
+    margin-bottom: 0.75rem;
   }
 
-  .c-article__info {
+  @media only screen and (min-width: $bp-desktop) {
     // Structure
-    flex: 1;
-    padding-left: 1.5rem;
+    display: flex;
+
+    .c-article__image {
+      // Structure
+      flex: 1.61803398875; // Golden ratio
+      margin-bottom: 0;
+    }
+
+    .c-article__info {
+      // Structure
+      flex: 1;
+      padding-left: 1.5rem;
+    }
   }
 }
 
