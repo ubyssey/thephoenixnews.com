@@ -1,6 +1,8 @@
 import re
 import os
 import urllib
+import StringIO
+import hashlib
 from datetime import datetime
 
 from bs4 import BeautifulSoup
@@ -117,6 +119,7 @@ def parse_featured_image(item):
         return None
 
 def save_image(item):
+
     filename = item['url'].replace('http://www.thephoenixnews.com/wp-content/uploads/', 'images/')
     filename, extension = os.path.splitext(filename)
 
@@ -149,6 +152,21 @@ def save_image(item):
         image.img = filename
 
         image.save()
+
+def add_image_to_tsv(tsv_file, item):
+
+    f = StringIO.StringIO(urllib.urlopen(item['url']).read())
+
+    hash_md5 = hashlib.md5()
+    for chunk in iter(lambda: f.read(4096), b""):
+        hash_md5.update(chunk)
+
+    tsv_str = "%s  %s  %s\n" % (item['url'], str(f.len), hash_md5.hexdigest())
+    print item['url']
+
+    tsv_file.write(tsv_str)
+
+    f.close()
 
 def save_article(item):
     article = Article()
@@ -206,8 +224,12 @@ class Command(BaseCommand):
 
             items = soup.find_all('item')
 
+            # with open("images.tsv", "w") as tsv_file:
+            #     tsv_file.write("TsvHttpData-1.0")
+
             images = filter(is_image, items)
             for item in images:
+                # add_image_to_tsv(tsv_file, parse_image(item))
                 save_image(parse_image(item))
 
             articles = filter(is_article, items)
