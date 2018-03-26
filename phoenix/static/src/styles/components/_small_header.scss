@@ -23,15 +23,28 @@ $header-height: 57px;
 }
 
 .c-small-header__container {
-  // Structure
-  display: flex;
+  // Text
+  text-align: center;
+
+  @media only screen and (min-width: 900px) {
+    // Structure
+    display: flex;
+
+    // Text
+    text-align: left;
+  }
 }
 
 .c-small-header__logo {
   // Structure
+  display: inline-block;
   height: $header-height;
   width: 140px;
-  margin-right: 1rem;
+
+  @media only screen and (min-width: 900px) {
+    // Structure
+    margin-right: 1rem;
+  }
 
   // Background
   background-image: url('../images/phoenix-logo.svg');
@@ -47,6 +60,12 @@ $header-height: 57px;
 .c-small-header__nav {
   // Structure
   flex: 1;
+  display: none;
+
+  @media only screen and (min-width: 900px) {
+    // Structure
+    display: block;
+  }
 
   ul {
     // Structure
@@ -83,6 +102,14 @@ $header-height: 57px;
 }
 
 .c-small-header__social {
+  // Structure
+  display: none;
+
+  @media only screen and (min-width: 900px) {
+    // Structure
+    display: block;
+  }
+
   ul {
     // Structure
     list-style-type: none;

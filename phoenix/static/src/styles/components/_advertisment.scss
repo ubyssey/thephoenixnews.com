@@ -1,8 +1,36 @@
 .c-advertisement {
+  // Structure
+  width: 100%;
+
   // Text
   text-align: center;
 
   img {
+    // Structure
+    vertical-align: bottom;
+  }
+
+  @media only screen and (min-width: $bp-desktop) {
+    // Structure
+    width: auto;
+  }
+}
+
+.c-advertisement__mobile {
+  // Structure
+  display: inline-block;
+
+  @media only screen and (min-width: $bp-desktop) {
+    // Structure
+    display: none;
+  }
+}
+
+.c-advertisement__desktop {
+  // Structure
+  display: none;
+
+  @media only screen and (min-width: $bp-desktop) {
     // Structure
     display: inline-block;
   }
@@ -18,5 +46,17 @@
 }
 
 .c-advertisement--skyscraper {
+  // Structure
+  padding-top: 2rem;
 
+  // Border
+  border-top: 1px solid #EFEFEF;
+
+  @media only screen and (min-width: $bp-desktop) {
+    // Structure
+    padding-top: 0;
+
+    // Border
+    border-top: none;
+  }
 }

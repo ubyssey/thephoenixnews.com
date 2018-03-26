@@ -31,8 +31,10 @@
 }
 
 .c-footer__items {
-  // Structure
-  display: flex;
+  @media only screen and (min-width: 900px) {
+    // Structure
+    display: flex;
+  }
 }
 
 .c-footer__list {
@@ -44,17 +46,25 @@
   margin-right: 3rem;
   margin-bottom: 0;
 
-  &:last-child {
-    // Structure
-    flex: 1;
-    text-align: right;
-    margin-right: 0;
+  @media only screen and (min-width: 900px) {
+    &:last-child {
+      // Structure
+      flex: 1;
+      text-align: right;
+      margin-right: 0;
+    }
   }
 }
 
 .c-footer__list__item {
   // Structure
   margin-bottom: 0.25rem;
+  display: none;
+
+  @media only screen and (min-width: 900px) {
+    // Structure
+    display: block;
+  }
 
   // Text
   color: #fff;
@@ -66,6 +76,7 @@
   &:first-child {
     // Structure
     margin-bottom: 0.5rem;
+    display: block;
 
     // Text
     font-weight: bold;

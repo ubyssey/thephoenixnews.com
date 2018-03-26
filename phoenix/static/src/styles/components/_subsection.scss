@@ -42,6 +42,18 @@
   }
 }
 
+.c-subsection--secondary {
+  .c-subsection__left {
+    // Structure
+    padding-bottom: 2rem;
+
+    @media only screen and (min-width: $bp-tablet) {
+      // Structure
+      padding-bottom: 0;
+    }
+  }
+}
+
 .c-subsection__right {
   @media only screen and (min-width: $bp-tablet) {
     // Structure
@@ -106,4 +118,12 @@
       width: auto;
     }
   }
+}
+
+.c-subsection__bottom {
+  // Structure
+  padding-top: 1.5rem;
+
+  // Text
+  text-align: center;
 }

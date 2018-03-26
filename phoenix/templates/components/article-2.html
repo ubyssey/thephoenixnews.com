@@ -1,10 +1,12 @@
 {% load phoenix %}
 <article class="c-article c-article--2">
-  <a
-    class="c-article__image"
-    href="{% article_url article %}"
-    style="background-image: url('{{ article.featured_image.image.get_medium_url }}');">
-  </a>
+  <div class="c-article__image-container">
+    <a
+      class="c-article__image"
+      href="{% article_url article %}"
+      style="background-image: url('{{ article.featured_image.image.get_medium_url }}');">
+    </a>
+  </div>
   <div class="c-article__info">
     {% if article.topic %}
     <a class="c-article__tag">{{ article.topic.name }}</a>
