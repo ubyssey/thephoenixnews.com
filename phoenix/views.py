@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.http import Http404
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
-from dispatch.models import Article
+from dispatch.models import Article, Section, Topic
 
 def homepage(request):
     news =  Article.objects.filter(section__slug='news', is_published=True).order_by('-published_at')
@@ -12,6 +13,7 @@ def homepage(request):
     opinions = Article.objects.filter(section__slug='opinions', is_published=True).order_by('-published_at')
 
     context = {
+        'title': 'The Phoenix - UBCO\'s student newspaper',
         'news': news,
         'lifestyle': lifestyle,
         'features': features,
@@ -23,8 +25,54 @@ def homepage(request):
 
     return render(request, 'homepage.html', context)
 
-def section(request, slug=None):
-    context = {}
+def section_home(request, slug=None):
+    return section(request, slug, None)
+
+def section_topic(request, slug=None, topic=None):
+    return section(request, slug, topic)
+
+def section(request, section_slug=None, topic_slug=None):
+
+    try:
+        section = Section.objects.get(slug=section_slug)
+    except Section.DoesNotExist:
+        raise Http404("Section does not exist")
+
+    articles = Article.objects \
+        .filter(is_published=True, section=section) \
+        .order_by('-published_at')
+
+    if topic_slug:
+        try:
+            topic = Topic.objects.get(slug=topic_slug)
+        except Topic.DoesNotExist:
+            raise Http404("Topic does not exist")
+
+        articles = articles.filter(topic=topic)
+    else:
+        topic = None
+
+    paginator = Paginator(articles[4:], 15)
+    page = request.GET.get('page')
+
+    try:
+        archive = paginator.page(page)
+    except PageNotAnInteger:
+        archive = paginator.page(1)
+    except EmptyPage:
+        archive = paginator.page(paginator.num_pages)
+
+    context = {
+        'title': '%s - The Phoenix' % section.name,
+        'section': section,
+        'topic': topic,
+        'articles': {
+            'primary': articles[0],
+            'secondary': articles[1:4],
+            'archive': archive
+        }
+    }
+
     return render(request, 'section.html', context)
 
 def article(request, year=0, month=0, slug=None):
@@ -44,6 +92,7 @@ def article(request, year=0, month=0, slug=None):
         .exclude(id__in=[article.id])[:3]
 
     context = {
+        'title': '%s - The Phoenix' % article.headline,
         'article': article,
         'related': related
     }

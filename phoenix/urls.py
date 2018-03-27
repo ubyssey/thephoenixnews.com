@@ -14,8 +14,9 @@ urlpatterns = [
     url(r'^api/', include(api_urls)),
 
     url(r'^$', views.homepage, name='homepage'),
-    url(r'^category/(?P<slug>[-\w]+)/$', views.section, name='section'),
-    
+    url(r'^category/(?P<slug>[-\w]+)/$', views.section_home, name='section'),
+    url(r'^category/(?P<slug>[-\w]+)/(?P<topic>[-\w]+)/$', views.section_topic, name='topic'),
+
     url(r'^(?P<slug>[-\w]+)/$', views.page, name='page'),
     url(r'^(?P<year>[0-9]{4})/(?P<month>[0-9]{2})/(?P<slug>[-\w]+)/$', views.article, name='article'),
 ]

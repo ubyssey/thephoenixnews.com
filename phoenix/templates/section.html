@@ -1,1 +1,40 @@
-section page coming soon!
+{% extends 'base.html' %}
+
+{% block body %}
+
+{% include 'components/small-header.html' %}
+
+{% include 'components/advertisement-leaderboard.html' %}
+
+<div class="c-section c-container">
+  <h1 class="c-section__title">{{ section.name }}</h1>
+  <nav class="c-section__topics">
+    <ul>
+      <li class="c-section__topics__item">Lifestyle</li>
+      <li class="c-section__topics__item">Elections</li>
+      <li class="c-section__topics__item">Topic 2</li>
+      <li class="c-section__topics__item">Topic topic</li>
+      <li class="c-section__topics__item">New topic test</li>
+    </ul>
+  </nav>
+  <div class="c-section__primary">
+    {% include 'components/article-6.html' with article=articles.primary %}
+  </div>
+  <div class="c-section__secondary">
+    {% for article in articles.secondary %}
+      {% include 'components/article-5.html' with article=article %}
+    {% endfor %}
+  </div>
+  <div class="c-section__archive">
+    <h2 class="c-section__archive__title">Archive</h2>
+    <ul>
+      {% for article in articles.archive %}
+        {% include 'components/article-4.html' with article=article %}
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+{% include 'components/footer.html' %}
+
+{% endblock %}
