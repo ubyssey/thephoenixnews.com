@@ -1,0 +1,32 @@
+.c-print-issue {
+  // Structure
+  padding-left: 2rem;
+  padding-right: 2rem;
+
+  // Text
+  text-align: center;
+}
+
+.c-print-issue__label {
+  // Structure
+  margin-top: 0;
+}
+
+.c-print-issue__image {
+  // Structure
+  width: 100%;
+  height: auto;
+
+  // Extra
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50);
+}
+
+.c-print-issue__title {
+  // Structure
+  margin-top: 0.75rem;
+
+  // Text
+  font-size: 18px;
+  color: #272525;
+  letter-spacing: -0.2px;
+}

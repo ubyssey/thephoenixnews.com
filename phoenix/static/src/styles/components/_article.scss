@@ -191,6 +191,7 @@
   .c-article__sidebar {
     @media only screen and (min-width: $bp-desktop) {
       // Structure
+      position: relative;
       width: 300px;
     }
   }

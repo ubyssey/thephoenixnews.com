@@ -16,7 +16,6 @@ module.exports = {
     "indent": ["error", 2],
     "linebreak-style": 0,
     "quotes": ["error", "single"],
-    "semi": ["error", "never"],
     "no-unused-vars": ["warn", {"args": "after-used"}],
     "no-console": ["warn"],
   }

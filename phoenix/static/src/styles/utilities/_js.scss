@@ -1,0 +1,11 @@
+.js-sticky--fixed {
+  // Structure
+  position: fixed;
+}
+
+.js-sticky--frozen {
+  // Structure
+  position: absolute;
+  top: auto !important;
+  bottom: 0;
+}
