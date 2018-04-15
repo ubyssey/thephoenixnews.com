@@ -4,16 +4,16 @@ from phoenix.secrets import Secrets
 
 from dispatch.default_settings import *
 
-BASE_URL = 'https://phoenix-prd.appspot.com/'
-CANONICAL_DOMAIN = 'phoenix-prd.appspot.com'
+BASE_URL = 'https://new.thephoenixnews.com/'
+CANONICAL_DOMAIN = 'new.thephoenixnews.com'
 
 SECRET_KEY = Secrets.get('SECRET_KEY')
 
 INSTALLED_APPS += ['phoenix']
 
 ALLOWED_HOSTS = [
-    'phoenix.ubyssey.ca',
-    'www.phoenix.ubyssey.ca',
+    'new.thephoenixnews.com',
+    'www.new.thephoenixnews.com',
     'phoenix-prd.appspot.com',
 ]
 
