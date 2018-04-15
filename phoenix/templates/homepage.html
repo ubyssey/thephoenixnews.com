@@ -9,7 +9,7 @@
 {% zone 'homepage' %}
 
 <div class="c-container">
-  {% include 'components/subsection-primary.html' with title='News' slug='news' hidetitle=True articles=news %}
+  {% include 'components/subsection-front.html' with title='News' slug='news' articles=news issue=issue %}
   {% include 'components/subsection-secondary.html' with title='Lifestyle' slug='life' articles=lifestyle %}
   {% include 'components/advertisement-leaderboard.html' %}
   {% include 'components/subsection-primary.html' with title='Features' slug='features' articles=features %}

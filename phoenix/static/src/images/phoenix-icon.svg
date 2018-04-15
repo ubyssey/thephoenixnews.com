@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="80px" height="80px" viewBox="0 0 80 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49 (51002) - http://www.bohemiancoding.com/sketch -->
+    <title>Slice</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-188.000000, -76.000000)" fill="#FFFFFF" fill-rule="nonzero">
+            <g id="phoenix-logo-white" transform="translate(207.000000, 85.000000)">
+                <g id="Group" transform="translate(21.500000, 31.500000) scale(-1, 1) rotate(-180.000000) translate(-21.500000, -31.500000) translate(0.000000, 0.000000)">
+                    <g transform="translate(0.330000, 0.411500)" id="Shape">
+                        <path d="M40,36 C40,43.1707 36.7107,51.293 32.4867,54.663 C28.4374,58.0337 23.2147,58.2923 18.6957,58.2923 L18.6957,55.355 L18.6357,39.888 L18.578367,26.495 C18.578367,22.5203 18.578367,18.6323 18.6357,14.659 C20.161,13.967 22.333,13.6203 24.7984,13.6203 C33.4837,13.6203 39.9994,23.2976 39.9994,36.0003 M41.9941,35.7403 C41.9941,21.3993 34.5408,10.8553 24.3271,10.8553 C22.4498,10.8553 20.5111,11.28997 18.6351,11.63397 C18.6351,8.00597 18.6951,4.37797 18.6951,0.74897 L0.3261,0.74897 L0.3261,3.42497 L0.44343,20.96597 L0.500763,36.77797 L0.383433,49.47897 L0.3261,59.50197 L0.3261,61.31667 L14.0581,61.31667 C20.2208,61.31667 24.8581,60.88467 28.3181,59.93537 C36.0074,57.77407 41.9941,47.40437 41.9941,35.74037"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

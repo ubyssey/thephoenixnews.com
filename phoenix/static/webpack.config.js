@@ -4,10 +4,14 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var globImporter = require('node-sass-glob-importer');
 
 module.exports = {
-  entry: './src/js/index',
+  entry: {
+    index: './src/js/index',
+    pdf: './src/js/pdf',
+    'pdf.worker': 'pdfjs-dist/build/pdf.worker.entry',
+  },
   output: {
     path: __dirname + '/dist',
-    filename: 'index-' + version + '.js'
+    filename: '[name]-' + version + '.js'
   },
   module: {
     rules: [
@@ -46,7 +50,7 @@ module.exports = {
         }),
       },
       {
-        test: /\.(png|jpg|svg|woff|woff2|eot|ttf)$/,
+        test: /\.(png|jpg|svg|gif|woff|woff2|eot|ttf)$/,
         use: { loader: 'url-loader?limit=100000' }
       }
     ]

@@ -1,0 +1,7 @@
+{% load static %}
+<div class="c-print-issue">
+    <h3 class="c-print-issue__label">Latest Issue</h2>
+    <img class="c-print-issue__image" src="{% get_media_prefix %}{{ issue.img }}" alt="{{ issue.title }}" />
+    <h2 class="c-print-issue__title">{{ issue.title }}</h2>
+    <a class="c-button" href="#">Issue archive</a>
+</div>

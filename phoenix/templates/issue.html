@@ -1,0 +1,30 @@
+{% load staticfiles %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'main-0.0.14.css' %}" type="text/css"/>
+
+<div class="c-issue">
+  <div class="c-issue__header">
+    <div class="c-issue__header__left">
+      <a class="c-issue__header__logo" href="{% url 'homepage' %}"></a>
+    </div>
+    <div class="c-issue__header__center">
+      <h1 class="c-issue__title">{{ issue.title}}</h1>
+      <h2 class="c-issue__subtitle">{{ issue.date|date:"F j, Y" }}</h2>
+    </div>
+    <div class="c-issue__header__right"></div>
+  </div>
+  <div class="c-issue__viewer">
+    <div id="js-pdf" data-url='{% get_media_prefix %}{{ issue.file }}' data-worker='{% static 'pdf.worker-0.0.14.js' %}'></div>
+  </div>
+</div>
+
+<style>
+body {
+  background: #191919;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+</style>
+
+<script src="{% static 'pdf-0.0.14.js' %}" type="text/javascript"></script>

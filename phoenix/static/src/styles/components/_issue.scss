@@ -1,0 +1,66 @@
+.c-issue {
+  // Structure
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.c-issue__header {
+  // Structure
+  margin-top: 1.5rem;
+  display: flex;
+}
+
+.c-issue__header__left,
+.c-issue__header__right {
+  // Structure
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.c-issue__header__center {
+  // Structure
+  flex: 3;
+}
+
+.c-issue__header__logo {
+  // Structure
+  display: block;
+  height: 57px;
+  width: 140px;
+  margin-left: 2rem;
+
+  // Background
+  background-image: url('../images/phoenix-logo-white.svg');
+  background-size: 100%;
+  background-position: left 42%;
+  background-repeat: no-repeat;
+}
+
+.c-issue__title {
+  // Structure
+  margin: 0;
+
+  // Text
+  color: #fff;
+  font-size: 18px;
+  text-align: center;
+}
+
+.c-issue__subtitle {
+  // Structure
+  margin-bottom: 0;
+  margin-top: 0.75rem;
+
+  // Text
+  font-size: 14px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.c-issue__viewer {
+  // Structure
+  flex: 1;
+  position: relative;
+}

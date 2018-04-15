@@ -1,8 +1,10 @@
+import datetime
+
 from django.shortcuts import render
 from django.http import Http404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
-from dispatch.models import Article, Section, Topic
+from dispatch.models import Article, Section, Topic, Issue
 
 def homepage(request):
     news =  Article.objects.filter(section__slug='news', is_published=True).order_by('-published_at')
@@ -20,6 +22,7 @@ def homepage(request):
         'arts': arts,
         'sports': sports,
         'opinions': opinions,
+        'issue': Issue.objects.order_by('-date')[0],
         'footer': get_footer_context()
     }
 
@@ -102,6 +105,33 @@ def article(request, year=0, month=0, slug=None):
 def page(request, slug=None):
     context = {}
     return render(request, 'page.html', context)
+
+def issue(request, year=None, month=None, day=None):
+    # TODO: validate year/month/day
+    year, month, day = int(year), int(month), int(day)
+
+    date = datetime.date(year, month, day)
+
+    print date
+    for issue in Issue.objects.all():
+        print issue.date
+
+    try:
+        issue = Issue.objects.get(
+            date__year=date.year,
+            date__month=date.month,
+            date__day=date.day)
+    except Issue.DoesNotExist:
+        raise Http404("Issue does not exist")
+
+    print issue.file
+    
+    context = {
+        'issue': issue
+    }
+
+    return render(request, 'issue.html', context)
+
 
 def get_footer_context():
     sections = ['news', 'life', 'features', 'arts', 'sports', 'opinions']
