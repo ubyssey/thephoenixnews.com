@@ -13,13 +13,20 @@ $(function() {
   $(window).scroll(() => {
     const scrollTop = $(window).scrollTop();
     stickyElements.map(element => {
-      const elementOffset = element.data('offset');
-      const elementHeight = element.height();
-      const parentOffset = element.parent().offset().top;
-      const parentHeight = element.parent().height();
-      const hasClass = element.hasClass('js-sticky--fixed');
-      const shouldStick = parentOffset - scrollTop < elementOffset;
-      const shouldFreeze = scrollTop + elementOffset + elementHeight >= parentOffset + parentHeight;
+      const
+        elementOffset = element.data('offset'),
+        elementHeight = element.height(),
+        parentOffset = element.parent().offset().top,
+        parentHeight = element.parent().height();
+
+      if (parentHeight <= elementHeight) {
+        return;
+      }
+
+      const
+        hasClass = element.hasClass('js-sticky--fixed'),
+        shouldStick = parentOffset - scrollTop < elementOffset,
+        shouldFreeze = scrollTop + elementOffset + elementHeight >= parentOffset + parentHeight;
 
       if (shouldFreeze) {
         element.removeClass('js-sticky--fixed');

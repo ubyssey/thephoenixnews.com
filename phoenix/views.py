@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.http import Http404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
-from dispatch.models import Article, Section, Topic, Issue
+from dispatch.models import Article, Page, Section, Topic, Issue
 
 def homepage(request):
     news =  Article.objects.filter(section__slug='news', is_published=True).order_by('-published_at')
@@ -35,7 +35,6 @@ def section_topic(request, slug=None, topic=None):
     return section(request, slug, topic)
 
 def section(request, section_slug=None, topic_slug=None):
-
     try:
         section = Section.objects.get(slug=section_slug)
     except Section.DoesNotExist:
@@ -55,7 +54,7 @@ def section(request, section_slug=None, topic_slug=None):
     else:
         topic = None
 
-    paginator = Paginator(articles[4:], 15)
+    paginator = Paginator(articles[4:], 10)
     page = request.GET.get('page')
 
     try:
@@ -103,7 +102,16 @@ def article(request, year=0, month=0, slug=None):
     return render(request, 'article.html', context)
 
 def page(request, slug=None):
-    context = {}
+    try:
+        page = Page.objects.get(slug=slug, is_published=True)
+    except Page.DoesNotExist:
+        raise Http404("Page does not exist")
+
+    context = {
+        'title': '%s - The Phoenix' % page.title,
+        'page': page,
+    }
+
     return render(request, 'page.html', context)
 
 def issue(request, year=None, month=None, day=None):
@@ -124,8 +132,6 @@ def issue(request, year=None, month=None, day=None):
     except Issue.DoesNotExist:
         raise Http404("Issue does not exist")
 
-    print issue.file
-    
     context = {
         'issue': issue
     }

@@ -123,6 +123,37 @@
   }
 }
 
+.c-article--5 {
+  .c-article__image-container {
+    // Structure
+    margin-bottom: 1rem;
+  }
+}
+
+.c-article--6 {
+  // Structure
+  display: flex;
+
+  .c-article__image-container {
+    // Structure
+    flex: 3;
+    padding-right: 2rem;
+  }
+
+  .c-article__info {
+    // Structure
+    flex: 2;
+    display: flex;
+    align-items: center;
+    padding-bottom: 5rem;
+  }
+
+  .c-article__headline {
+    // Text
+    font-size: 32px;
+  }
+}
+
 .c-article--page {
   .c-article__info {
     // Structure
@@ -193,6 +224,7 @@
       // Structure
       position: relative;
       width: 300px;
+      margin-bottom: 2rem;
     }
   }
 
@@ -201,6 +233,7 @@
       // Structure
       flex: 1;
       padding-right: 4rem;
+      margin-bottom: 2rem;
     }
 
     > *:first-child {
