@@ -6,6 +6,7 @@ before_install:
 - openssl aes-256-cbc -K $encrypted_8ea223bd84f4_key -iv $encrypted_8ea223bd84f4_iv -in client-secret.json.enc -out client-secret.json -d
 - export PYTHONPATH="${PYTHONPATH}:${TRAVIS_BUILD_DIR}/lib"
 install:
+- git clone git@github.com:psiemens/react-book.git phoenix/static/src/js/react-book
 - pip install -r requirements-prd.txt -t lib/
 - pip install requests --upgrade -t lib/
 - cd phoenix/static
