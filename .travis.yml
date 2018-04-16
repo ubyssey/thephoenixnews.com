@@ -21,6 +21,9 @@ after_success:
 - find ${TRAVIS_BUILD_DIR}/gcs -type f -exec gzip "{}" \; -exec mv "{}.gz" "{}" \;
 - rm phoenix/settings.py phoenix/settings.pyc
 - mv _settings/settings-prd.py phoenix/settings.py
+# Cleanup
+- rm -rf .git
+- rm -rf _settings
 deploy:
   - provider: gcs
     access_key_id: GOOG6VXJ7FN5TYTTPSQI
