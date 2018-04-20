@@ -10,12 +10,12 @@
 
 <div class="c-container">
   {% include 'components/subsection-front.html' with title='News' slug='news' articles=news issue=issue %}
-  {% include 'components/subsection-secondary.html' with title='Lifestyle' slug='life' articles=lifestyle %}
+  {% include 'components/subsection-secondary.html' with title='Lifestyle' slug='life' articles=lifestyle advertisement='components/advertisement-sidebar-a.html' %}
   {% include 'components/advertisement-leaderboard.html' %}
   {% include 'components/subsection-primary.html' with title='Features' slug='features' articles=features %}
-  {% include 'components/subsection-secondary.html' with title='Arts' slug='arts' articles=arts %}
+  {% include 'components/subsection-secondary.html' with title='Arts' slug='arts' articles=arts advertisement='components/advertisement-sidebar-b.html' %}
   {% include 'components/advertisement-leaderboard.html' %}
-  {% include 'components/subsection-secondary.html' with title='Sports' slug='sports' articles=sports %}
+  {% include 'components/subsection-secondary.html' with title='Sports' slug='sports' articles=sports advertisement='components/advertisement-sidebar-c.html' %}
   {% include 'components/subsection-primary.html' with title='Opinions' slug='opinions' articles=opinions %}
 </div>
 

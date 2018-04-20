@@ -54,7 +54,7 @@ def section(request, section_slug=None, topic_slug=None):
     else:
         topic = None
 
-    paginator = Paginator(articles[4:], 10)
+    paginator = Paginator(articles[4:], 11)
     page = request.GET.get('page')
 
     try:

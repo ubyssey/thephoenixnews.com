@@ -102,7 +102,7 @@ def parse_article(item):
         'published_at': datetime.strptime(item.find('post_date').text,'%Y-%m-%d %H:%M:%S'),
         'authors': [i.text for i in item.find_all(domain='contributor')],
         'tags': [i.text for i in item.find_all(domain='post_tag')],
-        'content': parse_content(item)
+        'item': item,
     }
 
 def parse_featured_image(item):
@@ -130,28 +130,35 @@ def save_image(item):
     filename = filename + extension
 
     try:
-        image = Image.objects.get(img=filename)
-        if not image.height:
+        try:
+            image = Image.objects.get(img=filename)
+            # if not image.height:
+            #     image.save()
+            #     print 'Re-saving: %d - %s' % (item['id'], filename)
+            #     return True
+            return False
+        except:
+            print 'Saving: %d - %s' % (item['id'], filename)
+
+            image = Image()
+            image.id = item['id']
+            image.title = item['title']
+            image.img = filename
+
+            path = os.path.join(settings.MEDIA_ROOT, filename)
+            dirname = os.path.dirname(path)
+            if not os.path.exists(dirname):
+                os.makedirs(dirname)
+
+            urllib.urlretrieve(item['url'], path)
+
+            image.img = filename
+
             image.save()
-            print 'Re-saving: %d - %s' % (item['id'], filename)
+
+            return True
     except:
-        print 'Saving: %d - %s' % (item['id'], filename)
-
-        image = Image()
-        image.id = item['id']
-        image.title = item['title']
-        image.img = filename
-
-        path = os.path.join(settings.MEDIA_ROOT, filename)
-        dirname = os.path.dirname(path)
-        if not os.path.exists(dirname):
-            os.makedirs(dirname)
-
-        urllib.urlretrieve(item['url'], path)
-
-        image.img = filename
-
-        image.save()
+        return True
 
 def add_image_to_tsv(tsv_file, item):
 
@@ -169,19 +176,29 @@ def add_image_to_tsv(tsv_file, item):
     f.close()
 
 def save_article(item):
-    article = Article()
+
+    section, created = Section.objects.get_or_create(name=item.get('section'), slug=item.get('section','').lower())
+    try:
+        article, created = Article.objects.get_or_create(head=True, slug=item.get('slug'), section=section)
+    except:
+        articles = Article.objects.filter(slug=item.get('slug'))
+        if len(articles) > 1:
+            for article in articles[1:]:
+                article.delete()
+            print 'Skipping %s - %s' % (item.get('slug'), item.get('published_at'))
+        return
+
+    if not created:
+        print 'Skipping %s - %s' % (item.get('slug'), item.get('published_at'))
+        return
 
     article.id = item.get('id')
     article.head = True
     article.is_published = True
     article.headline = item.get('title')
-    article.slug = item.get('slug')
     article.published_at = item.get('published_at')
 
-    article.content = item['content']
-
-    section, created = Section.objects.get_or_create(name=item.get('section'), slug=item.get('section','').lower())
-    article.section = section
+    article.content = parse_content(item.get('item'))
 
     article.parent = None
     article.save(revision=False)
@@ -219,18 +236,21 @@ def save_article(item):
 
 class Command(BaseCommand):
     def handle(self, **options):
-        with open('./thephoenixnews.wordpress.2018-03-06.xml', 'U') as f:
+        with open('./thephoenixnews.wordpress.2018-04-16.xml', 'U') as f:
             soup = BeautifulSoup(f.read(), 'xml')
 
             items = soup.find_all('item')
-
+            #
             # with open("images.tsv", "w") as tsv_file:
             #     tsv_file.write("TsvHttpData-1.0")
-
-            images = filter(is_image, items)
-            for item in images:
-                # add_image_to_tsv(tsv_file, parse_image(item))
-                save_image(parse_image(item))
+            #
+            #     images = filter(is_image, items)
+            #     for item in images:
+            #         if save_image(parse_image(item)):
+            #             try:
+            #                 add_image_to_tsv(tsv_file, parse_image(item))
+            #             except:
+            #                 pass
 
             articles = filter(is_article, items)
             for item in articles:

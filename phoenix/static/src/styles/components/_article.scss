@@ -124,9 +124,23 @@
 }
 
 .c-article--5 {
+  // Border
+  border: 1px solid #efefef;
+  border-radius: 2px;
+
+  // Extras
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.03);
+
   .c-article__image-container {
     // Structure
     margin-bottom: 1rem;
+  }
+
+  .c-article__info {
+    // Structure
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-bottom: 1.5rem;
   }
 }
 

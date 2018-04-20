@@ -12,17 +12,17 @@
     .c-article {
       // Structure
       flex: 1;
-      padding-left: 1rem;
-      padding-right: 1rem;
+      margin-left: 1.5rem;
+      margin-right: 1.5rem;
 
       &:first-child {
         // Structure
-        padding-left: 0;
+        margin-left: 0;
       }
 
       &:last-child {
         // Structure
-        padding-right: 0;
+        margin-right: 0;
       }
     }
   }
