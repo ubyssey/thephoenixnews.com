@@ -15,7 +15,7 @@ urlpatterns = [
 
     url(r'^$', views.homepage, name='homepage'),
     url(r'^category/(?P<slug>[-\w]+)/$', views.section_home, name='section'),
-    url(r'^category/(?P<slug>[-\w]+)/(?P<topic>[-\w]+)/$', views.section_topic, name='topic'),
+    url(r'^category/(?P<slug>[-\w]+)/(?P<tag>[-\w]+)/$', views.section_topic, name='topic'),
 
     url(r'^issues/(?P<year>[0-9]{4})-(?P<month>[0-9]{2})-(?P<day>[0-9]{2})/$', views.issue, name='issue'),
 

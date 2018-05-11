@@ -31,30 +31,23 @@ def homepage(request):
 def section_home(request, slug=None):
     return section(request, slug, None)
 
-def section_topic(request, slug=None, topic=None):
-    return section(request, slug, topic)
+def section_topic(request, slug=None, tag=None):
+    return section(request, slug, tag)
 
-def section(request, section_slug=None, topic_slug=None):
+def section(request, section_slug=None, tag_name=None):
     try:
         section = Section.objects.get(slug=section_slug)
     except Section.DoesNotExist:
         raise Http404("Section does not exist")
 
-    articles = Article.objects \
-        .filter(is_published=True, section=section) \
-        .order_by('-published_at')
+    articles = Article.objects.filter(is_published=True, section=section)
 
-    if topic_slug:
-        try:
-            topic = Topic.objects.get(slug=topic_slug)
-        except Topic.DoesNotExist:
-            raise Http404("Topic does not exist")
+    if tag_name:
+        articles = articles.filter(tags__name=tag_name)
 
-        articles = articles.filter(topic=topic)
-    else:
-        topic = None
+    articles = articles.order_by('-published_at')
 
-    paginator = Paginator(articles[4:], 11)
+    paginator = Paginator(articles[4:], 12)
     page = request.GET.get('page')
 
     try:
@@ -67,7 +60,7 @@ def section(request, section_slug=None, topic_slug=None):
     context = {
         'title': '%s - The Phoenix' % section.name,
         'section': section,
-        'topic': topic,
+        'tag': tag_name,
         'articles': {
             'primary': articles[0],
             'secondary': articles[1:4],

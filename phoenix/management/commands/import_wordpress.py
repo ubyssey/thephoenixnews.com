@@ -4,6 +4,9 @@ import urllib
 import StringIO
 import hashlib
 from datetime import datetime
+from multiprocessing import Pool
+from multiprocessing.pool import ThreadPool
+from sets import Set
 
 from bs4 import BeautifulSoup
 
@@ -94,15 +97,16 @@ def parse_image(item):
 
 def parse_article(item):
     return {
-        'id': int(item.find('post_id').text),
-        'title': item.title.text,
+        # 'id': int(item.find('post_id').text),
+        # 'title': item.title.text,
         'slug': item.find('post_name').text,
-        'section': item.find(domain='category').text,
-        'featured_image': parse_featured_image(item),
-        'published_at': datetime.strptime(item.find('post_date').text,'%Y-%m-%d %H:%M:%S'),
-        'authors': [i.text for i in item.find_all(domain='contributor')],
-        'tags': [i.text for i in item.find_all(domain='post_tag')],
-        'item': item,
+        'tags': Set([i.text for i in item.find_all(domain='sub_category')]).union(Set([i.text for i in item.find_all(domain='post_tag')])).difference(Set([i.text for i in item.find_all(domain='contributor')])),
+        # 'section': item.find(domain='category').text,
+        # 'featured_image': parse_featured_image(item),
+        # 'published_at': datetime.strptime(item.find('post_date').text,'%Y-%m-%d %H:%M:%S'),
+        # 'authors': [i.text for i in item.find_all(domain='contributor')],
+        # 'tags': [i.text for i in item.find_all(domain='post_tag')],
+        # 'item': item,
     }
 
 def parse_featured_image(item):
@@ -232,26 +236,53 @@ def save_article(item):
         except:
             print 'cannot save featured image %d' % item['featured_image']
 
-    print 'Saved: %s' % article.headline
+    print 'Saved: %s ' % article.headline
+
+def save_article2(item):
+
+    article = Article.objects.get(head=True, is_published=True, slug=item.get('slug'))
+
+    def get_tag(name):
+        tag, created = Tag.objects.get_or_create(name=name)
+        return tag.id
+
+    tags = [get_tag(name) for name in item.get('tags', [])]
+
+    article.save_tags(tags)
+
+    article.save(revision=False)
+
+    print 'Saved: %s - %s' % (article.headline, item['tags'])
+
+def map_image(item):
+    save_image(parse_image(item))
+
+def map_article(item):
+    save_article(parse_article(item))
 
 class Command(BaseCommand):
     def handle(self, **options):
+        # for image in Image.objects.all():
+        #     if not image.height:
+        #         try:
+        #             image.save()
+        #             print 'Saved %s' % image.img
+        #         except IOError:
+        #             image.delete()
+        #         except Exception as e:
+        #             print 'error: %s - %s' % (image.img, str(e))
+
         with open('./thephoenixnews.wordpress.2018-04-16.xml', 'U') as f:
             soup = BeautifulSoup(f.read(), 'xml')
 
             items = soup.find_all('item')
             #
-            # with open("images.tsv", "w") as tsv_file:
-            #     tsv_file.write("TsvHttpData-1.0")
+            # images = filter(is_image, items)
             #
-            #     images = filter(is_image, items)
-            #     for item in images:
-            #         if save_image(parse_image(item)):
-            #             try:
-            #                 add_image_to_tsv(tsv_file, parse_image(item))
-            #             except:
-            #                 pass
+            # pool = ThreadPool(5)
+            # results = pool.map(map_image, images)
+            # pool.close()
 
-            articles = filter(is_article, items)
+            articles = reversed(filter(is_article, items))
             for item in articles:
-                save_article(parse_article(item))
+                save_article2(parse_article(item))

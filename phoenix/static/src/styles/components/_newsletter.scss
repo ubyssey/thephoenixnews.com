@@ -1,0 +1,46 @@
+.c-newsletter {
+  // Structure
+  margin-top: 2rem;
+  padding: 1.5rem;
+
+  // Border
+  border: 1px solid #EFEFEF;
+}
+
+.c-newsletter__title {
+  // Structure
+  margin-top: 0;
+}
+
+.c-newsletter__form {
+  // Struture
+  display: flex;
+
+  input[type="email"] {
+    // Structure
+    flex: 1;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+
+    // Border
+    border-top: 1px solid #EFEFEF;
+    border-right: none;
+    border-bottom: 1px solid #EFEFEF;
+    border-left: 1px solid #EFEFEF;
+
+    // Text
+    font-size: 16px;
+  }
+
+  input[type="submit"] {
+    // Structure
+    padding-top: 0;
+    padding-bottom: 0;
+
+    // Text
+    line-height: 1;
+
+    // Extra
+    cursor: pointer;
+  }
+}

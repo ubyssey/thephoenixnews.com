@@ -31,6 +31,19 @@
         <li><div>{% include 'components/article-5.html' with article=article %}</div></li>
       {% endfor %}
     </ul>
+    <div class="c-section__pagination">
+      <div class="c-section__pagination__current">
+        Page {{ articles.archive.number }} of {{ articles.archive.paginator.num_pages }}
+      </div>
+      <div class="c-section__pagination__pages">
+      {% if articles.archive.has_previous %}
+        <a class="c-button" href="?page={{ articles.archive.previous_page_number }}">Previous</a>
+      {% endif %}
+      {% if articles.archive.has_next %}
+        <a class="c-button" href="?page={{ articles.archive.next_page_number }}">Next</a>
+      {% endif %}
+      </div>
+    </div>
   </div>
 </div>
 

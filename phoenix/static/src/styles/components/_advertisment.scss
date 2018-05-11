@@ -37,12 +37,14 @@
 }
 
 .c-advertisement--leaderboard {
-  // Structure
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-
   // Border
   border-bottom: 1px solid #EFEFEF;
+
+  .c-advertisement__desktop > div {
+    // Structure
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
 }
 
 .c-advertisement--skyscraper {

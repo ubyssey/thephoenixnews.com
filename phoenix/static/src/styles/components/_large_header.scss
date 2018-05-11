@@ -1,4 +1,12 @@
 .c-large-header {
+  // Structure
+  display: none;
+
+  @media only screen and (min-width: $bp-desktop) {
+    // Structure
+    display: block;
+  }
+
   // Border
   border-bottom: 1px solid #EFEFEF;
 
@@ -38,14 +46,6 @@
 }
 
 .c-large-header__nav {
-  // Structure
-  display: none;
-
-  @media only screen and (min-width: $bp-desktop) {
-    // Structure
-    display: block;
-  }
-
   // Border
   border-top: 1px solid #EFEFEF;
 

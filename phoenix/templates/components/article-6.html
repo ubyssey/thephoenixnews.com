@@ -9,13 +9,13 @@
   </div>
   <div class="c-article__info">
     <div>
-      {% if article.topic %}
-      <a class="c-article__tag">{{ article.topic.name }}</a>
+      {% if article.tags %}
+      <a class="c-article__tag">{{ article.tags.first.name|title }}</a>
       {% else %}
       <a class="c-article__tag">{{ article.section.name }}</a>
       {% endif %}
       <h2 class="c-article__headline"><a href="{% article_url article %}">{{ article.headline }}</a></h2>
-      <span class="c-article__meta">By {{ article.get_author_string }}&nbsp;&nbsp;&middot;&nbsp;&nbsp;{{ article.published_at|date:"F d, Y P" }}</span>
+      <span class="c-article__meta">{% if article.get_author_string %}By {{ article.get_author_string }}&nbsp;&nbsp;&middot;&nbsp;&nbsp;{% endif %}{{ article.published_at|date:"F jS, Y \a\t P" }}</span>
     </div>
   </div>
 </article>

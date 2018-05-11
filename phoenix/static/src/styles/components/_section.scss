@@ -56,8 +56,8 @@
 
 .c-section__primary {
   // Structure
-  margin-top: 3rem;
-  margin-bottom: 3rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 .c-section__archive {
@@ -78,13 +78,15 @@
 
       > div {
         // Structure
-        height: 100%;
         display: flex;
         padding-left: 0.75rem;
         padding-right: 0.75rem;
       }
 
       .c-article {
+        // Struture
+        width: 100%;
+
         // Border
         border: 1px solid #efefef;
         border-radius: 2px;
@@ -115,11 +117,34 @@
 
 .c-section__archive__title {
   // Structure
-  padding-bottom: 1rem;
+  padding-bottom: 1.5rem;
 
   // Text
   font-size: 24px;
 
   // Border
   border-bottom: 1px solid #EFEFEF;
+}
+
+.c-section__pagination {
+  // Structure
+  padding-bottom: 1.5rem;
+
+  // Text
+  text-align: center;
+}
+
+
+.c-section__pagination__current {
+  // Structure
+  margin-bottom: 1rem;
+
+  // Text
+  color: #808080;
+}
+
+.c-section__pagination__pages {
+  .c-button {
+    width: 5rem;
+  }
 }

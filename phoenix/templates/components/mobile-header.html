@@ -1,0 +1,31 @@
+{% load phoenix %}
+<header class="c-mobile-header">
+  <div class="c-mobile-header__container">
+    <div class="c-mobile-header__bar">
+      <div class="c-mobile-header__bar__left">
+        <a class="c-mobile-header__bars js-toggle-nav" href="#">
+          <div class="c-nav-icon js-nav-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </a>
+      </div>
+      <div class="c-mobile-header__bar__center">
+        <a href="{% url 'homepage' %}" class="c-mobile-header__logo"></a>
+      </div>
+      <div class="c-mobile-header__bar__right"></div>
+    </div>
+    <nav class="c-mobile-header__nav js-nav">
+      <ul>
+        <li class="c-mobile-header__nav__item"><a href="{% url 'page' 'about-the-phoenix' %}">About</a></li>
+        <li class="c-mobile-header__nav__item"><a href="{% url 'section' 'news' %}">News</a></li>
+        <li class="c-mobile-header__nav__item"><a href="{% url 'section' 'life' %}">Lifestyle</a></li>
+        <li class="c-mobile-header__nav__item"><a href="{% url 'section' 'features' %}">Features</a></li>
+        <li class="c-mobile-header__nav__item"><a href="{% url 'section' 'arts' %}">Arts</a></li>
+        <li class="c-mobile-header__nav__item"><a href="{% url 'section' 'sports' %}">Sports</a></li>
+        <li class="c-mobile-header__nav__item"><a href="{% url 'section' 'opinions' %}">Opinions</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>

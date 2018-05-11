@@ -43,4 +43,18 @@ $(function() {
     });
   });
 
+  $('a.js-toggle-nav').click((e) => {
+    e.preventDefault();
+
+    let navElement = $('.js-nav'),
+        iconElement = $('.js-nav-icon');
+
+    if (navElement.hasClass('js-nav--visible')) {
+      navElement.removeClass('js-nav--visible');
+      iconElement.removeClass('js-nav-icon--open');
+    } else {
+      navElement.addClass('js-nav--visible');
+      iconElement.addClass('js-nav-icon--open');
+    }
+  });
 })
