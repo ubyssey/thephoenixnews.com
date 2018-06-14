@@ -126,6 +126,7 @@ def issues(request):
         issues = paginator.page(paginator.num_pages)
 
     context = {
+        'title': 'Issues - The Phoenix',
         'issues': issues
     }
 
@@ -136,10 +137,6 @@ def issue(request, year=None, month=None, day=None):
     year, month, day = int(year), int(month), int(day)
 
     date = datetime.date(year, month, day)
-
-    # print date
-    # for issue in Issue.objects.all():
-    #     print issue.date
 
     try:
         issue = Issue.objects.get(
@@ -153,6 +150,7 @@ def issue(request, year=None, month=None, day=None):
         return redirect(issue.file.url)
 
     context = {
+        'title': '%s - The Phoenix' % issue.title,
         'issue': issue
     }
 
