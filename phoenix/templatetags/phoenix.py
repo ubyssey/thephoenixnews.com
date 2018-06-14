@@ -24,3 +24,15 @@ def section_url(slug, **kwargs):
         'section',
         kwargs={'slug': slug}
     )
+
+@register.simple_tag
+def issue_url(issue, **kwargs):
+    """Generate url for given issue."""
+    return reverse(
+        'issue',
+        kwargs={
+            'year': issue.date.strftime('%Y'),
+            'month': issue.date.strftime('%m'),
+            'day': issue.date.strftime('%d')
+        }
+    )

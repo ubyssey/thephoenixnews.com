@@ -1,33 +1,34 @@
 {% extends 'base.html' %}
 
 {% block body %}
+<div class="c-wrapper">
 
-{% include 'components/small-header.html' %}
+  {% include 'components/small-header.html' %}
 
-{% include 'components/advertisement-leaderboard.html' %}
+  {% include 'components/advertisement-leaderboard.html' %}
 
-<div class="c-container">
-  <article class="c-article c-article--page">
-    <div class="c-article__info">
-      <h2 class="c-article__headline">{{ page.title }}</h2>
-      <div class="c-article__social">
-        <a class="c-article__social__icon"><i class="fab fa-facebook"></i></a>
-        <a class="c-article__social__icon"><i class="fab fa-twitter"></i></a>
-      </div>
-    </div>
-    <div class="c-article__main">
-      <div class="c-article__content">
-        {{ page.html }}
-      </div>
-      <div class="c-article__sidebar">
-        <div class="js-sticky" data-offset="80">
-          {% include 'components/advertisement-skyscraper.html' %}
+  <div class="c-container">
+    <article class="c-article c-article--page">
+      <div class="c-article__info">
+        <h2 class="c-article__headline">{{ page.title }}</h2>
+        <div class="c-article__social">
+          <a class="c-article__social__icon"><i class="fab fa-facebook"></i></a>
+          <a class="c-article__social__icon"><i class="fab fa-twitter"></i></a>
         </div>
       </div>
-    </div>
-  </article>
+      <div class="c-article__main">
+        <div class="c-article__content">
+          {{ page.html }}
+        </div>
+        <div class="c-article__sidebar">
+          <div class="js-sticky" data-offset="80">
+            {% include 'components/advertisement-skyscraper.html' %}
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  {% include 'components/footer.html' %}
 </div>
-
-{% include 'components/footer.html' %}
-
 {% endblock %}

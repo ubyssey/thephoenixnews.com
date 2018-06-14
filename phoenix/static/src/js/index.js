@@ -47,7 +47,7 @@ $(function() {
     e.preventDefault();
 
     let navElement = $('.js-nav'),
-        iconElement = $('.js-nav-icon');
+      iconElement = $('.js-nav-icon');
 
     if (navElement.hasClass('js-nav--visible')) {
       navElement.removeClass('js-nav--visible');

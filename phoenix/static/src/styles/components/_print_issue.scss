@@ -1,7 +1,7 @@
 .c-print-issue {
   // Structure
-  padding-left: 2rem;
-  padding-right: 2rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 
   // Text
   text-align: center;
@@ -18,7 +18,7 @@
   height: auto;
 
   // Extra
-  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
 }
 
 .c-print-issue__title {

@@ -1,5 +1,6 @@
 .c-section__title {
   // Structure
+  margin-top: 1rem;
   margin-bottom: 1rem;
 
   // Text
@@ -26,13 +27,13 @@
 .c-section__topics__item {
   // Structure
   display: inline-block;
-  height: 4rem;
-  margin-left: 0.8rem;
+  margin-top: 1rem;
   margin-right: 0.8rem;
+  margin-bottom: 1rem;
+  margin-left: 0.8rem;
   position: relative;
 
   // Text
-  color: #ed1d24;
   font-size: 16px;
   font-weight: 600;
 
@@ -41,16 +42,44 @@
     position: absolute;
     top: 0;
     bottom: 0;
-    height: 4rem;
-    line-height: 4rem;
+    height: 2rem;
+    line-height: 2rem;
     right: -1rem;
     width: 0.2rem;
     text-align: center;
+    color: #ed1d24;
   }
 
   a {
+    // Structure
     display: block;
-    line-height: 4rem;
+
+    // Text
+    color: #ed1d24;
+    line-height: 2rem;
+    text-decoration: none;
+
+    &:hover {
+      // Text
+      text-decoration: underline;
+    }
+  }
+
+  &.c-section__topics__item--selected {
+    a {
+      // Structure
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+
+      // Background
+      background: red;
+
+      // Border
+      border-radius: 2px;
+
+      // Text
+      color: #fff;
+    }
   }
 }
 

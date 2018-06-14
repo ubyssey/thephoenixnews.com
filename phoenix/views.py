@@ -1,6 +1,7 @@
 import datetime
 
-from django.shortcuts import render
+from django.conf import settings
+from django.shortcuts import render, redirect
 from django.http import Http404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
@@ -31,10 +32,10 @@ def homepage(request):
 def section_home(request, slug=None):
     return section(request, slug, None)
 
-def section_topic(request, slug=None, tag=None):
-    return section(request, slug, tag)
+def section_topic(request, slug=None, topic=None):
+    return section(request, slug, topic)
 
-def section(request, section_slug=None, tag_name=None):
+def section(request, section_slug=None, topic_slug=None):
     try:
         section = Section.objects.get(slug=section_slug)
     except Section.DoesNotExist:
@@ -42,8 +43,11 @@ def section(request, section_slug=None, tag_name=None):
 
     articles = Article.objects.filter(is_published=True, section=section)
 
-    if tag_name:
-        articles = articles.filter(tags__name=tag_name)
+    topic = None
+
+    if topic_slug:
+        topic = Topic.objects.get(slug=topic_slug)
+        articles = articles.filter(topic=topic)
 
     articles = articles.order_by('-published_at')
 
@@ -60,7 +64,7 @@ def section(request, section_slug=None, tag_name=None):
     context = {
         'title': '%s - The Phoenix' % section.name,
         'section': section,
-        'tag': tag_name,
+        'topic': topic,
         'articles': {
             'primary': articles[0],
             'secondary': articles[1:4],
@@ -107,15 +111,35 @@ def page(request, slug=None):
 
     return render(request, 'page.html', context)
 
+def issues(request):
+
+    issues_qs = Issue.objects.order_by('-date')
+
+    paginator = Paginator(issues_qs, 12)
+    page = request.GET.get('page')
+
+    try:
+        issues = paginator.page(page)
+    except PageNotAnInteger:
+        issues = paginator.page(1)
+    except EmptyPage:
+        issues = paginator.page(paginator.num_pages)
+
+    context = {
+        'issues': issues
+    }
+
+    return render(request, 'issues.html', context)
+
 def issue(request, year=None, month=None, day=None):
     # TODO: validate year/month/day
     year, month, day = int(year), int(month), int(day)
 
     date = datetime.date(year, month, day)
 
-    print date
-    for issue in Issue.objects.all():
-        print issue.date
+    # print date
+    # for issue in Issue.objects.all():
+    #     print issue.date
 
     try:
         issue = Issue.objects.get(
@@ -124,6 +148,9 @@ def issue(request, year=None, month=None, day=None):
             date__day=date.day)
     except Issue.DoesNotExist:
         raise Http404("Issue does not exist")
+
+    if not request.user_agent.is_pc:
+        return redirect(issue.file.url)
 
     context = {
         'issue': issue
@@ -134,10 +161,16 @@ def issue(request, year=None, month=None, day=None):
 
 def get_footer_context():
     sections = ['news', 'life', 'features', 'arts', 'sports', 'opinions']
-    topics = {}
+    section_topics = {}
 
     for section in sections:
-        print Article.objects \
-                    .filter(is_published=True, section__slug=section) \
-                    .values('topic') \
-                    .distinct()
+        topic_ids = Article.objects \
+                        .filter(is_published=True, section__slug=section) \
+                        .values('topic') \
+                        .distinct()
+        topic_ids = map(lambda t: t['topic'], topic_ids)
+        topic_ids = filter(lambda t: t is not None, topic_ids)
+
+        topics = Topic.objects.filter(id__in=topic_ids)
+
+        section_topics[section] = topics

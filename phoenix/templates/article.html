@@ -2,40 +2,42 @@
 
 {% block body %}
 
-{% include 'components/small-header.html' %}
+<div class="c-wrapper">
 
-{% include 'components/advertisement-leaderboard.html' %}
+  {% include 'components/small-header.html' %}
+  {% include 'components/advertisement-leaderboard.html' %}
 
-<div class="c-container">
-  <article class="c-article c-article--page">
-    <div class="c-article__info">
-      {% if article.topic %}
-      <a class="c-article__tag">{{ article.topic.name }}</a>
-      {% else %}
-      <a class="c-article__tag">{{ article.section.name }}</a>
-      {% endif %}
-      <h2 class="c-article__headline">{{ article.headline }}</h2>
-      <span class="c-article__meta">{% if article.get_author_string %}By {{ article.get_author_string }}&nbsp;&nbsp;&middot;&nbsp;&nbsp;{% endif %}{{ article.published_at|date:"F jS, Y \a\t P" }}</span>
-      <div class="c-article__social">
-        <a class="c-article__social__icon"><i class="fab fa-facebook"></i></a>
-        <a class="c-article__social__icon"><i class="fab fa-twitter"></i></a>
-      </div>
-    </div>
-    <div class="c-article__main">
-      <div class="c-article__content">
-        {{ article.html }}
-        {% include 'components/newsletter.html' %}
-      </div>
-      <div class="c-article__sidebar">
-        <div class="js-sticky" data-offset="80">
-          {% include 'components/advertisement-sidebar-a.html' %}
+  <div class="c-container">
+    <article class="c-article c-article--page">
+      <div class="c-article__info">
+        {% if article.topic %}
+        <a class="c-article__tag">{{ article.topic.name }}</a>
+        {% else %}
+        <a class="c-article__tag">{{ article.section.name }}</a>
+        {% endif %}
+        <h2 class="c-article__headline">{{ article.headline }}</h2>
+        <span class="c-article__meta">{% if article.get_author_string %}By {{ article.get_author_string }}&nbsp;&nbsp;&middot;&nbsp;&nbsp;{% endif %}{{ article.published_at|date:"F jS, Y \a\t P" }}</span>
+        <div class="c-article__social">
+          <a class="c-article__social__icon"><i class="fab fa-facebook"></i></a>
+          <a class="c-article__social__icon"><i class="fab fa-twitter"></i></a>
         </div>
       </div>
-    </div>
-  </article>
-  {% include 'components/related-articles.html' with title=article.section.name articles=related %}
+      <div class="c-article__main">
+        <div class="c-article__content">
+          {{ article.html }}
+          {% include 'components/newsletter.html' %}
+        </div>
+        <div class="c-article__sidebar">
+          <div class="js-sticky" data-offset="80">
+            {% include 'components/advertisement-sidebar-a.html' %}
+          </div>
+        </div>
+      </div>
+    </article>
+    {% include 'components/related-articles.html' with title=article.section.name articles=related %}
+  </div>
+
+  {% include 'components/footer.html' %}
+
 </div>
-
-{% include 'components/footer.html' %}
-
 {% endblock %}

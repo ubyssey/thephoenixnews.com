@@ -54,5 +54,6 @@ class TopicsWidget(Widget):
     template = 'components/topics.html'
 
     zones = (NewsZone, LifeZone, FeaturesZone, ArtsZone, SportsZone, OpinionsZone)
+    accepted_keywords = ('section', 'current_topic')
 
     topics = TopicField('Topics', many=True)

@@ -1,52 +1,48 @@
 {% extends 'base.html' %}
+{% load widgets %}
 
 {% block body %}
+<div class="c-wrapper">
 
-{% include 'components/small-header.html' %}
+  {% include 'components/small-header.html' %}
 
-<div class="c-section c-container">
-  <h1 class="c-section__title">{{ section.name }}</h1>
-  <nav class="c-section__topics">
-    <ul>
-      <li class="c-section__topics__item"><a>Lifestyle</a></li>
-      <li class="c-section__topics__item"><a>Elections</a></li>
-      <li class="c-section__topics__item"><a>Topic 2</a></li>
-      <li class="c-section__topics__item"><a>Topic topic</a></li>
-      <li class="c-section__topics__item"><a>New topic test</a></li>
-    </ul>
-  </nav>
-  {% include 'components/advertisement-leaderboard.html' %}
-  <div class="c-section__primary">
-    {% include 'components/article-6.html' with article=articles.primary %}
-  </div>
-  <div class="c-section__secondary c-articles-list">
-    {% for article in articles.secondary %}
-      {% include 'components/article-5.html' with article=article %}
-    {% endfor %}
-  </div>
-  <div class="c-section__archive">
-    <h2 class="c-section__archive__title">Archive</h2>
-    <ul>
-      {% for article in articles.archive %}
-        <li><div>{% include 'components/article-5.html' with article=article %}</div></li>
+  <div class="c-section c-container">
+    <h1 class="c-section__title">{{ section.name }}</h1>
+    <nav class="c-section__topics">
+      {% zone section.slug section=section current_topic=topic %}
+    </nav>
+    {% include 'components/advertisement-leaderboard.html' %}
+    <div class="c-section__primary">
+      {% include 'components/article-6.html' with article=articles.primary %}
+    </div>
+    <div class="c-section__secondary c-articles-list">
+      {% for article in articles.secondary %}
+        {% include 'components/article-5.html' with article=article %}
       {% endfor %}
-    </ul>
-    <div class="c-section__pagination">
-      <div class="c-section__pagination__current">
-        Page {{ articles.archive.number }} of {{ articles.archive.paginator.num_pages }}
-      </div>
-      <div class="c-section__pagination__pages">
-      {% if articles.archive.has_previous %}
-        <a class="c-button" href="?page={{ articles.archive.previous_page_number }}">Previous</a>
-      {% endif %}
-      {% if articles.archive.has_next %}
-        <a class="c-button" href="?page={{ articles.archive.next_page_number }}">Next</a>
-      {% endif %}
+    </div>
+    <div class="c-section__archive">
+      <h2 class="c-section__archive__title">Archive</h2>
+      <ul>
+        {% for article in articles.archive %}
+          <li><div>{% include 'components/article-5.html' with article=article %}</div></li>
+        {% endfor %}
+      </ul>
+      <div class="c-section__pagination">
+        <div class="c-section__pagination__current">
+          Page {{ articles.archive.number }} of {{ articles.archive.paginator.num_pages }}
+        </div>
+        <div class="c-section__pagination__pages">
+        {% if articles.archive.has_previous %}
+          <a class="c-button" href="?page={{ articles.archive.previous_page_number }}">Previous</a>
+        {% endif %}
+        {% if articles.archive.has_next %}
+          <a class="c-button" href="?page={{ articles.archive.next_page_number }}">Next</a>
+        {% endif %}
+        </div>
       </div>
     </div>
   </div>
+
+  {% include 'components/footer.html' %}
 </div>
-
-{% include 'components/footer.html' %}
-
 {% endblock %}

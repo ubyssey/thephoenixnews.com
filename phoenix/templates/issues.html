@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% load phoenix %}
+{% load staticfiles %}
+
+{% block body %}
+<div class="c-wrapper">
+
+  {% include 'components/small-header.html' %}
+
+  <div class="c-issues c-container">
+    <h1 class="c-issues__title">Issues</h1>
+    <div class="c-issues__archive">
+      <ul>
+        {% for issue in issues %}
+        <li>
+          <div class="c-print-issue">
+            <a href="{% issue_url issue %}"><img class="c-print-issue__image" src="{{ issue.img.url }}" alt="{{ issue.title }}" /></a>
+            <h2 class="c-print-issue__title">{{ issue.title }}</h2>
+          </div>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="c-section__pagination">
+      <div class="c-section__pagination__current">
+        Page {{ issues.number }} of {{ issues.paginator.num_pages }}
+      </div>
+      <div class="c-section__pagination__pages">
+      {% if issues.has_previous %}
+        <a class="c-button" href="?page={{ issues.previous_page_number }}">Previous</a>
+      {% endif %}
+      {% if issues.has_next %}
+        <a class="c-button" href="?page={{ issues.next_page_number }}">Next</a>
+      {% endif %}
+      </div>
+    </div>
+  </div>
+
+  {% include 'components/footer.html' %}
+
+</div>
+{% endblock %}

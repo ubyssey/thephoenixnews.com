@@ -1,0 +1,40 @@
+.c-issues__archive {
+  // Structure
+  padding-top: 2rem;
+
+  // Border
+  border-top: 1px solid #EFEFEF;
+
+  ul {
+    // Structure
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+
+    // Extras
+    list-style-type: none;
+
+    li {
+      // Structure
+      margin-bottom: 1.5rem;
+      width: 50%;
+
+      @media only screen and (min-width: $bp-desktop) {
+        width: 25%;
+      }
+    }
+  }
+}
+
+.c-issues__title {
+  // Structure
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+
+  // Text
+  font-size: 36px;
+  text-align: center;
+}
