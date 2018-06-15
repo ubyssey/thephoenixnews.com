@@ -19,6 +19,8 @@
 .c-advertisement__mobile {
   // Structure
   display: inline-block;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 
   @media only screen and (min-width: $bp-desktop) {
     // Structure

@@ -1,54 +1,38 @@
+{% load widgets %}
+{% load phoenix %}
 <footer class="c-footer">
   <div class="c-container">
     <a class="c-footer__logo" href="{% url 'homepage' %}"></a>
     <div class="c-footer__items">
       <ul class="c-footer__list">
-        <li class="c-footer__list__item">News</li>
-        <li class="c-footer__list__item">Elections</li>
-        <li class="c-footer__list__item">Topic 2</li>
-        <li class="c-footer__list__item">Topic topic</li>
-        <li class="c-footer__list__item">New topic test</li>
+        <li class="c-footer__list__item"><a href="{% section_url 'news' %}">News</a></li>
+        {% zone 'news' section='news' %}
       </ul>
       <ul class="c-footer__list">
-        <li class="c-footer__list__item">Lifestyle</li>
-        <li class="c-footer__list__item">Elections</li>
-        <li class="c-footer__list__item">Topic 2</li>
-        <li class="c-footer__list__item">Topic topic</li>
-        <li class="c-footer__list__item">New topic test</li>
+        <li class="c-footer__list__item"><a href="{% section_url 'life' %}">Lifestyle</a></li>
+        {% zone 'life' section='life' %}
       </ul>
       <ul class="c-footer__list">
-        <li class="c-footer__list__item">Features</li>
-        <li class="c-footer__list__item">Elections</li>
-        <li class="c-footer__list__item">Topic 2</li>
-        <li class="c-footer__list__item">Topic topic</li>
-        <li class="c-footer__list__item">New topic test</li>
+        <li class="c-footer__list__item"><a href="{% section_url 'features' %}">Features</a></li>
+        {% zone 'features' section='features' %}
       </ul>
       <ul class="c-footer__list">
-        <li class="c-footer__list__item">Arts</li>
-        <li class="c-footer__list__item">Elections</li>
-        <li class="c-footer__list__item">Topic 2</li>
-        <li class="c-footer__list__item">Topic topic</li>
-        <li class="c-footer__list__item">New topic test</li>
+        <li class="c-footer__list__item"><a href="{% section_url 'arst' %}">Arts</a></li>
+        {% zone 'arts' section='arts' %}
       </ul>
       <ul class="c-footer__list">
-        <li class="c-footer__list__item">Sports</li>
-        <li class="c-footer__list__item">Elections</li>
-        <li class="c-footer__list__item">Topic 2</li>
-        <li class="c-footer__list__item">Topic topic</li>
-        <li class="c-footer__list__item">New topic test</li>
+        <li class="c-footer__list__item"><a href="{% section_url 'sports' %}">Sports</a></li>
+        {% zone 'sports' section='sports' %}
       </ul>
       <ul class="c-footer__list">
-        <li class="c-footer__list__item">Opinions</li>
-        <li class="c-footer__list__item">Elections</li>
-        <li class="c-footer__list__item">Topic 2</li>
-        <li class="c-footer__list__item">Topic topic</li>
-        <li class="c-footer__list__item">New topic test</li>
+        <li class="c-footer__list__item"><a href="{% section_url 'opinions' %}">Opinions</a></li>
+        {% zone 'opinions' section='opinions' %}
       </ul>
       <ul class="c-footer__list">
-        <li class="c-footer__list__item">About</li>
-        <li class="c-footer__list__item">Volunteer</li>
-        <li class="c-footer__list__item">Advertise</li>
-        <li class="c-footer__list__item">Contact</li>
+        <li class="c-footer__list__item"><a href="{% url 'page' 'about-the-phoenix' %}">About</a></li>
+        <li class="c-footer__list__item"><a href="{% url 'page' 'volunteer' %}">Volunteer</a></li>
+        <li class="c-footer__list__item"><a href="{% url 'page' 'advertise' %}">Advertise</a></li>
+        <li class="c-footer__list__item"><a href="{% url 'page' 'contact' %}">Contact</a></li>
       </ul>
     </div>
     <div class="c-footer__copyright">&copy; {% now "Y" %} The Phoenix</div>

@@ -7,10 +7,10 @@
   {% include 'components/small-header.html' %}
   {% include 'components/mobile-header.html' %}
 
-  <div class="c-section c-container">
+  <div class="c-section c-container c-container--unpadded">
     <h1 class="c-section__title">{{ section.name }}</h1>
     <nav class="c-section__topics">
-      {% zone section.slug section=section current_topic=topic %}
+      <ul>{% zone section.slug section=section.slug current_topic=topic %}</ul>
     </nav>
     {% include 'components/advertisement-leaderboard.html' %}
     <div class="c-section__primary">

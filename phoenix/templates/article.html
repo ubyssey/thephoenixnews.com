@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load phoenix %}
+
 {% block body %}
 
 <div class="c-wrapper">
@@ -19,8 +21,8 @@
         <h2 class="c-article__headline">{{ article.headline }}</h2>
         <span class="c-article__meta">{% if article.get_author_string %}By {{ article.get_author_string }}&nbsp;&nbsp;&middot;&nbsp;&nbsp;{% endif %}{{ article.published_at|date:"F jS, Y \a\t P" }}</span>
         <div class="c-article__social">
-          <a class="c-article__social__icon"><i class="fab fa-facebook"></i></a>
-          <a class="c-article__social__icon"><i class="fab fa-twitter"></i></a>
+          <a class="c-article__social__icon" href="https://www.facebook.com/sharer/sharer.php?u={% article_url article %}" target="_blank"><i class="fab fa-facebook"></i></a>
+          <a class="c-article__social__icon" href="https://twitter.com/intent/tweet?original_referer={% article_url article %}&ref_src=twsrc%5Etfw&text={{ title }}&tw_p=tweetbutton&url={% article_url article %}" target="_blank"><i class="fab fa-twitter"></i></a>
         </div>
       </div>
       <div class="c-article__main">

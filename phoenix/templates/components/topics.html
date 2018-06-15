@@ -1,11 +1,9 @@
-<ul>
-  {% for topic in topics %}
-  {% if current_topic.slug == topic.slug %}
-  <li class="c-section__topics__item c-section__topics__item--selected">
-  {% else %}
-  <li class="c-section__topics__item">
-  {% endif %}
-    <a href="{% url 'section-topic' section.slug topic.slug %}">{{ topic.name }}</a>
-  </li>
-  {% endfor %}
-</ul>
+{% for topic in topics %}
+{% if current_topic.slug == topic.slug %}
+<li class="c-topic c-topic--selected">
+{% else %}
+<li class="c-topic">
+{% endif %}
+  <a href="{% url 'section-topic' section topic.slug %}">{{ topic.name }}</a>
+</li>
+{% endfor %}

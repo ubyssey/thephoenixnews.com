@@ -2,10 +2,19 @@
   // Structure
   margin-top: 1rem;
   margin-bottom: 1rem;
+  padding-left: 1.4rem;
 
   // Text
-  font-size: 36px;
-  text-align: center;
+  font-size: 28px;
+
+  @media only screen and (min-width: $bp-desktop) {
+    // Structure
+    padding-left: 0;
+
+    // Text
+    font-size: 36px;
+    text-align: center;
+  }
 }
 
 .c-section__topics {
@@ -16,77 +25,107 @@
   ul {
     // Structure
     list-style-type: none;
-    padding: 0;
+    padding-left: 1rem;
+    padding-right: 1rem;
     margin: 0;
 
-    // Text
-    text-align: center;
-  }
-}
+    @media only screen and (min-width: $bp-desktop) {
+      // Structure
+      padding-left: 0;
+      padding-right: 0;
 
-.c-section__topics__item {
-  // Structure
-  display: inline-block;
-  margin-top: 1rem;
-  margin-right: 0.8rem;
-  margin-bottom: 1rem;
-  margin-left: 0.8rem;
-  position: relative;
-
-  // Text
-  font-size: 16px;
-  font-weight: 600;
-
-  &:not(:last-child):after {
-    content: '\B7';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    height: 2rem;
-    line-height: 2rem;
-    right: -1rem;
-    width: 0.2rem;
-    text-align: center;
-    color: #ed1d24;
-  }
-
-  a {
-    // Structure
-    display: block;
-
-    // Text
-    color: #ed1d24;
-    line-height: 2rem;
-    text-decoration: none;
-
-    &:hover {
       // Text
-      text-decoration: underline;
+      text-align: center;
     }
   }
 
-  &.c-section__topics__item--selected {
+  .c-topic {
+    // Structure
+    display: inline-block;
+    margin-top: 1rem;
+    margin-right: 0.4rem;
+    margin-bottom: 1rem;
+    margin-left: 0.4rem;
+    position: relative;
+
+    // Text
+    font-size: 16px;
+    font-weight: 600;
+
+    @media only screen and (min-width: $bp-desktop) {
+      // Structure
+      margin-right: 0.8rem;
+      margin-left: 0.8rem;
+
+      &:not(:last-child):after {
+        content: '\B7';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        height: 2rem;
+        line-height: 2rem;
+        right: -1rem;
+        width: 0.2rem;
+        text-align: center;
+        color: #ed1d24;
+      }
+    }
+
     a {
       // Structure
-      padding-left: 0.5rem;
-      padding-right: 0.5rem;
-
-      // Background
-      background: red;
-
-      // Border
-      border-radius: 2px;
+      display: block;
 
       // Text
-      color: #fff;
+      color: #ed1d24;
+      line-height: 2rem;
+      text-decoration: none;
+
+      &:hover {
+        // Text
+        text-decoration: underline;
+      }
+    }
+
+    &.c-topic--selected {
+      a {
+        // Structure
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+
+        // Background
+        background: red;
+
+        // Border
+        border-radius: 2px;
+
+        // Text
+        color: #fff;
+      }
     }
   }
 }
 
 .c-section__primary {
   // Structure
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
+
+  @media only screen and (min-width: $bp-desktop) {
+    // Structure
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+}
+
+.c-section__secondary {
+  // Structure
+  padding-left: 1rem;
+  padding-right: 1rem;
+
+  @media only screen and (min-width: $bp-desktop) {
+    // Structure
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
 .c-section__archive {
@@ -95,15 +134,24 @@
     list-style-type: none;
     padding: 0;
     margin: 0;
-    display: flex;
-    flex-wrap: wrap;
-    margin-left: -0.75rem;
-    margin-right: -0.75rem;
+
+    @media only screen and (min-width: $bp-desktop) {
+      // Structure
+      display: flex;
+      flex-wrap: wrap;
+      margin-left: -0.75rem;
+      margin-right: -0.75rem;
+
+      li {
+        // Structure
+        margin-bottom: 1.5rem;
+        width: 25%;
+      }
+    }
 
     li {
       // Structure
-      margin-bottom: 1.5rem;
-      width: 25%;
+      margin-bottom: 1rem;
 
       > div {
         // Structure
@@ -146,7 +194,14 @@
 
 .c-section__archive__title {
   // Structure
-  padding-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+
+  @media only screen and (min-width: $bp-desktop) {
+    // Structure
+    padding-left: 0;
+    padding-bottom: 1.5rem;
+  }
 
   // Text
   font-size: 24px;
