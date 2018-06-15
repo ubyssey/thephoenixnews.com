@@ -24,14 +24,14 @@
 }
 
 .c-subsection__body {
-  @media only screen and (min-width: $bp-tablet) {
+  @media only screen and (min-width: $bp-desktop) {
     // Structure
     display: flex;
   }
 }
 
 .c-subsection__left {
-  @media only screen and (min-width: $bp-tablet) {
+  @media only screen and (min-width: $bp-desktop) {
     // Structure
     flex: 1;
     padding-right: 1.5rem;
@@ -47,7 +47,7 @@
     // Structure
     padding-bottom: 2rem;
 
-    @media only screen and (min-width: $bp-tablet) {
+    @media only screen and (min-width: $bp-desktop) {
       // Structure
       padding-bottom: 0;
     }
@@ -55,7 +55,7 @@
 }
 
 .c-subsection__right {
-  @media only screen and (min-width: $bp-tablet) {
+  @media only screen and (min-width: $bp-desktop) {
     // Structure
     width: 300px;
   }
@@ -70,10 +70,8 @@
   @media only screen and (min-width: $bp-desktop) {
     // Structure
     display: flex;
+    margin-top: 1.5rem;
   }
-
-  // Structure
-  margin-top: 1.5rem;
 }
 
 .c-subsection__row__item {
@@ -101,7 +99,7 @@
 
   // Text
   text-align: center;
-  @media only screen and (min-width: $bp-tablet) {
+  @media only screen and (min-width: $bp-desktop) {
     // Text
     text-align: right;
   }
@@ -113,7 +111,7 @@
     // Border
     border-right: none;
 
-    @media only screen and (min-width: $bp-tablet) {
+    @media only screen and (min-width: $bp-desktop) {
       // Structure
       width: auto;
     }

@@ -1,7 +1,7 @@
 {% load phoenix %}
 <article class="c-article c-article--3">
   <div class="c-article__info">
-    {% if article.tags %}
+    {% if article.tags and article.tags.first.name %}
     <a class="c-article__tag">{{ article.tags.first.name|title }}</a>
     {% else %}
     <a class="c-article__tag">{{ article.section.name }}</a>

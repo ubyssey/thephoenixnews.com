@@ -1,3 +1,62 @@
-.c-homepage {
-  
+@media only screen and (max-width: $bp-desktop) {
+  .c-homepage {
+    .c-article {
+      // Structure
+      padding-left: 1rem;
+      padding-right: 1rem;
+      padding-top: 1.25rem;
+      padding-bottom: 1.25rem;
+
+      // Border
+      border-top: 1px solid #EFEFEF;
+
+      &.c-article--1,
+      &.c-article--2 {
+        // Structure
+        padding-top: 0;
+        padding-left: 0;
+        padding-right: 0;
+
+        .c-article__info {
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+      }
+    }
+
+    .c-print-issue {
+      // Structure
+      padding-top: 1.5rem;
+      padding-bottom: 1.5rem;
+
+      // Border
+      border-top: 1px solid #EFEFEF;
+    }
+
+    .c-subsection {
+      // Structure
+      padding-bottom: 0;
+    }
+
+    .c-subsection--secondary .c-subsection__left {
+      // Structure
+      padding-bottom: 0;
+    }
+
+    .c-subsection__title {
+      // Structure
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    .c-subsection__row {
+      // Border
+      border-bottom: 1px solid #EFEFEF;
+    }
+
+    .c-subsection__bottom {
+      // Structure
+      padding-bottom: 1.5rem;
+    }
+  }
 }

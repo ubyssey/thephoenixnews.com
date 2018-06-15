@@ -1,4 +1,9 @@
 .c-article__tag {
+  // Structure
+  margin-bottom: 0.5rem;
+  display: block;
+
+  // Text
   font-weight: bold;
   font-size: 15px;
   color: #EB2C2C;
@@ -7,7 +12,7 @@
 
 .c-article__headline {
   // Structure
-  margin-top: 0.5rem;
+  margin-top: 0;
   margin-bottom: 0.5rem;
 
   // Text
@@ -72,6 +77,10 @@
 }
 
 .c-article__description {
+  // Structure
+  margin-top: 1rem;
+  margin-bottom: 0;
+
   // Text
   font-size: 14px;
   color: #1A1A1A;
@@ -269,4 +278,8 @@
       color: $color-text-body;
     }
   }
+}
+
+.c-article__image-container {
+  background: red;
 }
