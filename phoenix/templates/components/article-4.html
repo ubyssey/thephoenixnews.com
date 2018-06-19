@@ -1,11 +1,7 @@
 {% load phoenix %}
 <article class="c-article c-article--4">
   <div class="c-article__info">
-    {% if article.tags and article.tags.first.name %}
-    <a class="c-article__tag">{{ article.tags.first.name|title }}</a>
-    {% else %}
-    <a class="c-article__tag">{{ article.section.name }}</a>
-    {% endif %}
+    <a class="c-article__tag">{% article_tag article %}</a>
     <h2 class="c-article__headline"><a href="{% article_url article %}">{{ article.headline }}</a></h2>
     <span class="c-article__meta">{% if article.get_author_string %}By {{ article.get_author_string }}&nbsp;&nbsp;&middot;&nbsp;&nbsp;{% endif %}{{ article.published_at|date:"F jS, Y \a\t P" }}</span>
   </div>

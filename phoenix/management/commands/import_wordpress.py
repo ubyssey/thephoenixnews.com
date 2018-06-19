@@ -13,7 +13,7 @@ from bs4 import BeautifulSoup
 from django.core.management.base import BaseCommand
 from django.conf import settings
 
-from dispatch.models import Article, Image, Section, Person, Author, Tag
+from dispatch.models import Article, Image, Section, Person, Author, Tag, Topic
 
 def process_caption(line, content):
     soup = BeautifulSoup(content, 'html.parser')
@@ -77,7 +77,7 @@ def process_shortcodes(line):
     }
 
 def is_image(item):
-    return item.find('post_type').text == 'attachment'
+    return item.find('post_type') and item.find('post_type').text == 'attachment'
 
 def is_article(item):
     return item.find('post_type') and item.find('post_type').text == 'post' and item.find('status').text == 'publish'
@@ -97,16 +97,17 @@ def parse_image(item):
 
 def parse_article(item):
     return {
-        # 'id': int(item.find('post_id').text),
-        # 'title': item.title.text,
+        'id': int(item.find('post_id').text),
+        'title': item.title.text,
         'slug': item.find('post_name').text,
-        'tags': Set([i.text for i in item.find_all(domain='sub_category')]).union(Set([i.text for i in item.find_all(domain='post_tag')])).difference(Set([i.text for i in item.find_all(domain='contributor')])),
-        # 'section': item.find(domain='category').text,
-        # 'featured_image': parse_featured_image(item),
-        # 'published_at': datetime.strptime(item.find('post_date').text,'%Y-%m-%d %H:%M:%S'),
-        # 'authors': [i.text for i in item.find_all(domain='contributor')],
-        # 'tags': [i.text for i in item.find_all(domain='post_tag')],
-        # 'item': item,
+        'topics': Set([i.text for i in item.find_all(domain='sub_category')]),
+        'tags': Set([i.text for i in item.find_all(domain='post_tag')]).difference(Set([i.text for i in item.find_all(domain='contributor')])),
+        'section': item.find(domain='category').text,
+        'featured_image': parse_featured_image(item),
+        'published_at': datetime.strptime(item.find('post_date').text,'%Y-%m-%d %H:%M:%S'),
+        'authors': [i.text for i in item.find_all(domain='contributor')],
+        'tags': [i.text for i in item.find_all(domain='post_tag')],
+        'item': item,
     }
 
 def parse_featured_image(item):
@@ -149,14 +150,12 @@ def save_image(item):
             image.title = item['title']
             image.img = filename
 
-            path = os.path.join(settings.MEDIA_ROOT, filename)
-            dirname = os.path.dirname(path)
-            if not os.path.exists(dirname):
-                os.makedirs(dirname)
+            # path = os.path.join(settings.MEDIA_ROOT, filename)
+            # dirname = os.path.dirname(path)
+            # if not os.path.exists(dirname):
+            #     os.makedirs(dirname)
 
-            urllib.urlretrieve(item['url'], path)
-
-            image.img = filename
+            #urllib.urlretrieve(item['url'], path)
 
             image.save()
 
@@ -183,7 +182,7 @@ def save_article(item):
 
     section, created = Section.objects.get_or_create(name=item.get('section'), slug=item.get('section','').lower())
     try:
-        article, created = Article.objects.get_or_create(head=True, slug=item.get('slug'), section=section)
+        article, created = Article.objects.get_or_create(id=item.get('id'), head=True, slug=item.get('slug'), section=section)
     except:
         articles = Article.objects.filter(slug=item.get('slug'))
         if len(articles) > 1:
@@ -205,7 +204,7 @@ def save_article(item):
     article.content = parse_content(item.get('item'))
 
     article.parent = None
-    article.save(revision=False)
+    #article.save(revision=False)
 
     def get_author(name):
         person, created = Person.objects.get_or_create(full_name=name)
@@ -218,11 +217,18 @@ def save_article(item):
         tag, created = Tag.objects.get_or_create(name=name)
         return tag.id
 
+    def get_topic(name):
+        topic, created = Topic.objects.get_or_create(name=name)
+        return topic
+
     authors = [get_author(name) for name in item.get('authors', [])]
     article.save_authors(authors, is_publishable=True)
 
     tags = [get_tag(name) for name in item.get('tags', [])]
     article.save_tags(tags)
+
+    if item.get('topics'):
+        article.topic = get_topic(list(item.get('topics'))[0])
 
     if item['featured_image']:
         try:
@@ -231,28 +237,30 @@ def save_article(item):
             featured_image = {
                 'image_id': item['featured_image']
             }
+
             article.save_featured_image(featured_image)
-            article.save(update_fields=['featured_image'], revision=False)
         except:
             print 'cannot save featured image %d' % item['featured_image']
 
-    print 'Saved: %s ' % article.headline
-
-def save_article2(item):
-
-    article = Article.objects.get(head=True, is_published=True, slug=item.get('slug'))
-
-    def get_tag(name):
-        tag, created = Tag.objects.get_or_create(name=name)
-        return tag.id
-
-    tags = [get_tag(name) for name in item.get('tags', [])]
-
-    article.save_tags(tags)
-
     article.save(revision=False)
 
-    print 'Saved: %s - %s' % (article.headline, item['tags'])
+    print 'Saved: %s - %s' % (article.id, article.section.name)
+
+# def save_article2(item):
+#
+#     article = Article.objects.get(head=True, is_published=True, slug=item.get('slug'))
+#
+#     def get_tag(name):
+#         tag, created = Tag.objects.get_or_create(name=name)
+#         return tag.id
+#
+#     tags = [get_tag(name) for name in item.get('tags', [])]
+#
+#     article.save_tags(tags)
+#
+#     article.save(revision=False)
+#
+#     print 'Saved: %s - %s' % (article.headline, item['tags'])
 
 def map_image(item):
     save_image(parse_image(item))
@@ -272,17 +280,49 @@ class Command(BaseCommand):
         #         except Exception as e:
         #             print 'error: %s - %s' % (image.img, str(e))
 
-        with open('./thephoenixnews.wordpress.2018-04-16.xml', 'U') as f:
-            soup = BeautifulSoup(f.read(), 'xml')
+        # import xml.etree.ElementTree as ET
+        # tree = ET.parse('./thephoenixnews.wordpress.2018-06-17.xml')
 
-            items = soup.find_all('item')
-            #
-            # images = filter(is_image, items)
-            #
-            # pool = ThreadPool(5)
-            # results = pool.map(map_image, images)
-            # pool.close()
+        # with open('./thephoenixnews.wordpress.2018-06-17.xml', 'U') as f:
+        #
+        #     soup = BeautifulSoup(f.read(), 'xml')
+        #
+        #     items = soup.find_all('item')
+        #
+        #     images = filter(is_image, items)
+        #
+        #     pool = ThreadPool(5)
+        #     results = pool.map(map_image, images)
+        #     pool.close()
+        #
+        #     #print len(filter(is_article, items))
+        #
+        #     articles = filter(is_article, items)
+        #     for item in articles:
+        #         save_article(parse_article(item))
 
-            articles = reversed(filter(is_article, items))
-            for item in articles:
-                save_article2(parse_article(item))
+        with open('./images.txt', 'w') as f:
+            for image in Image.objects.all().order_by('id').filter(id__gt=18921):
+
+                filename = str(image.img)
+
+                # path = os.path.join(settings.MEDIA_ROOT, filename)
+                # dirname = os.path.dirname(path)
+                # if not os.path.exists(dirname):
+                #     os.makedirs(dirname)
+                #
+                # urllib.urlretrieve(item['url'], path)
+
+                path = os.path.join('media', filename)
+                dirname = os.path.dirname(path)
+                if not os.path.exists(dirname):
+                    os.makedirs(dirname)
+
+                url = filename.replace('images/', 'http://www.thephoenixnews.com/wp-content/uploads/')
+
+                try:
+                    urllib.urlretrieve(url, path)
+                    image.save()
+                    print('Saved %d: %s' % (image.id, url))
+                except:
+                    print('ERROR %d: %s' % (image.id, url))

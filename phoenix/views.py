@@ -23,9 +23,11 @@ def homepage(request):
         'arts': arts,
         'sports': sports,
         'opinions': opinions,
-        'issue': Issue.objects.order_by('-date')[0],
+        'issue': Issue.objects.order_by('-date').first(),
         'footer': get_footer_context()
     }
+
+    print context['lifestyle']
 
     return render(request, 'homepage.html', context)
 

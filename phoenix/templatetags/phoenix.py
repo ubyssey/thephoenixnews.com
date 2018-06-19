@@ -36,3 +36,17 @@ def issue_url(issue, **kwargs):
             'day': issue.date.strftime('%d')
         }
     )
+
+@register.simple_tag
+def article_tag(article, **kwargs):
+    """Return the primary tag for the given article."""
+
+    print article.tags.all()
+
+    if article.topic:
+        return article.topic.name
+
+    if article.tags.first():
+        return article.tags.first().name
+
+    return article.section.name

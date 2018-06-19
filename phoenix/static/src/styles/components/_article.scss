@@ -289,7 +289,7 @@
       margin-top: 0;
     }
 
-    > p {
+    > p, ul {
       // Structure
       max-width: $body-width;
       width: 100%;
@@ -301,10 +301,11 @@
       font-size: 17px;
       line-height: 1.6em;
       color: $color-text-body;
+
+      > a, li > a {
+        // Text
+        color: #326fd0;
+      }
     }
   }
-}
-
-.c-article__image-container {
-  background: red;
 }
