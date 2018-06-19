@@ -13,19 +13,20 @@
 }
 
 .c-newsletter__form {
-  // Struture
-  display: flex;
 
   input[type="email"] {
     // Structure
     flex: 1;
+    width: 100%;
+    box-sizing: border-box;
+    height: 40px;
     padding-left: 0.75rem;
     padding-right: 0.75rem;
 
     // Border
     border-top: 1px solid #EFEFEF;
-    border-right: none;
-    border-bottom: 1px solid #EFEFEF;
+    border-right: 1px solid #EFEFEF;
+    border-bottom: none;
     border-left: 1px solid #EFEFEF;
 
     // Text
@@ -36,11 +37,28 @@
     // Structure
     padding-top: 0;
     padding-bottom: 0;
+    width: 100%;
 
     // Text
     line-height: 1;
 
     // Extra
     cursor: pointer;
+  }
+
+  @media only screen and (min-width: $bp-tablet) {
+    // Struture
+    display: flex;
+
+    input[type="email"] {
+      // Border
+      border-right: none;
+      border-bottom: 1px solid #EFEFEF;
+    }
+
+    input[type="submit"] {
+      // Structure
+      width: auto;
+    }
   }
 }
