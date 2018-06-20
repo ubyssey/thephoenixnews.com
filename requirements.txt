@@ -1,3 +1,3 @@
-git+git://github.com/ubyssey/dispatch.git@topics
+dispatch==0.4.16
 mysql-python
 django-phonenumber-field

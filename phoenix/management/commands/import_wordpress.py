@@ -294,25 +294,25 @@ class Command(BaseCommand):
         # import xml.etree.ElementTree as ET
         # tree = ET.parse('./thephoenixnews.wordpress.2018-06-17.xml')
         #
-        with open('./thephoenixnews.wordpress.2018-06-17.xml', 'U') as f:
-
-            soup = BeautifulSoup(f.read(), 'xml')
-
-            items = soup.find_all('item')
-
-            # images = filter(is_image, items)
-            #
-            # pool = ThreadPool(5)
-            # results = pool.map(map_image, images)
-            # pool.close()
-
-            #print len(filter(is_article, items))
-
-            articles = filter(is_article, items)
-            for item in articles:
-                save_article(parse_article(item))
-
-        return
+        # with open('./thephoenixnews.wordpress.2018-06-17.xml', 'U') as f:
+        #
+        #     soup = BeautifulSoup(f.read(), 'xml')
+        #
+        #     items = soup.find_all('item')
+        #
+        #     # images = filter(is_image, items)
+        #     #
+        #     # pool = ThreadPool(5)
+        #     # results = pool.map(map_image, images)
+        #     # pool.close()
+        #
+        #     #print len(filter(is_article, items))
+        #
+        #     articles = filter(is_article, items)
+        #     for item in articles:
+        #         save_article(parse_article(item))
+        #
+        # return
 
         for article in Article.objects.all():
             snippet = None
@@ -320,7 +320,7 @@ class Command(BaseCommand):
             for block in article.content:
                 if block['type'] == 'paragraph':
                     text = block['data']
-                    if text:
+                    if text and text != '&nbsp;':
                         content.append(block)
                         text = re.sub('<.*?>', '', text)
 
