@@ -27,8 +27,6 @@ def homepage(request):
         'footer': get_footer_context()
     }
 
-    print context['lifestyle']
-
     return render(request, 'homepage.html', context)
 
 def section_home(request, slug=None):

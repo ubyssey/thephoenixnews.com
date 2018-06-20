@@ -41,8 +41,6 @@ def issue_url(issue, **kwargs):
 def article_tag(article, **kwargs):
     """Return the primary tag for the given article."""
 
-    print article.tags.all()
-
     if article.topic:
         return article.topic.name
 

@@ -49,32 +49,38 @@ def process_inline_image(line):
     caption = match_caption(line)
 
     if caption:
-        return caption
+        return [caption]
 
-    code = re.match(r'.*wp-image-([0-9]*)', line)
+    codes = re.finditer(r'wp-image-([0-9]*)', line)
+    images = []
 
-    if code:
-        return {
-            'type': 'image',
-            'data': {
-                'image_id': int(code.group(1)),
-            }
-        }
+    for code in codes:
+        if code:
+            print line
+            print code.groups()
+            images.append({
+                'type': 'image',
+                'data': {
+                    'image_id': int(code.group(1)),
+                }
+            })
 
-    return None
+    print 'images: %d' % len(images)
+
+    return images
 
 def process_shortcodes(line):
     inline_image = process_inline_image(line)
 
-    if inline_image:
+    if len(inline_image):
         return inline_image
 
     soup = BeautifulSoup(line, 'html.parser')
 
-    return {
+    return [{
         'type': 'paragraph',
         'data': line.replace('<content:encoded>', '').replace('</content:encoded>', ''),
-    }
+    }]
 
 def is_image(item):
     return item.find('post_type') and item.find('post_type').text == 'attachment'
@@ -85,8 +91,13 @@ def is_article(item):
 def parse_content(item):
     blocks = str(item.find('encoded').text.encode("utf-8")).split('\n')
     blocks = filter(lambda b: b != '', blocks)
-    blocks = [process_shortcodes(b) for b in blocks]
-    return blocks
+
+    new_blocks = []
+    for b in blocks:
+        new_blocks = new_blocks + process_shortcodes(b)
+    # blocks = [process_shortcodes(b) for b in blocks]
+    print new_blocks
+    return new_blocks
 
 def parse_image(item):
     return {
@@ -191,9 +202,9 @@ def save_article(item):
             print 'Skipping %s - %s' % (item.get('slug'), item.get('published_at'))
         return
 
-    if not created:
-        print 'Skipping %s - %s' % (item.get('slug'), item.get('published_at'))
-        return
+    # if not created:
+    #     print 'Skipping %s - %s' % (item.get('slug'), item.get('published_at'))
+    #     return
 
     article.id = item.get('id')
     article.head = True
@@ -222,7 +233,7 @@ def save_article(item):
         return topic
 
     authors = [get_author(name) for name in item.get('authors', [])]
-    article.save_authors(authors, is_publishable=True)
+    article.save_authors(authors)
 
     tags = [get_tag(name) for name in item.get('tags', [])]
     article.save_tags(tags)
@@ -244,7 +255,7 @@ def save_article(item):
 
     article.save(revision=False)
 
-    print 'Saved: %s - %s' % (article.id, article.section.name)
+    print 'Saved: %s - %s - %d tags' % (article.id, article.section.name, len(tags))
 
 # def save_article2(item):
 #
@@ -282,47 +293,71 @@ class Command(BaseCommand):
 
         # import xml.etree.ElementTree as ET
         # tree = ET.parse('./thephoenixnews.wordpress.2018-06-17.xml')
-
-        # with open('./thephoenixnews.wordpress.2018-06-17.xml', 'U') as f:
         #
-        #     soup = BeautifulSoup(f.read(), 'xml')
+        with open('./thephoenixnews.wordpress.2018-06-17.xml', 'U') as f:
+
+            soup = BeautifulSoup(f.read(), 'xml')
+
+            items = soup.find_all('item')
+
+            # images = filter(is_image, items)
+            #
+            # pool = ThreadPool(5)
+            # results = pool.map(map_image, images)
+            # pool.close()
+
+            #print len(filter(is_article, items))
+
+            articles = filter(is_article, items)
+            for item in articles:
+                save_article(parse_article(item))
+
+        return
+
+        for article in Article.objects.all():
+            snippet = None
+            content = []
+            for block in article.content:
+                if block['type'] == 'paragraph':
+                    text = block['data']
+                    if text:
+                        content.append(block)
+                        text = re.sub('<.*?>', '', text)
+
+                        match = re.match(r'(?:[^.:;]+[.:;]){1,2}', text)
+
+                        if match and snippet is None:
+                            snippet = match.group()
+                            print snippet
+                else:
+                    content.append(block)
+
+            article.snippet = snippet
+            article.content = content
+            article.save(revision=False)
+
+        # with open('./images.txt', 'w') as f:
+        #     for image in Image.objects.all().order_by('id').filter(id__gt=18921):
         #
-        #     items = soup.find_all('item')
+        #         filename = str(image.img)
         #
-        #     images = filter(is_image, items)
+        #         # path = os.path.join(settings.MEDIA_ROOT, filename)
+        #         # dirname = os.path.dirname(path)
+        #         # if not os.path.exists(dirname):
+        #         #     os.makedirs(dirname)
+        #         #
+        #         # urllib.urlretrieve(item['url'], path)
         #
-        #     pool = ThreadPool(5)
-        #     results = pool.map(map_image, images)
-        #     pool.close()
+        #         path = os.path.join('media', filename)
+        #         dirname = os.path.dirname(path)
+        #         if not os.path.exists(dirname):
+        #             os.makedirs(dirname)
         #
-        #     #print len(filter(is_article, items))
+        #         url = filename.replace('images/', 'http://www.thephoenixnews.com/wp-content/uploads/')
         #
-        #     articles = filter(is_article, items)
-        #     for item in articles:
-        #         save_article(parse_article(item))
-
-        with open('./images.txt', 'w') as f:
-            for image in Image.objects.all().order_by('id').filter(id__gt=18921):
-
-                filename = str(image.img)
-
-                # path = os.path.join(settings.MEDIA_ROOT, filename)
-                # dirname = os.path.dirname(path)
-                # if not os.path.exists(dirname):
-                #     os.makedirs(dirname)
-                #
-                # urllib.urlretrieve(item['url'], path)
-
-                path = os.path.join('media', filename)
-                dirname = os.path.dirname(path)
-                if not os.path.exists(dirname):
-                    os.makedirs(dirname)
-
-                url = filename.replace('images/', 'http://www.thephoenixnews.com/wp-content/uploads/')
-
-                try:
-                    urllib.urlretrieve(url, path)
-                    image.save()
-                    print('Saved %d: %s' % (image.id, url))
-                except:
-                    print('ERROR %d: %s' % (image.id, url))
+        #         try:
+        #             urllib.urlretrieve(url, path)
+        #             image.save()
+        #             print('Saved %d: %s' % (image.id, url))
+        #         except:
+        #             print('ERROR %d: %s' % (image.id, url))
