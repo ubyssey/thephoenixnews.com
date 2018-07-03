@@ -7,15 +7,15 @@
   padding-right: 2rem;
 
   // Border
-  border: 2px solid #ff0909;
+  border: 2px solid $color-brand-primary;
 
   // Background
-  background: #ff0909;
-  font-size: 15px;
+  background: $color-brand-primary;
+  font-size: px-to-em(15);
 
   // Text
   font-weight: bold;
-  font-size: 15px;
+  font-size: px-to-em(15);
   color: #fff;
   letter-spacing: 0.1px;
   text-transform: uppercase;
@@ -26,6 +26,6 @@
     background: #fff;
 
     // Text
-    color: #ff0909;
+    color: $color-brand-primary;
   }
 }

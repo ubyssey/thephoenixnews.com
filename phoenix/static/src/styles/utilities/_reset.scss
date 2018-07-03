@@ -7,6 +7,7 @@ body {
 
   // Text
   font-family: $font-default;
+  font-size: $base-font-size + px;
   -webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }

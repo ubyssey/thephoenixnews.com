@@ -26,7 +26,7 @@
   margin-top: 0.75rem;
 
   // Text
-  font-size: 18px;
-  color: #272525;
+  font-size: px-to-em(18);
+  color: $color-text-dark;
   letter-spacing: -0.2px;
 }

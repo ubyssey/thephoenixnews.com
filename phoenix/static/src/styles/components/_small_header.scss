@@ -85,8 +85,8 @@ $header-height: 57px;
 
     // Text
     font-weight: bold;
-    font-size: 14px;
-    color: #272525;
+    font-size: px-to-em(14);
+    color: $color-text-body;
     letter-spacing: -0.15px;
     text-decoration: none;
 
@@ -120,8 +120,8 @@ $header-height: 57px;
 
     // Text
     font-weight: bold;
-    font-size: 14px;
-    color: #272525;
+    font-size: px-to-em(14);
+    color: $color-text-body;
     letter-spacing: -0.15px;
     text-decoration: none;
 

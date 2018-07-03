@@ -4,7 +4,7 @@
   padding: 1.5rem;
 
   // Border
-  border: 1px solid #EFEFEF;
+  border: 1px solid $color-border;
 }
 
 .c-newsletter__title {
@@ -24,13 +24,13 @@
     padding-right: 0.75rem;
 
     // Border
-    border-top: 1px solid #EFEFEF;
-    border-right: 1px solid #EFEFEF;
+    border-top: 1px solid $color-border;
+    border-right: 1px solid $color-border;
     border-bottom: none;
-    border-left: 1px solid #EFEFEF;
+    border-left: 1px solid $color-border;
 
     // Text
-    font-size: 16px;
+    font-size: px-to-em(16);
   }
 
   input[type="submit"] {
@@ -53,7 +53,7 @@
     input[type="email"] {
       // Border
       border-right: none;
-      border-bottom: 1px solid #EFEFEF;
+      border-bottom: 1px solid $color-border;
     }
 
     input[type="submit"] {

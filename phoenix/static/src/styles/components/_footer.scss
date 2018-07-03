@@ -68,7 +68,7 @@
 
     // Text
     color: #fff;
-    font-size: 13px;
+    font-size: px-to-em(13);
 
     // Extras
     opacity: 0.85;
@@ -106,7 +106,7 @@
 
   // Text
   color: #fff;
-  font-size: 13px;
+  font-size: px-to-em(13);
   text-align: center;
 
   // Extras

@@ -3,8 +3,23 @@ $font-default: 'Noto Sans', 'Helvetica', Arial, sans-serif;
 $font-headline: 'Athelas', Georgia, serif;
 $font-body: Georgia, serif;
 
+$base-font-size: 16;
+
+// Utility function to convert pixel units to em
+@function px-to-em($px){
+  @return ($px / $base-font-size) + rem
+};
+
 // Colors
+$color-brand-primary: #eb2c2c;
+
 $color-text-body: #262626;
+$color-text-light: #5c5c5c;
+$color-text-dark: #1a1a1a;
+
+$color-text-hyperlink: #326fd0;
+
+$color-border: #efefef;
 
 // Z-Index scale
 $z-index-1: 100;

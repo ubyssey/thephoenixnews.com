@@ -8,7 +8,7 @@
       padding-bottom: 1.25rem;
 
       // Border
-      border-top: 1px solid #EFEFEF;
+      border-top: 1px solid $color-border;
 
       &.c-article--1,
       &.c-article--2 {
@@ -30,7 +30,7 @@
       padding-bottom: 1.5rem;
 
       // Border
-      border-top: 1px solid #EFEFEF;
+      border-top: 1px solid $color-border;
     }
 
     .c-subsection {
@@ -51,7 +51,7 @@
 
     .c-subsection__row {
       // Border
-      border-bottom: 1px solid #EFEFEF;
+      border-bottom: 1px solid $color-border;
     }
 
     .c-subsection__bottom {

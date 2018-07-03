@@ -44,7 +44,7 @@
 
   // Text
   color: #fff;
-  font-size: 18px;
+  font-size: px-to-em(18);
   text-align: center;
 }
 
@@ -54,7 +54,7 @@
   margin-top: 0.75rem;
 
   // Text
-  font-size: 14px;
+  font-size: px-to-em(14);
   text-align: center;
   color: rgba(255, 255, 255, 0.6);
 }

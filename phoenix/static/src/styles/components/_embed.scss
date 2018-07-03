@@ -21,6 +21,6 @@
   margin-bottom: 0.75rem;
 
   // Text
-  font-size: 14px;
-  color: #5E5E5E;
+  font-size: px-to-em(14);
+  color: $color-text-light;
 }

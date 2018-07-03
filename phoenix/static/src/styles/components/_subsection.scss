@@ -3,7 +3,7 @@
   padding-bottom: 2rem;
 
   // Border
-  border-bottom: 1px solid #EFEFEF;
+  border-bottom: 1px solid $color-border;
 
   &:last-child {
     // Border
@@ -18,8 +18,8 @@
 
   // Text
   font-weight: bold;
-  font-size: 28px;
-  color: #272525;
+  font-size: px-to-em(28);
+  color: $color-text-dark;
   letter-spacing: -0.35px;
 }
 
@@ -38,7 +38,7 @@
     margin-right: 1.5rem;
 
     // Border
-    border-right: 1px solid #EFEFEF;
+    border-right: 1px solid $color-border;
   }
 }
 
@@ -82,7 +82,7 @@
     &:first-child {
       // Structure
       padding-right: 1.5rem;
-      border-right: 1px solid #EFEFEF;
+      border-right: 1px solid $color-border;
     }
 
     &:last-child {

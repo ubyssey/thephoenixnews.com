@@ -3,7 +3,7 @@
   margin-bottom: 3rem;
 
   // Border
-  border-top: 1px solid #EFEFEF;
+  border-top: 1px solid $color-border;
 }
 
 .c-related-articles__title {
@@ -11,8 +11,8 @@
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
 
-  /* More news: */
-  font-size: 28px;
-  color: #272525;
+  // Text
+  font-size: px-to-em(28);
+  color: $color-text-dark;
   letter-spacing: -0.35px;
 }

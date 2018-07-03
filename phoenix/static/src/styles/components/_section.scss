@@ -5,22 +5,22 @@
   padding-left: 1.4rem;
 
   // Text
-  font-size: 28px;
+  font-size: px-to-em(28);
 
   @media only screen and (min-width: $bp-desktop) {
     // Structure
     padding-left: 0;
 
     // Text
-    font-size: 36px;
+    font-size: px-to-em(36);
     text-align: center;
   }
 }
 
 .c-section__topics {
   // Border
-  border-top: 1px solid #EFEFEF;
-  border-bottom: 1px solid #EFEFEF;
+  border-top: 1px solid $color-border;
+  border-bottom: 1px solid $color-border;
 
   ul {
     // Structure
@@ -49,7 +49,7 @@
     position: relative;
 
     // Text
-    font-size: 16px;
+    font-size: px-to-em(16);
     font-weight: 600;
 
     @media only screen and (min-width: $bp-desktop) {
@@ -67,7 +67,7 @@
         right: -1rem;
         width: 0.2rem;
         text-align: center;
-        color: #ed1d24;
+        color: $color-brand-primary;
       }
     }
 
@@ -76,7 +76,7 @@
       display: block;
 
       // Text
-      color: #ed1d24;
+      color: $color-brand-primary;
       line-height: 2rem;
       text-decoration: none;
 
@@ -165,7 +165,7 @@
         width: 100%;
 
         // Border
-        border: 1px solid #efefef;
+        border: 1px solid $color-border;
         border-radius: 2px;
 
         // Extras
@@ -185,7 +185,7 @@
 
         .c-article__headline {
           // Text
-          font-size: 20px;
+          font-size: px-to-em(20);
         }
       }
     }
@@ -204,10 +204,10 @@
   }
 
   // Text
-  font-size: 24px;
+  font-size: px-to-em(24);
 
   // Border
-  border-bottom: 1px solid #EFEFEF;
+  border-bottom: 1px solid $color-border;
 }
 
 .c-section__pagination {

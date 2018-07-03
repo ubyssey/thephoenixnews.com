@@ -3,7 +3,7 @@
   padding-top: 2rem;
 
   // Border
-  border-top: 1px solid #EFEFEF;
+  border-top: 1px solid $color-border;
 
   ul {
     // Structure
@@ -35,6 +35,6 @@
   margin-bottom: 1rem;
 
   // Text
-  font-size: 36px;
+  font-size: px-to-em(36);
   text-align: center;
 }

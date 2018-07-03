@@ -29,7 +29,7 @@ $header-height: 57px;
   background-color: #fff;
 
   // Border
-  border-bottom: 1px solid #EFEFEF;
+  border-bottom: 1px solid $color-border;
 
   // Extras
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.025);
@@ -135,8 +135,8 @@ $header-height: 57px;
 
     // Text
     font-weight: bold;
-    font-size: 15px;
-    color: #272525;
+    font-size: px-to-em(15);
+    color: $color-text-body;
     text-decoration: none;
 
     &:hover {
@@ -177,8 +177,8 @@ $header-height: 57px;
 
     // Text
     font-weight: bold;
-    font-size: 14px;
-    color: #272525;
+    font-size: px-to-em(14);
+    color: $color-text-body;
     letter-spacing: -0.15px;
     text-decoration: none;
 

@@ -5,8 +5,8 @@
 
   // Text
   font-weight: bold;
-  font-size: 15px;
-  color: #EB2C2C;
+  font-size: px-to-em(15);
+  color: $color-brand-primary;
   letter-spacing: -0.15px;
 }
 
@@ -17,14 +17,14 @@
 
   // Text
   font-family: $font-headline;
-  font-size: 26px;
-  color: #272525;
+  font-size: px-to-em(26);
+  color: $color-text-body;
   letter-spacing: -0.3px;
   line-height: 1.2em;
 
   a {
     // Text
-    color: #272525;
+    color: $color-text-body;
     text-decoration: none;
 
     &:hover {
@@ -70,20 +70,20 @@
   display: block;
 
   // Text
-  font-size: 14px;
-  color: #5C5C5C;
+  font-size: px-to-em(14);
+  color: $color-text-light;
   letter-spacing: -0.15px;
   line-height: 1.5em;
 }
 
 .c-article__description {
   // Structure
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   margin-bottom: 0;
 
   // Text
-  font-size: 14px;
-  color: #1A1A1A;
+  font-size: px-to-em(14);
+  color: $color-text-dark;
   line-height: 21px;
 }
 
@@ -134,7 +134,7 @@
 
 .c-article--5 {
   // Border
-  border: 1px solid #efefef;
+  border: 1px solid $color-border;
   border-radius: 2px;
 
   // Extras
@@ -156,7 +156,7 @@
 .c-article--6 {
   .c-article__headline {
     // Text
-    font-size: 32px;
+    font-size: px-to-em(32);
   }
 
   .c-article__info {
@@ -194,11 +194,12 @@
     margin-bottom: 2rem;
 
     // Border
-    border-bottom: 1px solid #EFEFEF;
+    border-bottom: 1px solid $color-border;
   }
 
   .c-article__tag {
-    font-size: 18px;
+    // Text
+    font-size: px-to-em(18)
   }
 
   .c-article__headline {
@@ -207,12 +208,12 @@
     margin-bottom: 1rem;
 
     // Text
-    font-size: 32px;
+    font-size: px-to-em(32);
     letter-spacing: -0.5px;
 
     @media only screen and (min-width: $bp-desktop) {
       // Text
-      font-size: 48px;
+      font-size: px-to-em(48);
     }
   }
 
@@ -222,12 +223,12 @@
     margin-bottom: 1rem;
 
     // Text
-    font-size: 16px;
+    font-size: px-to-em(16);
     letter-spacing: -0.22px;
 
     @media only screen and (min-width: $bp-desktop) {
       // Text
-      font-size: 18px;
+      font-size: px-to-em(18);
     }
   }
 
@@ -246,8 +247,8 @@
     margin-right: 1rem;
 
     // Text
-    font-size: 24px;
-    color: #272525;
+    font-size: px-to-em(24);
+    color: $color-text-body;
 
     &:last-child {
       // Structure
@@ -256,7 +257,7 @@
 
     &:hover {
       // Text
-      color: #EB2C2C;
+      color: $color-brand-primary;
     }
   }
 
@@ -298,13 +299,13 @@
 
       // Text
       font-family: $font-body;
-      font-size: 17px;
+      font-size: px-to-em(17);
       line-height: 1.6em;
       color: $color-text-body;
 
       > a, li > a {
         // Text
-        color: #326fd0;
+        color: $color-text-hyperlink;
       }
     }
   }
