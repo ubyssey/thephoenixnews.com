@@ -1,6 +1,7 @@
 var webpack = require('webpack');
 var version = require('./package.json').version;
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 var globImporter = require('node-sass-glob-importer');
 
 module.exports = {
@@ -61,6 +62,10 @@ module.exports = {
         'NODE_ENV': JSON.stringify('production')
       }
     }),
+    new CopyWebpackPlugin([{
+      from: './src/images/public/',
+      to:''
+    }]),
     new webpack.optimize.UglifyJsPlugin(),
     new ExtractTextPlugin('main-' + version + '.css')
   ]
