@@ -22,11 +22,12 @@
     height: 40px;
     padding-left: 0.75rem;
     padding-right: 0.75rem;
+    margin-bottom: 1rem;
 
     // Border
     border-top: 1px solid $color-border;
     border-right: 1px solid $color-border;
-    border-bottom: none;
+    border-bottom: 1px solid $color-border;
     border-left: 1px solid $color-border;
 
     // Text
@@ -44,6 +45,7 @@
 
     // Extra
     cursor: pointer;
+    -webkit-appearance: none;
   }
 
   @media only screen and (min-width: $bp-tablet) {
@@ -51,6 +53,9 @@
     display: flex;
 
     input[type="email"] {
+      // Structure
+      margin-bottom: 0;
+
       // Border
       border-right: none;
       border-bottom: 1px solid $color-border;
