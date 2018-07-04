@@ -1,3 +1,6 @@
 dispatch==0.4.16
 mysql-python
 django-phonenumber-field
+ua-parser
+user-agents
+django-user-agents

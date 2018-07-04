@@ -3,3 +3,6 @@ git+git://github.com/ubyssey/django-google-storage.git
 django-gae-backends
 django-canonical-domain
 mysql-python
+ua-parser
+user-agents
+django-user-agents
