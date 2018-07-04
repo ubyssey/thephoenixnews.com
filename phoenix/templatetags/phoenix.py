@@ -26,6 +26,15 @@ def section_url(slug, **kwargs):
     )
 
 @register.simple_tag
+def topic_url(section_slug, topic_slug, **kwargs):
+    """Generate url for given topic."""
+
+    return reverse(
+        'section-topic',
+        kwargs={'slug': section_slug, 'topic': topic_slug}
+    )
+
+@register.simple_tag
 def issue_url(issue, **kwargs):
     """Generate url for given issue."""
     return reverse(

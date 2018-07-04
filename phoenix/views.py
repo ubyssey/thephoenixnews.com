@@ -3,9 +3,13 @@ import datetime
 from django.conf import settings
 from django.shortcuts import render, redirect
 from django.http import Http404
+from django.urls import reverse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.contrib.staticfiles.templatetags.staticfiles import static
 
 from dispatch.models import Article, Page, Section, Topic, Issue
+
+from phoenix.templatetags.phoenix import article_url, section_url, topic_url, issue_url
 
 def homepage(request):
     news =  Article.objects.filter(section__slug='news', is_published=True).order_by('-published_at')
@@ -16,7 +20,12 @@ def homepage(request):
     opinions = Article.objects.filter(section__slug='opinions', is_published=True).order_by('-published_at')
 
     context = {
-        'title': 'The Phoenix - UBCO\'s student newspaper',
+        'meta': {
+            'title': 'The Phoenix - UBCO\'s student newspaper',
+            'description': 'UBCO\'s student newspaper since 1989',
+            'image': static('phoenix-banner.png'),
+            'url': reverse('homepage')
+        },
         'news': news,
         'lifestyle': lifestyle,
         'features': features,
@@ -39,7 +48,7 @@ def section(request, section_slug=None, topic_slug=None):
     try:
         section = Section.objects.get(slug=section_slug)
     except Section.DoesNotExist:
-        raise Http404("Section does not exist")
+        raise Http404('Section does not exist')
 
     articles = Article.objects.filter(is_published=True, section=section)
 
@@ -62,7 +71,12 @@ def section(request, section_slug=None, topic_slug=None):
         archive = paginator.page(paginator.num_pages)
 
     context = {
-        'title': '%s - The Phoenix' % section.name,
+        'meta': {
+            'title': '%s - The Phoenix' % section.name,
+            'description': 'UBCO\'s student newspaper since 1989',
+            'image': static('phoenix-banner.png'),
+            'url': topic_url(section_slug, topic_slug) if topic_slug else section_url(section_slug)
+        },
         'section': section,
         'topic': topic,
         'articles': {
@@ -91,7 +105,12 @@ def article(request, year=0, month=0, slug=None):
         .exclude(id__in=[article.id])[:3]
 
     context = {
-        'title': '%s - The Phoenix' % article.headline,
+        'meta': {
+            'title': '%s - The Phoenix' % article.headline,
+            'description': article.snippet,
+            'image': article.featured_image.image.get_absolute_url() if article.featured_image else static('phoenix-banner.png'),
+            'url': article_url(article)
+        },
         'article': article,
         'related': related
     }
@@ -105,14 +124,18 @@ def page(request, slug=None):
         raise Http404("Page does not exist")
 
     context = {
-        'title': '%s - The Phoenix' % page.title,
+        'meta': {
+            'title': '%s - The Phoenix' % page.title,
+            'description': page.snippet,
+            'image': page.featured_image.image.get_absolute_url() if page.featured_image else static('phoenix-banner.png'),
+            'url': reverse('page', args=[page.slug])
+        },
         'page': page,
     }
 
     return render(request, 'page.html', context)
 
 def issues(request):
-
     issues_qs = Issue.objects.order_by('-date')
 
     paginator = Paginator(issues_qs, 12)
@@ -126,7 +149,12 @@ def issues(request):
         issues = paginator.page(paginator.num_pages)
 
     context = {
-        'title': 'Issues - The Phoenix',
+        'meta': {
+            'title': 'Issues - The Phoenix',
+            'description': 'Archive of The Phoenix News print issues.',
+            'image': static('phoenix-banner.png'),
+            'url': reverse('issues')
+        },
         'issues': issues
     }
 
@@ -146,11 +174,16 @@ def issue(request, year=None, month=None, day=None):
     except Issue.DoesNotExist:
         raise Http404("Issue does not exist")
 
-    # if not request.user_agent.is_pc:
-    #     return redirect(issue.file.url)
+    if not request.user_agent.is_pc:
+        return redirect(issue.file.url)
 
     context = {
-        'title': '%s - The Phoenix' % issue.title,
+        'meta': {
+            'title': '%s - The Phoenix' % issue.title,
+            'description': 'The Phoenix News Volume %d Issue %d' % (issue.volume, issue.issue),
+            'image': issue.img.url if issue.img else static('phoenix-banner.png'),
+            'url': issue_url(issue)
+        },
         'issue': issue
     }
 
