@@ -2,6 +2,37 @@ require('../styles/main.scss')
 
 var $ = require('jquery');
 
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Galleries from './components/Galleries';
+
+
+function gatherImages(gallery) {
+  const images = $(gallery).find('.c-embed--gallery__images > div').map((_, el) => {
+    const $el = $(el);
+    return {
+      id: $el.data('id'),
+      url: $el.data('url'),
+      caption: $el.data('caption'),
+      credit: $el.data('credit'),
+      width: $el.width(),
+      height: $el.height()
+    };
+  }).get();
+
+  const imagesTable = images.reduce((table, image, i) => {
+    table[image.id] = i;
+    return table;
+  }, {});
+
+  return {
+    selector: gallery,
+    title: gallery ? $(gallery).data('id') : 'Images',
+    list: images,
+    table: imagesTable,
+  };
+}
+
 $(function() {
 
   var stickyElements = [];
@@ -57,4 +88,14 @@ $(function() {
       iconElement.addClass('js-nav-icon--open');
     }
   });
+
+  const galleries = $('.c-embed--gallery').map((_, elem) => gatherImages(elem)).get()
+
+  const el = document.getElementById('js-galleries');
+
+  ReactDOM.render(
+    <Galleries galleries={galleries} />,
+    el
+  );
+
 })

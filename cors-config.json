@@ -1,0 +1,1 @@
+[{"maxAgeSeconds": 3600, "method": ["GET", "HEAD", "DELETE"], "origin": ["https://new.thephoenixnews.com", "https://www.thephoenixnews.com", "https://thephoenixnews.com"], "responseHeader": ["Content-Type"]}]
