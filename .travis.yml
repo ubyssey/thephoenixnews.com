@@ -6,9 +6,11 @@ before_install:
 - openssl aes-256-cbc -K $encrypted_8ea223bd84f4_key -iv $encrypted_8ea223bd84f4_iv -in client-secret.json.enc -out client-secret.json -d
 - export PYTHONPATH="${PYTHONPATH}:${TRAVIS_BUILD_DIR}/lib"
 install:
-- pip install google-cloud-datastore
-- export GOOGLE_APPLICATION_CREDENTIALS="${TRAVIS_BUILD_DIR}/client-secret.json"
-- python fetch_secrets.py
+# - pip install google-cloud-datastore
+# - export GOOGLE_APPLICATION_CREDENTIALS="${TRAVIS_BUILD_DIR}/client-secret.json"
+# - python fetch_secrets.py
+
+- export SQL_HOST=ubyssey-prd:us-central1:ubyssey-prd
 
 - wget https://dl.google.com/cloudsql/cloud_sql_proxy.linux.amd64 -O cloud_sql_proxy
 - chmod +x cloud_sql_proxy
