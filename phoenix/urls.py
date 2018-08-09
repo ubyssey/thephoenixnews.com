@@ -10,7 +10,7 @@ from phoenix import views
 from phoenix.widgets import *
 
 urlpatterns = [
-    url(r'^admin', include(admin_urls)),
+    url(r'^admin/', include(admin_urls)),
     url(r'^api/', include(api_urls)),
 
     url(r'^$', views.homepage, name='homepage'),

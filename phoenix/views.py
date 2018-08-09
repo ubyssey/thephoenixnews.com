@@ -174,8 +174,8 @@ def issue(request, year=None, month=None, day=None):
     except Issue.DoesNotExist:
         raise Http404("Issue does not exist")
 
-    if not request.user_agent.is_pc:
-        return redirect(issue.file.url)
+    # if not request.user_agent.is_pc:
+    #     return redirect(issue.file.url)
 
     context = {
         'meta': {
