@@ -7,7 +7,7 @@ def main():
 
     query = client.query(kind='Secret')
     query.add_filter('name', '=', 'SQL_HOST')
-    list(query.fetch())
+    print list(query.fetch())
 
 if __name__ == "__main__":
     main()
