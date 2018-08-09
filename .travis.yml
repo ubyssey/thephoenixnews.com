@@ -7,7 +7,7 @@ before_install:
 - export PYTHONPATH="${PYTHONPATH}:${TRAVIS_BUILD_DIR}/lib"
 install:
 - pip install google-cloud-datastore
-- export GOOGLE_APPLICATION_CREDENTIALS="${TRAVIS_BUILD_DIR}/client-secret.json"
+#- export GOOGLE_APPLICATION_CREDENTIALS="${TRAVIS_BUILD_DIR}/client-secret.json"
 - python fetch_secrets.py
 - git clone https://github.com/psiemens/react-book.git phoenix/static/src/js/react-book
 - pip install -r requirements-prd.txt -t lib/
