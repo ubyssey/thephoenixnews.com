@@ -12,7 +12,7 @@ install:
 
 - wget https://dl.google.com/cloudsql/cloud_sql_proxy.linux.amd64 -O cloud_sql_proxy
 - chmod +x cloud_sql_proxy
-- ./cloud_sql_proxy -instances="$SQL_HOST"=tcp:3307 -credential_file=client-secret.json &
+- ./cloud_sql_proxy -instances=${echo SQL_HOST}=tcp:3307 -credential_file=client-secret.json &
 
 - mysqldump --host 127.0.0.1 --port 3307 -u production phoenix > phoenix.sql
 - mysqladmin --host 127.0.0.1 --port 3307 -u production create phoenix-${TRAVIS_TAG//./-}
