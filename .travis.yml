@@ -14,9 +14,9 @@ install:
 - chmod +x cloud_sql_proxy
 - ./cloud_sql_proxy -instances=$SQL_HOST=tcp:3307 -credential_file=client-secret.json &
 
-- mysqldump --host 127.0.0.1 --port 3307 -p$SQL_PASSWORD phoenix > phoenix.sql
-- mysqladmin --host 127.0.0.1 --port 3307 -p$SQL_PASSWORD create phoenix-${TRAVIS_TAG//./-}
-- mysql --host 127.0.0.1 --port 3307 -p$SQL_PASSWORD db2 < phoenix.sql
+- mysqldump --host 127.0.0.1 --port 3307 -u production -p$SQL_PASSWORD phoenix > phoenix.sql
+- mysqladmin --host 127.0.0.1 --port 3307 -u production -p$SQL_PASSWORD create phoenix-${TRAVIS_TAG//./-}
+- mysql --host 127.0.0.1 --port 3307 -u production -p$SQL_PASSWORD db2 < phoenix.sql
 
 - git clone https://github.com/psiemens/react-book.git phoenix/static/src/js/react-book
 - pip install -r requirements-prd.txt -t lib/
