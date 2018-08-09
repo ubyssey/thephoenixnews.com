@@ -14,9 +14,9 @@ install:
 
 - wget https://dl.google.com/cloudsql/cloud_sql_proxy.linux.amd64 -O cloud_sql_proxy
 - chmod +x cloud_sql_proxy
-- sudo mkdir /cloudsql
-- sudo chmod 777 /cloudsql
-- ./cloud_sql_proxy -instances=$SQL_HOST -dir=/cloudsql -credential_file=client-secret.json & mysqldump -S /cloudsql/$SQL_HOST -u production phoenix > phoenix.sql
+- mkdir ${TRAVIS_BUILD_DIR}/cloudsql
+- chmod 777 ${TRAVIS_BUILD_DIR}/cloudsql
+- ./cloud_sql_proxy -instances=$SQL_HOST -dir=${TRAVIS_BUILD_DIR}/cloudsql -credential_file=client-secret.json & mysqldump -S ${TRAVIS_BUILD_DIR}/cloudsql/$SQL_HOST -u production phoenix > phoenix.sql
 - cat phoenix.sql
 #- mysqladmin -S /cloudsql/$SQL_HOST -u production create phoenix-${TRAVIS_TAG//./-} &
 #- mysql -S /cloudsql/$SQL_HOST -u production phoenix-${TRAVIS_TAG//./-} < phoenix.sql
