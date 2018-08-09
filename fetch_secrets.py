@@ -1,23 +1,17 @@
-import os
+import sys
 
 from google.cloud import datastore
 
-def main():
+def main(key):
     client = datastore.Client()
 
     query = client.query(kind='Secrets')
-    query.add_filter('key', '=', 'SQL_HOST')
+    query.add_filter('key', '=', key)
 
     secret = list(query.fetch())[0]
 
-    os.environ['SQL_HOST'] = secret['value']
-
-    query = client.query(kind='Secrets')
-    query.add_filter('key', '=', 'SQL_PASSWORD')
-
-    secret = list(query.fetch())[0]
-
-    os.environ['MYSQL_PWD'] = secret['value']
+    print secret['value']
 
 if __name__ == "__main__":
-    main()
+    key = sys.argv[1]
+    main(key)
