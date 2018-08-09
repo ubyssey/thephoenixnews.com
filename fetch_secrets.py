@@ -1,4 +1,5 @@
-# Imports the Google Cloud client library
+import os
+
 from google.cloud import datastore
 
 def main():
@@ -6,7 +7,10 @@ def main():
 
     query = client.query(kind='Secrets')
     query.add_filter('key', '=', 'SQL_HOST')
-    print list(query.fetch())
+
+    secret = list(query.fetch())[0]
+
+    os.environ['SQL_HOST'] = secret['value']
 
 if __name__ == "__main__":
     main()
