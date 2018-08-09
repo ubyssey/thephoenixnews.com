@@ -10,13 +10,13 @@ install:
 - export GOOGLE_APPLICATION_CREDENTIALS="${TRAVIS_BUILD_DIR}/client-secret.json"
 
 - export SQL_HOST=$(python fetch_secrets.py SQL_HOST)
-- export MYSQL_PWD=$(python fetch_secrets.py SQL_PASSWORD)
+- export SQL_PASSWORD=$(python fetch_secrets.py SQL_PASSWORD)
 
 - wget https://dl.google.com/cloudsql/cloud_sql_proxy.linux.amd64 -O cloud_sql_proxy
 - chmod +x cloud_sql_proxy
 - sudo mkdir $TRAVIS_BUILD_DIR/cloudsql
 - sudo chmod 777 $TRAVIS_BUILD_DIR/cloudsql
-- ./cloud_sql_proxy -instances=$SQL_HOST -dir=$TRAVIS_BUILD_DIR/cloudsql -credential_file=client-secret.json & sleep 10 && mysqldump -S $TRAVIS_BUILD_DIR/cloudsql/$SQL_HOST -u production phoenix > phoenix.sql
+- ./cloud_sql_proxy -instances=$SQL_HOST -dir=$TRAVIS_BUILD_DIR/cloudsql -credential_file=client-secret.json & sleep 5 && mysqldump -S $TRAVIS_BUILD_DIR/cloudsql/$SQL_HOST -u production -p$SQL_PASSWORD phoenix > phoenix.sql
 - cat phoenix.sql
 #- mysqladmin -S /cloudsql/$SQL_HOST -u production create phoenix-${TRAVIS_TAG//./-} &
 #- mysql -S /cloudsql/$SQL_HOST -u production phoenix-${TRAVIS_TAG//./-} < phoenix.sql
