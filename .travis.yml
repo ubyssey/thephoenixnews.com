@@ -19,7 +19,7 @@ install:
 - ./cloud_sql_proxy -instances=$SQL_HOST -dir=$TRAVIS_BUILD_DIR/cloudsql -credential_file=client-secret.json & sleep 5 &&
   mysqldump -S $TRAVIS_BUILD_DIR/cloudsql/$SQL_HOST -u production -p$SQL_PASSWORD phoenix > phoenix.sql &&
   mysqladmin -S $TRAVIS_BUILD_DIR/cloudsql/$SQL_HOST -u production -p$SQL_PASSWORD create phoenix-${TRAVIS_TAG//./-} &&
-  mysql -S $TRAVIS_BUILD_DIR/cloudsql/$SQL_HOST -u production phoenix-${TRAVIS_TAG//./-} < phoenix.sql
+  mysql -S $TRAVIS_BUILD_DIR/cloudsql/$SQL_HOST -u production -p$SQL_PASSWORD phoenix-${TRAVIS_TAG//./-} < phoenix.sql
 
 - git clone https://github.com/psiemens/react-book.git phoenix/static/src/js/react-book
 - pip install -r requirements-prd.txt -t lib/
