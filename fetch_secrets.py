@@ -6,7 +6,7 @@ def main():
     client = datastore.Client()
 
     query = client.query(kind='Secret')
-    query.add_filter('name', '=', 'SQL_HOST')
+    query.add_filter('key', '=', 'SQL_HOST')
     print list(query.fetch())
 
 if __name__ == "__main__":
