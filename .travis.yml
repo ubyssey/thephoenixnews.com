@@ -10,16 +10,18 @@ install:
 - export GOOGLE_APPLICATION_CREDENTIALS="${TRAVIS_BUILD_DIR}/client-secret.json"
 
 - export SQL_HOST=$(python fetch_secrets.py SQL_HOST)
+- export SQL_USER=$(python fetch_secrets.py SQL_USER)
 - export SQL_PASSWORD=$(python fetch_secrets.py SQL_PASSWORD)
+- export SQL_SOCKET_DIR=/cloudsql
+- export SQL_SOCKET=$SQL_SOCKET_DIR/$SQL_HOST
+- export SQL_DATABASE_OLD=$(python fetch_secrets.py SQL_DATABASE)
+- export SQL_DATABASE_NEW=phoenix_${TRAVIS_TAG//./_}
 
+# Install Cloud SQL Proxy
 - wget https://dl.google.com/cloudsql/cloud_sql_proxy.linux.amd64 -O cloud_sql_proxy
 - chmod +x cloud_sql_proxy
-- sudo mkdir $TRAVIS_BUILD_DIR/cloudsql
-- sudo chmod 777 $TRAVIS_BUILD_DIR/cloudsql
-- ./cloud_sql_proxy -instances=$SQL_HOST -dir=$TRAVIS_BUILD_DIR/cloudsql -credential_file=client-secret.json & sleep 5 &&
-  mysqldump -S $TRAVIS_BUILD_DIR/cloudsql/$SQL_HOST -u production -p$SQL_PASSWORD --single-transaction --no-create-db --set-gtid-purged=OFF phoenix > phoenix.sql &&
-  mysqladmin -S $TRAVIS_BUILD_DIR/cloudsql/$SQL_HOST -u production -p$SQL_PASSWORD create "phoenix_${TRAVIS_TAG//./_}" &&
-  mysql -S $TRAVIS_BUILD_DIR/cloudsql/$SQL_HOST -u production -p$SQL_PASSWORD "phoenix_${TRAVIS_TAG//./_}" < phoenix.sql
+- sudo mkdir $SQL_SOCKET_DIR
+- sudo chmod 777 $SQL_SOCKET_DIR
 
 - git clone https://github.com/psiemens/react-book.git phoenix/static/src/js/react-book
 - pip install -r requirements-prd.txt -t lib/
@@ -31,16 +33,32 @@ script:
 after_success:
 - rm -rf node_modules
 - cd ${TRAVIS_BUILD_DIR}
+
+# Use deployment settings
 - mv _settings/settings-dpl.py phoenix/settings.py
+
+- ./cloud_sql_proxy -instances=$SQL_HOST -dir=$SQL_SOCKET_DIR -credential_file=client-secret.json &
+  # Sleep to allow time for proxy server to start
+  sleep 5 &&
+  # Create a copy of the existing database
+  mysqldump -S $SQL_SOCKET -u $SQL_USER -p$SQL_PASSWORD --single-transaction --no-create-db --set-gtid-purged=OFF $SQL_DATABASE_OLD > phoenix.sql &&
+  mysqladmin -S $SQL_SOCKET -u $SQL_USER -p$SQL_PASSWORD create $SQL_DATABASE_NEW &&
+  mysql -S $SQL_SOCKET -u $SQL_USER -p$SQL_PASSWORD $SQL_DATABASE_NEW < phoenix.sql &&
+  # Run migrations
+  python manage.py migrate
+
+# Collect static files
 - python manage.py collectstatic --noinput
 - find ${TRAVIS_BUILD_DIR}/gcs -type f -exec gzip "{}" \; -exec mv "{}.gz" "{}" \;
+
+# Use production settings
 - rm phoenix/settings.py phoenix/settings.pyc
 - mv _settings/settings-prd.py phoenix/settings.py
-
 
 # Cleanup
 - rm -rf .git
 - rm -rf _settings
+- rm -f cloud_sql_proxy
 deploy:
   - provider: gcs
     access_key_id: GOOG6VXJ7FN5TYTTPSQI

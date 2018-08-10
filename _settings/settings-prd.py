@@ -26,7 +26,7 @@ TIME_ZONE = 'America/Vancouver'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'HOST': Secrets.get('SQL_HOST'),
+        'HOST': '/cloudsql/%s' % Secrets.get('SQL_HOST'),
         'NAME': Secrets.get('SQL_DATABASE'),
         'USER': Secrets.get('SQL_USER'),
         'PASSWORD': Secrets.get('SQL_PASSWORD'),
