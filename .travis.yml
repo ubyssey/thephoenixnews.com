@@ -18,7 +18,6 @@ install:
 - sudo chmod 777 $TRAVIS_BUILD_DIR/cloudsql
 - ./cloud_sql_proxy -instances=$SQL_HOST -dir=$TRAVIS_BUILD_DIR/cloudsql -credential_file=client-secret.json & sleep 5 &&
   mysqldump -S $TRAVIS_BUILD_DIR/cloudsql/$SQL_HOST -u production -p$SQL_PASSWORD --single-transaction --no-create-db --set-gtid-purged=OFF phoenix > phoenix.sql &&
-  cat phoenix.sql &&
   mysqladmin -S $TRAVIS_BUILD_DIR/cloudsql/$SQL_HOST -u production -p$SQL_PASSWORD create "phoenix_${TRAVIS_TAG//./_}" &&
   mysql -S $TRAVIS_BUILD_DIR/cloudsql/$SQL_HOST -u production -p$SQL_PASSWORD "phoenix_${TRAVIS_TAG//./_}" < phoenix.sql
 
