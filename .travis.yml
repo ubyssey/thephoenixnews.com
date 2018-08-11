@@ -1,4 +1,3 @@
-sudo: false
 language: python
 python:
 - '2.7'
@@ -37,13 +36,10 @@ after_success:
 - mv _settings/settings-dpl.py phoenix/settings.py
 
 - ./cloud_sql_proxy -instances=$SQL_HOST -dir=$SQL_SOCKET_DIR -credential_file=client-secret.json &
-  # Sleep to allow time for proxy server to start
   sleep 5 &&
-  # Create a copy of the existing database
   mysqldump -S $SQL_SOCKET -u $SQL_USER -p$SQL_PASSWORD --single-transaction --no-create-db --set-gtid-purged=OFF $SQL_DATABASE_OLD > phoenix.sql &&
   mysqladmin -S $SQL_SOCKET -u $SQL_USER -p$SQL_PASSWORD create $SQL_DATABASE_NEW &&
   mysql -S $SQL_SOCKET -u $SQL_USER -p$SQL_PASSWORD $SQL_DATABASE_NEW < phoenix.sql &&
-  # Run migrations
   python manage.py migrate
 
 # Collect static files
