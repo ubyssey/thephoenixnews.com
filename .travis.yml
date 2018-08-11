@@ -35,16 +35,19 @@ after_success:
 # Use deployment settings
 - mv _settings/settings-dpl.py phoenix/settings.py
 
-- ./cloud_sql_proxy -instances=$SQL_HOST -dir=$SQL_SOCKET_DIR -credential_file=client-secret.json &
-  sleep 5 &&
-  mysqldump -S $SQL_SOCKET -u $SQL_USER -p$SQL_PASSWORD --single-transaction --no-create-db --set-gtid-purged=OFF $SQL_DATABASE_OLD > phoenix.sql &&
-  mysqladmin -S $SQL_SOCKET -u $SQL_USER -p$SQL_PASSWORD create $SQL_DATABASE_NEW &&
-  mysql -S $SQL_SOCKET -u $SQL_USER -p$SQL_PASSWORD $SQL_DATABASE_NEW < phoenix.sql &&
-  python manage.py migrate
-
 # Collect static files
 - python manage.py collectstatic --noinput
 - find ${TRAVIS_BUILD_DIR}/gcs -type f -exec gzip "{}" \; -exec mv "{}.gz" "{}" \;
+
+- if [ -n $TRAVIS_TAG ]
+    then
+      ./cloud_sql_proxy -instances=$SQL_HOST -dir=$SQL_SOCKET_DIR -credential_file=client-secret.json &
+        sleep 5 &&
+        mysqldump -S $SQL_SOCKET -u $SQL_USER -p$SQL_PASSWORD --single-transaction --no-create-db --set-gtid-purged=OFF $SQL_DATABASE_OLD > phoenix.sql &&
+        mysqladmin -S $SQL_SOCKET -u $SQL_USER -p$SQL_PASSWORD create $SQL_DATABASE_NEW &&
+        mysql -S $SQL_SOCKET -u $SQL_USER -p$SQL_PASSWORD $SQL_DATABASE_NEW < phoenix.sql &&
+        python manage.py migrate
+  fi
 
 # Use production settings
 - rm phoenix/settings.py phoenix/settings.pyc
