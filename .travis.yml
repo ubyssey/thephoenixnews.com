@@ -31,7 +31,6 @@ install:
 script:
 - yarn build
 after_success:
-- rm -rf node_modules
 - cd ${TRAVIS_BUILD_DIR}
 
 # Use deployment settings
@@ -59,6 +58,7 @@ after_success:
 - rm -rf .git
 - rm -rf _settings
 - rm -f cloud_sql_proxy
+- rm -rf node_modules
 deploy:
   - provider: gcs
     access_key_id: GOOG6VXJ7FN5TYTTPSQI
