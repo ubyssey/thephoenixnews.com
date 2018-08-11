@@ -12,8 +12,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': os.environ.get('SQL_DATABASE_NEW'),
-        'USER': Secrets.get('SQL_USER'),
-        'PASSWORD': Secrets.get('SQL_PASSWORD'),
+        'USER': os.environ.get('SQL_USER'),
+        'PASSWORD': os.environ.get('SQL_PASSWORD'),
         'OPTIONS': {
             'unix_socket': os.environ.get('SQL_SOCKET')
         }
