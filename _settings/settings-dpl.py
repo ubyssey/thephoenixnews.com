@@ -11,11 +11,11 @@ ALLOWED_HOSTS = ['*']
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.env.get('SQL_DATABASE_NEW'),
+        'NAME': os.environ.get('SQL_DATABASE_NEW'),
         'USER': Secrets.get('SQL_USER'),
         'PASSWORD': Secrets.get('SQL_PASSWORD'),
         'OPTIONS': {
-            'unix_socket': os.env.get('SQL_SOCKET')
+            'unix_socket': os.environ.get('SQL_SOCKET')
         }
     }
 }
