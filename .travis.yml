@@ -39,6 +39,7 @@ after_success:
 - python manage.py collectstatic --noinput
 - find ${TRAVIS_BUILD_DIR}/gcs -type f -exec gzip "{}" \; -exec mv "{}.gz" "{}" \;
 
+# Clone database and run migrations
 - if [ -n $TRAVIS_TAG ]; then
     ./cloud_sql_proxy -instances=$SQL_HOST -dir=$SQL_SOCKET_DIR -credential_file=client-secret.json &
       sleep 5 &&
@@ -53,10 +54,7 @@ after_success:
 - mv _settings/settings-prd.py phoenix/settings.py
 
 # Cleanup
-- rm -rf .git
-- rm -rf _settings
-- rm -f cloud_sql_proxy
-- rm -rf node_modules
+- rm -rf .git _settings cloud_sql_proxy node_modules phoenix.sql
 deploy:
   - provider: gcs
     access_key_id: GOOG6VXJ7FN5TYTTPSQI
