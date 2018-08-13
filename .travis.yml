@@ -30,9 +30,10 @@ install:
 script:
 - yarn build
 after_success:
-- cd ${TRAVIS_BUILD_DIR}
+- cd $TRAVIS_BUILD_DIR
 
 # Use deployment settings
+- rm phoenix/settings.py phoenix/settings.pyc
 - mv _settings/settings-dpl.py phoenix/settings.py
 
 # Collect static files
@@ -54,7 +55,7 @@ after_success:
 - mv _settings/settings-prd.py phoenix/settings.py
 
 # Cleanup
-- rm -rf .git _settings cloud_sql_proxy node_modules phoenix.sql
+- rm -rf .git _settings cloud_sql_proxy phoenix/static/node_modules phoenix.sql
 deploy:
   - provider: gcs
     access_key_id: GOOG6VXJ7FN5TYTTPSQI
@@ -63,7 +64,7 @@ deploy:
     bucket: phoenix-news
     skip_cleanup: true
     acl: public-read
-    local-dir: ${TRAVIS_BUILD_DIR}/gcs
+    local-dir: $TRAVIS_BUILD_DIR/gcs
     detect_encoding: true
     cache_control: "max-age=31536000"
     on:
