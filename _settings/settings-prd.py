@@ -73,3 +73,9 @@ MEDIA_URL = 'https://phoenix-news.storage.googleapis.com/media/'
 # Use in-memory file handler on Google App Engine
 FILE_UPLOAD_HANDLERS = ['django.core.files.uploadhandler.MemoryFileUploadHandler',]
 FILE_UPLOAD_MAX_MEMORY_SIZE = 25621440
+
+EMAIL_HOST = Secrets.get('EMAIL_HOST')
+EMAIL_PORT = 465
+EMAIL_HOST_USER = Secrets.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = Secrets.get('EMAIL_HOST_PASSWORD')
+EMAIL_USE_SSL = True
