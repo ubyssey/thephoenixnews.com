@@ -8,13 +8,14 @@ install:
 - pip install google-cloud-datastore
 - export GOOGLE_APPLICATION_CREDENTIALS="${TRAVIS_BUILD_DIR}/client-secret.json"
 
-- export SQL_HOST=$(python fetch_secrets.py SQL_HOST)
-- export SQL_USER=$(python fetch_secrets.py SQL_USER)
-- export SQL_PASSWORD=$(python fetch_secrets.py SQL_PASSWORD)
+- export APP_VERSION=phoenix_${TRAVIS_TAG//./_}
+- export SQL_HOST=$(python manage_secret.py SQL_HOST)
+- export SQL_USER=$(python manage_secret.py SQL_USER)
+- export SQL_PASSWORD=$(python manage_secret.py SQL_PASSWORD)
 - export SQL_SOCKET_DIR=/cloudsql
 - export SQL_SOCKET=$SQL_SOCKET_DIR/$SQL_HOST
-- export SQL_DATABASE_OLD=$(python fetch_secrets.py SQL_DATABASE)
-- export SQL_DATABASE_NEW=phoenix_${TRAVIS_TAG//./_}
+- export SQL_DATABASE_OLD=$(python manage_secret.py SQL_DATABASE)
+- export SQL_DATABASE_NEW=$APP_VERSION
 
 # Install Cloud SQL Proxy
 - wget https://dl.google.com/cloudsql/cloud_sql_proxy.linux.amd64 -O cloud_sql_proxy
@@ -50,6 +51,10 @@ after_success:
       python manage.py migrate;
   fi
 
+# Update database labels
+- python manage_secret.py SQL_DATABASE_OLD $SQL_DATABASE_OLD
+- python manage_secret.py SQL_DATABASE $SQL_DATABASE_NEW
+
 # Use production settings
 - rm phoenix/settings.py phoenix/settings.pyc
 - mv _settings/settings-prd.py phoenix/settings.py
@@ -73,7 +78,7 @@ deploy:
     keyfile: client-secret.json
     project: phoenix-prd
     default: true
-    version: phoenix-${TRAVIS_TAG//./-} # Replace periods with hyphens
+    version: $APP_VERSION
     skip_cleanup: true
     on:
       tags: true

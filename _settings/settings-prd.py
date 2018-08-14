@@ -27,7 +27,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'HOST': '/cloudsql/%s' % Secrets.get('SQL_HOST'),
-        'NAME': Secrets.get('SQL_DATABASE'),
+        'NAME': os.environ['GAE_VERSION'],
         'USER': Secrets.get('SQL_USER'),
         'PASSWORD': Secrets.get('SQL_PASSWORD'),
         'PORT': 3306,
