@@ -1,15 +1,9 @@
-{% load phoenix %}
 <article class="c-article c-article--5">
   <div class="c-article__image-container">
-    <a
-      class="c-article__image"
-      href="{% article_url article %}"
-      style="background-image: url('{{ article.featured_image.image.get_medium_url }}');">
-    </a>
+    <div class="c-article__image" style="background-image: url('{{ article.featured_image.image.get_medium_url }}');"></div>
   </div>
   <div class="c-article__info">
-    <a class="c-article__tag">{% article_tag article %}</a>
-    <h2 class="c-article__headline"><a href="{% article_url article %}">{{ article.headline }}</a></h2>
-    <span class="c-article__meta">{% if article.get_author_string %}By {{ article.get_author_string }}&nbsp;&nbsp;&middot;&nbsp;&nbsp;{% endif %}{{ article.published_at|date:"F jS, Y \a\t P" }}</span>
+    <h2 class="c-article__headline">{{ article.headline }}</h2>
+    <span class="c-article__meta">{{ article.published_at|date:"F jS, Y \a\t P" }}</span>
   </div>
 </article>

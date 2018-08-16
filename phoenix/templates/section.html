@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load dispatch_tags %}
+{% load phoenix %}
 
 {% block body %}
 <div class="c-wrapper">
@@ -18,14 +19,20 @@
     </div>
     <div class="c-section__secondary c-articles-list">
       {% for article in articles.secondary %}
-        {% include 'components/article-5.html' with article=article %}
+        <a href="{% article_url article %}">
+          {% include 'components/article-5.html' with article=article %}
+        </a>
       {% endfor %}
     </div>
     <div class="c-section__archive">
       <h2 class="c-section__archive__title">Archive</h2>
       <ul>
         {% for article in articles.archive %}
-          <li><div>{% include 'components/article-5.html' with article=article %}</div></li>
+          <li>
+            <a href="{% article_url article %}">
+              {% include 'components/article-5.html' with article=article %}
+            </a>
+          </li>
         {% endfor %}
       </ul>
       <div class="c-section__pagination">
