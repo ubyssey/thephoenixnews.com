@@ -1,4 +1,5 @@
 from django import template
+from django.conf import settings
 from django.urls import reverse
 
 register = template.Library()
@@ -11,10 +12,17 @@ def article_url(article, **kwargs):
     month = '%02d' % article.published_at.month
     slug = article.slug
 
-    return reverse(
+    full = kwargs.get('full', False)
+
+    url = reverse(
         'article',
         kwargs={'year': year, 'month': month, 'slug': slug}
     )
+
+    if full:
+        return '%s%s' % (settings.BASE_URL, url[1:])
+    else:
+        return url
 
 @register.simple_tag
 def section_url(slug, **kwargs):
