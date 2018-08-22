@@ -1,12 +1,16 @@
-<div class="c-embed c-embed--gallery" style="background-image: url('{{ images.first.image.get_medium_url }}');">
-  <div class="c-embed__overlay"></div>
-  <div class="c-embed__container">
-    <h2 class="c-embed__title">{{ title }}</h2>
-    <h3 class="c-embed__subtitle">Gallery&nbsp;&middot;&nbsp;{{ images|length }} images</h3>
+<div class="c-embed c-embed--gallery">
+  <div class="c-embed--gallery__cover" style="background-image: url('{{ images.first.image.get_medium_url }}');">
+    <div class="c-embed__overlay"></div>
+    <div class="c-embed__container">
+      <h2 class="c-embed__title">{{ title }}</h2>
+      <h3 class="c-embed__subtitle">Gallery&nbsp;&middot;&nbsp;{{ images|length }} images</h3>
+    </div>
   </div>
   <div class="c-embed--gallery__images">
     {% for attachment in images %}
-      <div class="gallery-image" data-id="{{ attachment.id }}" data-url="{{ attachment.image.get_medium_url }}" data-caption="{{ attachment.caption|safe }}"></div>
+      <div class="c-embed--gallery__image">
+        <div class="gallery-image" data-id="{{ attachment.id }}" data-url="{{ attachment.image.get_medium_url }}" data-caption="{{ attachment.caption|safe }}" style="background-image: url('{{ attachment.image.get_medium_url }}');"></div>
+      </div>
     {% endfor %}
   </div>
 </div>

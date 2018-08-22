@@ -8,7 +8,7 @@ import Galleries from './components/Galleries';
 
 
 function gatherImages(gallery) {
-  const images = $(gallery).find('.c-embed--gallery__images > div').map((_, el) => {
+  const images = $(gallery).find('.c-embed--gallery__images .gallery-image').map((_, el) => {
     const $el = $(el);
     return {
       id: $el.data('id'),
