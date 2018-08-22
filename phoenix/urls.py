@@ -3,8 +3,7 @@ from django.conf.urls import include, url
 from django.conf.urls.static import static
 from django.shortcuts import render_to_response
 
-from dispatch.admin import urls as admin_urls
-from dispatch.api import urls as api_urls
+from dispatch.urls import admin_urls, api_urls, podcasts_urls
 
 from phoenix import views
 from phoenix.widgets import *
@@ -12,6 +11,7 @@ from phoenix.widgets import *
 urlpatterns = [
     url(r'^admin/', include(admin_urls)),
     url(r'^api/', include(api_urls)),
+    url(r'^podcasts/', include(podcasts_urls)),
 
     url(r'^$', views.homepage, name='homepage'),
     url(r'^category/(?P<slug>[-\w]+)/$', views.section_home, name='section'),
