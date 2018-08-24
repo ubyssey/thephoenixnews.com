@@ -8,9 +8,6 @@ install:
 - git clone https://github.com/psiemens/react-book.git phoenix/static/src/js/react-book
 - pip install -r requirements-prd.txt -t lib/
 - pip install requests --upgrade -t lib/
-- ls lib/
-- pip uninstall google-cloud-storage
-- sudo pip install google-cloud --upgrade -t lib/
 
 - export GOOGLE_APPLICATION_CREDENTIALS="${TRAVIS_BUILD_DIR}/client-secret.json"
 
