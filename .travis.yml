@@ -18,7 +18,7 @@ install:
 - export SQL_DATABASE_CURRENT=$(python manage_secret.py SQL_DATABASE)
 - export SQL_DATABASE_NEW=$APP_VERSION
 
-- pip uninstall google-cloud-datastore
+- sudo pip uninstall google-cloud-datastore
 
 # Install Cloud SQL Proxy
 - wget https://dl.google.com/cloudsql/cloud_sql_proxy.linux.amd64 -O cloud_sql_proxy
