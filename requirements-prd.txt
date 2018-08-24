@@ -1,4 +1,4 @@
-dispatch==0.5.4
+dispatch==0.5.5
 git+git://github.com/ubyssey/django-google-storage.git
 django-gae-backends
 django-canonical-domain
@@ -6,4 +6,3 @@ mysql-python
 ua-parser
 user-agents
 django-user-agents
-google-cloud-datastore

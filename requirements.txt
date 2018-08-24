@@ -1,7 +1,6 @@
-dispatch==0.5.4
+dispatch==0.5.5
 mysql-python
 django-phonenumber-field
 ua-parser
 user-agents
 django-user-agents
-google-cloud-datastore
