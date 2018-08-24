@@ -10,6 +10,8 @@ install:
 - pip install -r requirements-prd.txt -t lib/
 - pip install requests --upgrade -t lib/
 
+- export PYTHONPATH="${PYTHONPATH}:${TRAVIS_BUILD_DIR}/lib"
+
 - export GOOGLE_APPLICATION_CREDENTIALS="${TRAVIS_BUILD_DIR}/client-secret.json"
 
 - export APP_VERSION=phoenix-${TRAVIS_TAG//./-}
