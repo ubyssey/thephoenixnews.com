@@ -6,3 +6,4 @@ mysql-python
 ua-parser
 user-agents
 django-user-agents
+google-cloud-datastore
