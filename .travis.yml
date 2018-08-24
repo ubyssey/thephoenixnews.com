@@ -9,6 +9,8 @@ install:
 - pip install -r requirements-prd.txt -t lib/
 - pip install requests --upgrade -t lib/
 
+- pip freeze
+
 # Use deployment settings
 - mv _settings/settings-dpl.py phoenix/settings.py
 
