@@ -9,7 +9,7 @@ def get_secret(client, key):
     return list(query.fetch())[0]
 
 def set_secret(client, key, value):
-    secret = get_secret(key)
+    secret = get_secret(client, key)
     secret[key] = value
 
     client.put(secret)
