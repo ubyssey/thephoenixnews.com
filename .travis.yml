@@ -12,6 +12,7 @@ install:
 # Use deployment settings
 - mv _settings/settings-dpl.py phoenix/settings.py
 
+- pip install google-cloud-datastore
 - export GOOGLE_APPLICATION_CREDENTIALS="${TRAVIS_BUILD_DIR}/client-secret.json"
 
 - export APP_VERSION=phoenix-${TRAVIS_TAG//./-}
