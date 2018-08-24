@@ -10,7 +10,7 @@ install:
 - pip install requests --upgrade -t lib/
 
 # Use deployment settings
-- rm phoenix/settings.py phoenix/settings.pyc
+# - rm phoenix/settings.py phoenix/settings.pyc
 - mv _settings/settings-dpl.py phoenix/settings.py
 
 - export GOOGLE_APPLICATION_CREDENTIALS="${TRAVIS_BUILD_DIR}/client-secret.json"
