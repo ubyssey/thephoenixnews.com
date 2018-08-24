@@ -9,7 +9,7 @@ install:
 - pip install -r requirements-prd.txt -t lib/
 - pip install requests --upgrade -t lib/
 
-- pip uninstall google-cloud-storage -t lib/ 
+# - pip uninstall google-cloud-storage -t lib/
 - pip install google-cloud --upgrade -t lib/
 
 - export GOOGLE_APPLICATION_CREDENTIALS="${TRAVIS_BUILD_DIR}/client-secret.json"
