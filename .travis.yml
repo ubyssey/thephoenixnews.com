@@ -10,7 +10,8 @@ install:
 - pip install requests --upgrade -t lib/
 
 - pip uninstall google-cloud-storage
-- pip install google-cloud
+- pip install --upgrade -t lib/ google-cloud 
+
 - export GOOGLE_APPLICATION_CREDENTIALS="${TRAVIS_BUILD_DIR}/client-secret.json"
 
 - export APP_VERSION=phoenix-${TRAVIS_TAG//./-}
@@ -40,11 +41,13 @@ after_success:
 - rm phoenix/settings.py phoenix/settings.pyc
 - mv _settings/settings-dpl.py phoenix/settings.py
 
+- pip show google-cloud
+
 # Collect static files
 - python manage.py collectstatic --noinput
 - find ${TRAVIS_BUILD_DIR}/gcs -type f -exec gzip "{}" \; -exec mv "{}.gz" "{}" \;
 
-- gcloud auth activate-service-account deploy@phoenix-prd.iam.gserviceaccount.com --key-file=client-secret.json --project=phoenix-prd
+- gcloud auth activate-service-account deploy@phoenix-prd.iam.gserviceaccount.com --key-file=client-secret.json --project=ubyssey-prd
 
 # Clone database and run migrations
 # If migration is succesful, delete old backup
