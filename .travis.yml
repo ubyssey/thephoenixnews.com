@@ -6,10 +6,11 @@ before_install:
 - export PYTHONPATH="${PYTHONPATH}:${TRAVIS_BUILD_DIR}/lib"
 install:
 - pip install --upgrade pip
-- sudo pip install google-cloud --upgrade -t lib/
 - git clone https://github.com/psiemens/react-book.git phoenix/static/src/js/react-book
 - pip install -r requirements-prd.txt -t lib/
 - pip install requests --upgrade -t lib/
+- sudo pip uninstall google-cloud-storage
+- sudo pip install google-cloud --upgrade -t lib/
 
 - export GOOGLE_APPLICATION_CREDENTIALS="${TRAVIS_BUILD_DIR}/client-secret.json"
 
