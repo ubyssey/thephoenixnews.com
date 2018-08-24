@@ -10,7 +10,8 @@ install:
 - pip install requests --upgrade -t lib/
 
 # - pip uninstall google-cloud-storage -t lib/
-- pip install google-cloud --upgrade -t lib/
+- pip install google-cloud-datastore --upgrade -t lib/
+- pip install google-cloud-storage --upgrade -t lib/
 
 - export GOOGLE_APPLICATION_CREDENTIALS="${TRAVIS_BUILD_DIR}/client-secret.json"
 
