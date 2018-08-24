@@ -1,6 +1,6 @@
-dispatch==0.5.6
 mysql-python
 django-phonenumber-field
 ua-parser
 user-agents
 django-user-agents
+dispatch==0.5.6
