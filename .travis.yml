@@ -44,6 +44,7 @@ after_success:
 - python manage.py collectstatic --noinput
 - find ${TRAVIS_BUILD_DIR}/gcs -type f -exec gzip "{}" \; -exec mv "{}.gz" "{}" \;
 
+- gcloud config list
 # Clone database and run migrations
 # If migration is succesful, delete old backup
 - if [ -n $TRAVIS_TAG ]; then
