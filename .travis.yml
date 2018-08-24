@@ -5,7 +5,12 @@ before_install:
 - openssl aes-256-cbc -K $encrypted_8ea223bd84f4_key -iv $encrypted_8ea223bd84f4_iv -in client-secret.json.enc -out client-secret.json -d
 - export PYTHONPATH="${PYTHONPATH}:${TRAVIS_BUILD_DIR}/lib"
 install:
-- pip install google-cloud-datastore
+- git clone https://github.com/psiemens/react-book.git phoenix/static/src/js/react-book
+- pip install -r requirements-prd.txt -t lib/
+- pip install requests --upgrade -t lib/
+
+- pip uninstall google-cloud-storage
+- pip install google-cloud
 - export GOOGLE_APPLICATION_CREDENTIALS="${TRAVIS_BUILD_DIR}/client-secret.json"
 
 - export APP_VERSION=phoenix-${TRAVIS_TAG//./-}
@@ -24,9 +29,6 @@ install:
 - sudo mkdir $SQL_SOCKET_DIR
 - sudo chmod 777 $SQL_SOCKET_DIR
 
-- git clone https://github.com/psiemens/react-book.git phoenix/static/src/js/react-book
-- pip install -r requirements-prd.txt -t lib/
-- pip install requests --upgrade -t lib/
 - cd phoenix/static
 - yarn setup
 script:
