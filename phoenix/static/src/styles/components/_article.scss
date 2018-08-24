@@ -147,6 +147,11 @@
     padding-left: 1rem;
     padding-right: 1rem;
   }
+
+  .c-article__headline {
+    // Text
+    font-size: px-to-em(22);
+  }
 }
 
 .c-article--6 {
@@ -296,10 +301,10 @@
       // Text
       font-family: $font-body;
       font-size: px-to-em(17);
-      line-height: 1.6em;
+      line-height: 1.75em;
       color: $color-text-body;
 
-      > a, li > a {
+      a {
         // Text
         color: $color-text-hyperlink;
       }
