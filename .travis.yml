@@ -5,12 +5,11 @@ before_install:
 - openssl aes-256-cbc -K $encrypted_8ea223bd84f4_key -iv $encrypted_8ea223bd84f4_iv -in client-secret.json.enc -out client-secret.json -d
 - export PYTHONPATH="${PYTHONPATH}:${TRAVIS_BUILD_DIR}/lib"
 install:
-- pip install google-cloud-datastore --upgrade -t lib/
+- pip install --upgrade pip
+- pip install google-cloud --upgrade -t lib/
 - git clone https://github.com/psiemens/react-book.git phoenix/static/src/js/react-book
 - pip install -r requirements-prd.txt -t lib/
 - pip install requests --upgrade -t lib/
-
-- export PYTHONPATH="${PYTHONPATH}:${TRAVIS_BUILD_DIR}/lib"
 
 - export GOOGLE_APPLICATION_CREDENTIALS="${TRAVIS_BUILD_DIR}/client-secret.json"
 
