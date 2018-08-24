@@ -9,6 +9,10 @@ install:
 - pip install -r requirements-prd.txt -t lib/
 - pip install requests --upgrade -t lib/
 
+# Use deployment settings
+- rm phoenix/settings.py phoenix/settings.pyc
+- mv _settings/settings-dpl.py phoenix/settings.py
+
 - export GOOGLE_APPLICATION_CREDENTIALS="${TRAVIS_BUILD_DIR}/client-secret.json"
 
 - export APP_VERSION=phoenix-${TRAVIS_TAG//./-}
@@ -33,10 +37,6 @@ script:
 - yarn build
 after_success:
 - cd $TRAVIS_BUILD_DIR
-
-# Use deployment settings
-- rm phoenix/settings.py phoenix/settings.pyc
-- mv _settings/settings-dpl.py phoenix/settings.py
 
 # Collect static files
 - python manage.py collectstatic --noinput
