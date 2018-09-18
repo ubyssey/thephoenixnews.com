@@ -9,7 +9,7 @@ CANONICAL_DOMAIN = 'thephoenixnews.com'
 
 SECRET_KEY = Secrets.get('SECRET_KEY')
 
-INSTALLED_APPS += ['phoenix']
+INSTALLED_APPS += ['phoenix', 'django_user_agents']
 
 ALLOWED_HOSTS = [
     'thephoenixnews.com',
@@ -52,6 +52,7 @@ CACHES = {
 
 MIDDLEWARE_CLASSES += [
     'canonical_domain.middleware.CanonicalDomainMiddleware',
+    'django_user_agents.middleware.UserAgentMiddleware',
 ]
 
 # GCS File Storage
