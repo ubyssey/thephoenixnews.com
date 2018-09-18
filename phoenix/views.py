@@ -166,20 +166,13 @@ def issue(request, year=None, month=None, day=None):
 
     date = datetime.date(year, month, day)
 
-    for i in Issue.objects.all():
-        issue = i
-
-    # print date.year
-    # print date.month
-    # print date.day
-    #
-    # try:
-    #     issue = Issue.objects.get(
-    #         date__year=date.year,
-    #         date__month=date.month,
-    #         date__day=date.day)
-    # except Issue.DoesNotExist:
-    #     raise Http404("Issue does not exist")
+    try:
+        issue = Issue.objects.get(
+            date__year=date.year,
+            date__month=date.month,
+            date__day=date.day)
+    except Issue.DoesNotExist:
+        raise Http404("Issue does not exist")
 
     if not request.user_agent.is_pc:
         return redirect(issue.file.url)
