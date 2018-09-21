@@ -5,7 +5,15 @@ module.exports = {
     "es6": true,
     "node": true,
   },
-  "extends": ["eslint:recommended",],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+  ],
+  "settings": {
+    "react": {
+      "version": "16.3.1",
+    },
+  },
   "parserOptions": {
     "sourceType": "module",
     "ecmaFeatures": {
@@ -18,5 +26,6 @@ module.exports = {
     "quotes": ["error", "single"],
     "no-unused-vars": ["warn", {"args": "after-used"}],
     "no-console": ["warn"],
+    "react/prop-types": 0,
   }
 };
