@@ -35,9 +35,15 @@
     flex: 1;
     padding-right: 1.5rem;
     margin-right: 1.5rem;
+  }
+}
 
-    // Border
-    border-right: 1px solid $color-border;
+.c-subsection--primary {
+  .c-subsection__left {
+    @media only screen and (min-width: $bp-desktop) {
+      // Border
+      border-right: 1px solid $color-border;
+    }
   }
 }
 
