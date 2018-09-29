@@ -1,6 +1,9 @@
 {% load phoenix %}
 <div class="c-related-articles">
-  <h3 class="c-related-articles__title">More {{ title }}</h3>
+  <h3 class="c-related-articles__title">
+    <i class="fas fa-certificate"></i>Suggested
+  </h3>
+  <p class="c-related-articles__subtitle">If you enjoyed this story, here are a few more you might like.</p>
   <div class="c-articles-list">
   {% for article in articles %}
     <a href="{% article_url article %}">

@@ -1,27 +1,48 @@
 .c-section__title {
   // Structure
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  padding-left: 1.4rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
 
   // Text
   font-size: px-to-em(28);
+  color: $color-text-dark;
 
   @media only screen and (min-width: $bp-desktop) {
     // Structure
     padding-left: 0;
 
     // Text
-    font-size: px-to-em(36);
-    text-align: center;
+    font-size: px-to-em(48);
+  }
+}
+
+.c-section__subtitle {
+  // Structure
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+
+  // Text
+  font-size: px-to-em(18);
+  font-weight: normal;
+  color: $color-text-light;
+}
+
+.c-section__heading {
+  // Structure
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+
+  // Text
+  font-size: px-to-em(24);
+  color: $color-text-dark;
+
+  .fas {
+    // Structure
+    margin-right: 0.5rem;
   }
 }
 
 .c-section__topics {
-  // Border
-  border-top: 1px solid $color-border;
-  border-bottom: 1px solid $color-border;
-
   ul {
     // Structure
     list-style-type: none;
@@ -33,9 +54,6 @@
       // Structure
       padding-left: 0;
       padding-right: 0;
-
-      // Text
-      text-align: center;
     }
   }
 
@@ -43,32 +61,31 @@
     // Structure
     display: inline-block;
     margin-top: 1rem;
-    margin-right: 0.4rem;
+    margin-right: 0.25rem;
     margin-bottom: 1rem;
-    margin-left: 0.4rem;
+    margin-left: 0.25rem;
     position: relative;
 
+    padding: 0.25rem 0.5rem;
+    border-radius: 3px;
+
+    background: $color-brand-primary;
+
+    opacity: 0.75;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
     // Text
-    font-size: px-to-em(16);
+    font-size: px-to-em(14);
+    letter-spacing: px-to-em(0.5);
+    color: #fff;
     font-weight: 600;
+    text-transform: uppercase;
 
-    @media only screen and (min-width: $bp-desktop) {
-      // Structure
-      margin-right: 0.8rem;
-      margin-left: 0.8rem;
-
-      &:not(:last-child):after {
-        content: '\B7';
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        height: 2rem;
-        line-height: 2rem;
-        right: -1rem;
-        width: 0.2rem;
-        text-align: center;
-        color: $color-brand-primary;
-      }
+    &:hover {
+      opacity: 1;
     }
 
     a {
@@ -111,7 +128,7 @@
 
   @media only screen and (min-width: $bp-desktop) {
     // Structure
-    margin-top: 2rem;
+    margin-top: 1.5rem;
     margin-bottom: 2rem;
   }
 }
@@ -236,13 +253,21 @@
     // Structure
     padding-left: 0;
     padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
   }
 
   // Text
   font-size: px-to-em(24);
+  color: $color-text-dark;
 
   // Border
   border-bottom: 1px solid $color-border;
+
+  .fas {
+    // Structure
+    margin-right: 0.5rem;
+  }
+
 }
 
 .c-section__pagination {

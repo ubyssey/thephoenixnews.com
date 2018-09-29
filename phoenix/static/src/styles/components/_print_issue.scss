@@ -1,32 +1,57 @@
 .c-print-issue {
   // Structure
-  padding-left: 1.5rem;
   padding-right: 1.5rem;
-
-  // Text
-  text-align: center;
-}
-
-.c-print-issue__label {
-  // Structure
-  margin-top: 0;
 }
 
 .c-print-issue__image {
   // Structure
-  width: 100%;
-  height: auto;
+  display: block;
+  padding: 1rem;
+
+  // Border
+  border: 1px solid $color-border;
 
   // Extra
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.05);
+
+  img {
+    // Structure
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+}
+
+.c-print-issue__label {
+  // Structure
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+
+  // Text
+  font-weight: 600;
+  font-size: px-to-em(14);
+  letter-spacing: px-to-em(0.5);
+  text-transform: uppercase;
+  color: $color-brand-primary;
 }
 
 .c-print-issue__title {
   // Structure
-  margin-top: 0.75rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 
   // Text
   font-size: px-to-em(18);
   color: $color-text-dark;
-  letter-spacing: -0.2px;
+}
+
+.c-print-issue__description {
+    // Structure
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  
+    // Text
+    font-size: px-to-em(15);
+    color: $color-text-light;
+    line-height: 1.5em;
 }

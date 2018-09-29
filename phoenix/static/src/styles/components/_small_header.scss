@@ -22,7 +22,7 @@ $header-height: 57px;
   background: #fff;
 
   // Border
-  border-bottom: 1px solid #E0E0E0;
+  border-bottom: 1px solid #efefef;
 
   // Extras
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.025);
@@ -62,6 +62,7 @@ $header-height: 57px;
 .c-small-header__nav {
   // Structure
   flex: 1;
+  padding-left: 0.5rem;
 
   ul {
     // Structure
@@ -80,14 +81,13 @@ $header-height: 57px;
     display: block;
     height: $header-height;
     line-height: $header-height;
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
 
     // Text
     font-weight: bold;
-    font-size: px-to-em(14);
+    font-size: px-to-em(15);
     color: $color-text-body;
-    letter-spacing: -0.15px;
     text-decoration: none;
 
     &:hover {
@@ -115,14 +115,10 @@ $header-height: 57px;
     display: block;
     height: $header-height;
     line-height: $header-height;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
 
     // Text
-    font-weight: bold;
-    font-size: px-to-em(14);
+    font-size: px-to-em(16);
     color: $color-text-body;
-    letter-spacing: -0.15px;
     text-decoration: none;
 
     &:hover {

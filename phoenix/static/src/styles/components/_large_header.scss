@@ -41,11 +41,12 @@
   margin: 0;
 
   // Text
-  font-size: px-to-em(13);
+  font-size: px-to-em(14);
   color: #888888;
 }
 
 .c-large-header__nav {
+
   // Border
   border-top: 1px solid $color-border;
 
@@ -70,14 +71,13 @@
     display: block;
     height: 50px;
     line-height: 50px;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
 
     // Text
     font-weight: bold;
-    font-size: px-to-em(14);
+    font-size: px-to-em(15);
     color: $color-text-body;
-    letter-spacing: -0.15px;
     text-decoration: none;
 
     &:hover {
@@ -89,7 +89,7 @@
 
 .c-large-header__social__item {
   a {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+    padding-left: 0.65rem;
+    padding-right: 0.65rem;
   }
 }

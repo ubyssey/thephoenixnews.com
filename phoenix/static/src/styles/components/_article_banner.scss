@@ -47,8 +47,8 @@
   // Text
   font-family: $font-headline;
   font-size: px-to-em(36);
-  color: #272525;
-  letter-spacing: -0.35px;
+  color: $color-text-body;
+  line-height: 1.2em;
 
   a {
     // Text
@@ -56,7 +56,7 @@
     text-decoration: none;
 
     &:hover {
-      text-decoration: underline;
+      opacity: 0.75;
     }
   }
 }
@@ -69,8 +69,7 @@
   margin-bottom: 1.5rem;
 
   // Text
-  font-size: px-to-em(15);
-  color: #272525;
-  letter-spacing: -0.2px;
-  line-height: 21px;
+  font-size: px-to-em(16);
+  color: $color-text-light;
+  line-height: 1.5em;
 }

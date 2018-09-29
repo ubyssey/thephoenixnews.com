@@ -58,7 +58,7 @@
   .c-footer__list__item,
   .c-topic {
     // Structure
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.5rem;
     display: none;
 
     @media only screen and (min-width: 900px) {
@@ -68,19 +68,14 @@
 
     // Text
     color: #fff;
-    font-size: px-to-em(13);
-
-    // Extras
-    opacity: 0.85;
+    font-size: px-to-em(15);
 
     &:first-child {
       // Structure
-      margin-bottom: 0.5rem;
       display: block;
 
       // Text
       font-weight: bold;
-      text-transform: uppercase;
     }
 
     &:last-child {
@@ -93,8 +88,11 @@
       color: #fff;
       text-decoration: none;
 
+      // Extras
+      opacity: 0.65;
+
       &:hover {
-        text-decoration: underline;
+        opacity: 1;
       }
     }
   }

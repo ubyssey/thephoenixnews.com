@@ -20,7 +20,6 @@
   font-weight: bold;
   font-size: px-to-em(28);
   color: $color-text-dark;
-  letter-spacing: -0.35px;
 }
 
 .c-subsection__body {
@@ -88,6 +87,47 @@
     &:last-child {
       // Structure
       padding-left: 1.5rem;
+    }
+  }
+}
+
+.c-subsection--front  {
+  .c-subsection__left {
+    @media only screen and (min-width: $bp-desktop) {
+      // Structure
+      flex: 1;
+      padding-right: 1.5rem;
+      margin-right: 1.5rem;
+  
+      // Border
+      border-right: none;
+    }
+  }
+
+  .c-subsection__row {
+    @media only screen and (min-width: $bp-desktop) {
+      // Structure
+      display: block;
+      margin-top: 1.5rem;
+    }
+  }
+  
+  .c-subsection__row__item {
+    @media only screen and (min-width: $bp-desktop) {
+      // Structure  
+      margin-bottom: 1.25rem;
+  
+      &:first-child {
+        // Structure
+        padding-right: 0;
+        border-right: none;
+      }
+  
+      &:last-child {
+        // Structure
+        padding-left: 0;
+        margin-bottom: 0;
+      }
     }
   }
 }
