@@ -14,9 +14,9 @@
     <article class="c-article c-article--page">
       <div class="c-article__info">
         {% if article.topic %}
-        <a class="c-article__tag">{{ article.topic.name }}</a>
+        <div class="c-article__tag">{{ article.topic.name }}</div>
         {% else %}
-        <a class="c-article__tag">{{ article.section.name }}</a>
+        <div class="c-article__tag">{{ article.section.name }}</div>
         {% endif %}
         <h2 class="c-article__headline">{{ article.headline }}</h2>
         <span class="c-article__meta">{% if article.get_author_string %}By {{ article.get_author_string }}&nbsp;&middot;&nbsp;{% endif %}{{ article.published_at|date:"F jS, Y \a\t P" }}</span>

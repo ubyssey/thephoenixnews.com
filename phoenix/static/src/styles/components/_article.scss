@@ -1,27 +1,14 @@
 .c-article__tag {
   // Structure
-  margin-bottom: 0.5rem;
   display: block;
+  margin-bottom: 0.25rem;
 
   // Text
-  font-weight: 600;
+  font-weight: bold;
   font-size: px-to-em(14);
   letter-spacing: px-to-em(0.5);
   text-transform: uppercase;
   color: $color-brand-primary;
-}
-
-.c-article__info > a {
-  // Structure
-  display: block;
-
-  // Text
-  text-decoration: none;
-
-  &:hover {
-    // Extras
-    opacity: 0.75;
-  }
 }
 
 .c-article__headline {
@@ -78,6 +65,19 @@
   }
 }
 
+.c-article__info > a {
+  // Structure
+  display: block;
+
+  // Text
+  text-decoration: none;
+
+  &:hover {
+    // Extras
+    opacity: 0.75;
+  }
+}
+
 .c-article__meta {
   // Structure
   display: block;
@@ -105,11 +105,6 @@
 }
 
 .c-article--1 {
-  .c-article__image {
-    // Structure
-    margin-bottom: 0.75rem;
-  }
-
   @media only screen and (min-width: $bp-desktop) {
     // Structure
     display: flex;
