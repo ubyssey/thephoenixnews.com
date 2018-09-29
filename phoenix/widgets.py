@@ -1,6 +1,6 @@
 from dispatch.theme import register
 from dispatch.theme.widgets import Zone, Widget
-from dispatch.theme.fields import ArticleField#, TopicField
+from dispatch.theme.fields import ArticleField, TopicField
 
 @register.zone
 class HomepageZone(Zone):
@@ -56,4 +56,4 @@ class TopicsWidget(Widget):
     zones = (NewsZone, LifeZone, FeaturesZone, ArtsZone, SportsZone, OpinionsZone)
     accepted_keywords = ('section', 'current_topic')
 
-    #topics = TopicField('Topics', many=True)
+    topics = TopicField('Topics', many=True)
