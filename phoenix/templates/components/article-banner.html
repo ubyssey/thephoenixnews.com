@@ -7,15 +7,13 @@
       style="background-image: url('{{ article.featured_image.image.get_absolute_url }}');"></a>
   </div>
   <div class="c-article-banner__info">
-    <div class="c-container">
-      {% if article.topic %}
-      <a class="c-article__tag">{{ article.topic.name }}</a>
-      {% else %}
-      <a class="c-article__tag">{{ article.section.name }}</a>
-      {% endif %}
-      <h2 class="c-article-banner__headline"><a href="{% article_url article %}">{{ article.headline }}</a></h2>
-      <p class="c-article-banner__description">{{ article.snippet }}</p>
-      <a class="c-button" href="{% article_url article %}">Read More</a>
-    </div>
+    {% if article.topic %}
+    <a class="c-article__tag">{{ article.topic.name }}</a>
+    {% else %}
+    <a class="c-article__tag">{{ article.section.name }}</a>
+    {% endif %}
+    <h2 class="c-article-banner__headline"><a href="{% article_url article %}">{{ article.headline }}</a></h2>
+    {% if article.snippet %}<p class="c-article-banner__description">{{ article.snippet }}</p>{% endif %}
+    <a class="c-button" href="{% article_url article %}">Read More</a>
   </div>
 </article>

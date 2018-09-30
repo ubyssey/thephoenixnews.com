@@ -1,6 +1,13 @@
 {% load phoenix %}
 {% load humanize %}
 <article class="c-article c-article--2">
+  <div class="c-article__image-container">
+    <a
+      class="c-article__image"
+      href="{% article_url article %}"
+      style="background-image: url('{{ article.featured_image.image.get_medium_url }}');">
+    </a>
+  </div>
   <div class="c-article__info">
     <a href="{% article_url article %}">
       <div class="c-article__tag">{% article_tag article %}</div>

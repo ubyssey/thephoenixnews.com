@@ -7,6 +7,10 @@
   {% include 'components/large-header.html' %}
   {% include 'components/mobile-header.html' %}
 
+  <div style='padding: 1rem; text-align: center; color: grey; font-size: 14px;'>
+    UBCO's student newspaper since 1989
+  </div>
+
   {% zone 'homepage' %}
   <div class="c-homepage c-container c-container--unpadded">
     {% include 'components/subsection-front.html' with title='News' slug='news' articles=news issue=issue %}

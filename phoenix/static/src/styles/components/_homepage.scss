@@ -10,8 +10,7 @@
       // Border
       border-top: 1px solid $color-border;
 
-      &.c-article--1,
-      &.c-article--2 {
+      &.c-article--1 {
         // Structure
         padding-top: 0;
         padding-left: 0;
@@ -47,16 +46,6 @@
       // Structure
       padding-left: 1rem;
       padding-right: 1rem;
-    }
-
-    .c-subsection__row {
-      // Border
-      border-bottom: 1px solid $color-border;
-    }
-
-    .c-subsection__bottom {
-      // Structure
-      padding-bottom: 1.5rem;
     }
 
     .c-advertisement {

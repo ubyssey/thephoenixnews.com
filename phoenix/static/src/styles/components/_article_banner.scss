@@ -1,15 +1,20 @@
 .c-article-banner__image__container {
-  // Structure
-  height: 380px;
+  @media only screen and (min-width: $bp-mobile) {
+    // Structure
+    height: 380px;
 
-  // Extra
-  overflow: hidden;
+    // Extra
+    overflow: hidden;
+  }
 }
 
 .c-article-banner__image {
   // Structure
   display: block;
-  height: 100%;
+  width: 100%;
+  height: auto;
+  position: relative;
+  padding-top: 67%;
 
   // Background
   background-size: cover;
@@ -18,35 +23,57 @@
   // Extra
   transition: transform 0.2s ease-in;
 
-  &:hover {
-    // Extra
-    transform: scale(1.01);
+  @media only screen and (min-width: $bp-mobile) {
+    // Structure
+    height: 100%;
+    width: auto;
+    position: static;
+    padding-top: 0;
+
+    &:hover {
+      // Extra
+      transform: scale(1.01);
+    }
   }
 }
 
 .c-article-banner__info {
   // Structure
-  padding-top: 1.75rem;
-  padding-bottom: 1.5rem;
+  padding-top: 0.75rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 
-  // Extras
-  box-shadow: 0 -3px 2px 0 rgba(0,0,0,0.1);
+  .c-button {
+    // Structure
+    display: none;
+  }
 
-  // Text
-  text-align: center;
+  @media only screen and (min-width: $bp-mobile) {
+    // Structure
+    padding-top: 1.75rem;
+    padding-bottom: 1.5rem;
+
+    // Extras
+    box-shadow: 0 -3px 2px 0 rgba(0,0,0,0.1);
+
+    // Text
+    text-align: center;
+
+    .c-button {
+      // Structure
+      display: inline-block;
+    }
+  }
 }
 
 .c-article-banner__headline {
   // Structure
-  max-width: 650px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 0.5rem;
-  margin-bottom: 0.75rem;
+  margin-top: 0;
+  margin-bottom: 0.25rem;
 
   // Text
   font-family: $font-headline;
-  font-size: px-to-em(36);
+  font-size: px-to-em(28);
   color: $color-text-body;
   line-height: 1.2em;
 
@@ -59,6 +86,15 @@
       opacity: 0.75;
     }
   }
+
+  @media only screen and (min-width: $bp-mobile) {
+    // Structure
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
 }
 
 .c-article-banner__description {
@@ -66,10 +102,15 @@
   max-width: 650px;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 1.5rem;
+  margin-top: 0.5rem;
 
   // Text
   font-size: px-to-em(16);
   color: $color-text-light;
   line-height: 1.5em;
+
+  @media only screen and (min-width: $bp-mobile) {
+    // Structure
+    margin-bottom: 1.5rem;
+  }
 }

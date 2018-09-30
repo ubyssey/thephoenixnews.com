@@ -1,12 +1,22 @@
 .c-print-issue {
   // Structure
-  padding-right: 1.5rem;
+  display: flex;
+  padding-left: 1rem;
+  padding-right: 1rem;
+
+  @media only screen and (min-width: $bp-desktop) {
+    // Structure
+    display: block;
+    padding-left: 0;
+    padding-right: 1.5rem;
+  }
 }
 
 .c-print-issue__image {
   // Structure
   display: block;
-  padding: 1rem;
+  padding: 10px;
+  width: 20rem;
 
   // Border
   border: 1px solid $color-border;
@@ -20,11 +30,26 @@
     width: 100%;
     height: auto;
   }
+
+  @media only screen and (min-width: $bp-desktop) {
+    // Structure
+    width: auto;
+  }
+}
+
+.c-print-issue__info {
+  // Structure
+  margin-top: 1rem;
+  padding-left: 1rem;
+
+  @media only screen and (min-width: $bp-desktop) {
+    // Structure
+    padding-left: 0;
+  }
 }
 
 .c-print-issue__label {
   // Structure
-  margin-top: 1rem;
   margin-bottom: 0.5rem;
 
   // Text
