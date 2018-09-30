@@ -1,4 +1,4 @@
-.c-print-issue {
+.c-latest-issue {
   // Structure
   display: flex;
   padding-left: 1rem;
@@ -12,7 +12,7 @@
   }
 }
 
-.c-print-issue__image {
+.c-latest-issue__image {
   // Structure
   display: block;
   padding: 10px;
@@ -37,7 +37,7 @@
   }
 }
 
-.c-print-issue__info {
+.c-latest-issue__info {
   // Structure
   margin-top: 1rem;
   padding-left: 1rem;
@@ -48,7 +48,7 @@
   }
 }
 
-.c-print-issue__label {
+.c-latest-issue__label {
   // Structure
   margin-bottom: 0.5rem;
 
@@ -60,7 +60,7 @@
   color: $color-brand-primary;
 }
 
-.c-print-issue__title {
+.c-latest-issue__title {
   // Structure
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
@@ -70,7 +70,7 @@
   color: $color-text-dark;
 }
 
-.c-print-issue__description {
+.c-latest-issue__description {
     // Structure
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
@@ -79,4 +79,9 @@
     font-size: px-to-em(15);
     color: $color-text-light;
     line-height: 1.5em;
+}
+
+.c-latest-issue__link {
+  // Text
+  color: $color-text-extra-light;
 }

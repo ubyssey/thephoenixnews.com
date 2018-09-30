@@ -1,0 +1,13 @@
+{% load static %}
+{% load phoenix %}
+<div class="c-latest-issue">
+    <a class="c-latest-issue__image" href="{% issue_url issue %}">
+        <img src="{% get_media_prefix %}{{ issue.img }}" alt="{{ issue.title }}" />
+    </a>
+    <div class="c-latest-issue__info">
+        <div class="c-latest-issue__label">Latest Issue</div>
+        <h2 class="c-latest-issue__title">{{ issue.title }}</h2>
+        {% if issue.description %}<p class="c-latest-issue__description">{{ issue.description }}</p>{% endif %}
+        <a class="c-latest-issue__link" href="{% issue_url issue %}">Read More</a>
+    </div>
+</div>
