@@ -1,14 +1,20 @@
 .c-latest-issue {
   // Structure
   display: flex;
+  padding-top: 2rem;
   padding-left: 1rem;
+  padding-bottom: 2rem;
   padding-right: 1rem;
+
+  background: #272727;
 
   @media only screen and (min-width: $bp-desktop) {
     // Structure
     display: block;
     padding-left: 0;
     padding-right: 1.5rem;
+    padding-top: 0;
+    padding-bottom: 0;
   }
 }
 
@@ -16,10 +22,10 @@
   // Structure
   display: block;
   padding: 10px;
-  width: 20rem;
+  width: 8rem;
 
-  // Border
-  border: 1px solid $color-border;
+  // Background
+  background: white;
 
   // Extra
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.05);
@@ -34,11 +40,15 @@
   @media only screen and (min-width: $bp-desktop) {
     // Structure
     width: auto;
+
+    // Border
+    border: 1px solid $color-border;
   }
 }
 
 .c-latest-issue__info {
   // Structure
+  flex: 1;
   margin-top: 1rem;
   padding-left: 1rem;
 
@@ -67,7 +77,12 @@
 
   // Text
   font-size: px-to-em(18);
-  color: $color-text-dark;
+  color: #fff;
+
+  @media only screen and (min-width: $bp-desktop) {
+    // Text
+    color: $color-text-dark;
+  }
 }
 
 .c-latest-issue__description {
@@ -83,5 +98,10 @@
 
 .c-latest-issue__link {
   // Text
-  color: $color-text-extra-light;
+  color: #fff;
+
+  @media only screen and (min-width: $bp-desktop) {
+    // Text
+    color: $color-text-extra-light;
+  }
 }
