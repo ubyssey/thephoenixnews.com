@@ -259,7 +259,6 @@
   .c-article__info {
     // Structure
     margin-top: 1rem;
-    margin-bottom: 1rem;
   }
 
   .c-article__headline {
@@ -281,8 +280,7 @@
 
   .c-article__info {
     // Structure
-    padding-left: 1rem;
-    padding-right: 1rem;
+    margin-top: 1rem;
   }
 
   .c-article__image {
@@ -306,8 +304,6 @@
       display: flex;
       align-items: center;
       padding-bottom: 5rem;
-      padding-left: 0;
-      padding-right: 0;
     }
   }
 }

@@ -1,7 +1,7 @@
 .c-section__title {
   // Structure
-  margin-top: 1.5rem;
-  margin-bottom: 0.75rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 
   // Text
   font-size: px-to-em(28);
@@ -9,7 +9,8 @@
 
   @media only screen and (min-width: $bp-desktop) {
     // Structure
-    padding-left: 0;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
 
     // Text
     font-size: px-to-em(48);
@@ -46,15 +47,8 @@
   ul {
     // Structure
     list-style-type: none;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding: 0;
     margin: 0;
-
-    @media only screen and (min-width: $bp-desktop) {
-      // Structure
-      padding-left: 0;
-      padding-right: 0;
-    }
   }
 
   .c-topic {
@@ -133,18 +127,6 @@
   }
 }
 
-.c-section__secondary {
-  // Structure
-  padding-left: 1rem;
-  padding-right: 1rem;
-
-  @media only screen and (min-width: $bp-desktop) {
-    // Structure
-    padding-left: 0;
-    padding-right: 0;
-  }
-}
-
 .c-section__archive {
   ul {
     // Structure
@@ -170,14 +152,22 @@
       // Structure
       margin-bottom: 1rem;
 
+      &:last-child {
+        // Structure
+        margin-bottom: 0;
+      }
+
       > a {
         // Structure
         display: flex;
-        padding-left: 0.75rem;
-        padding-right: 0.75rem;
 
         // Text
         text-decoration: none;
+
+        @media only screen and (min-width: $bp-desktop) {
+          padding-left: 0.75rem;
+          padding-right: 0.75rem;
+        }
       }
 
       .c-article {
@@ -188,9 +178,6 @@
         // Border
         border: 1px solid $color-border;
         border-radius: 2px;
-
-        // Extras
-        box-shadow: 0 0 4px rgba(0, 0, 0, 0.03);
 
         .c-article__image-container {
           // Structure
@@ -246,13 +233,10 @@
 
 .c-section__archive__title {
   // Structure
-  padding-bottom: 1rem;
-  padding-left: 1rem;
+  padding-bottom: 0.75rem;
 
   @media only screen and (min-width: $bp-desktop) {
     // Structure
-    padding-left: 0;
-    padding-bottom: 1rem;
     margin-bottom: 1.5rem;
   }
 
@@ -272,7 +256,8 @@
 
 .c-section__pagination {
   // Structure
-  padding-bottom: 1.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
 
   // Text
   text-align: center;
