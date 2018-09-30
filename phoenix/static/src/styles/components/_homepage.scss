@@ -1,3 +1,18 @@
+.c-homepage__tagline {
+  // Structure
+  padding: 1rem; 
+
+  // Text
+  text-align: center; 
+  color: $color-text-extra-light;
+  font-size: px-to-em(14);
+
+  @media only screen and (min-width: $bp-desktop) {
+    // Structure
+    display: none;
+  }
+}
+
 @media only screen and (max-width: $bp-desktop) {
   .c-homepage {
     .c-article {
