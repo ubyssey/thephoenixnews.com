@@ -3,20 +3,14 @@
   max-width: 1100px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .c-container--unpadded {
   // Struture
   padding-left: 0;
   padding-right: 0;
-
-  // @media only screen and (min-width: $bp-mobile) {
-  //   // Struture
-  //   padding-left: 1.5rem;
-  //   padding-right: 1.5rem;
-  // }
 
   @media only screen and (min-width: $bp-desktop) {
     // Struture

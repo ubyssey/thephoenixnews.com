@@ -4,6 +4,8 @@ __pycache__/
 *$py.class
 env/
 
+.DS_Store
+
 # Static file folders
 /media/
 /static/

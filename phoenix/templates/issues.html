@@ -16,7 +16,7 @@
         {% for issue in issues %}
         <li>
           <div class="c-print-issue">
-            <a href="{% issue_url issue %}"><img class="c-print-issue__image" src="{{ issue.img.url }}" alt="{{ issue.title }}" /></a>
+            <a class="c-print-issue__image" href="{% issue_url issue %}"><img src="{{ issue.img.url }}" alt="{{ issue.title }}" /></a>
             <h2 class="c-print-issue__title">{{ issue.title }}</h2>
           </div>
         </li>

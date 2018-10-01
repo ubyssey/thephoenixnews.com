@@ -9,10 +9,24 @@
 .c-related-articles__title {
   // Structure
   margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.75rem;
 
   // Text
   font-size: px-to-em(28);
   color: $color-text-dark;
-  letter-spacing: -0.35px;
+
+  .fas {
+    // Structure
+    margin-right: 0.5rem;
+  }
+}
+
+.c-related-articles__subtitle {
+  // Structure
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+
+  // Text
+  font-size: px-to-em(18);
+  color: $color-text-light;
 }

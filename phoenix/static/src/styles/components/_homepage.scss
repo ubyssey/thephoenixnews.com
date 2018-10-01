@@ -1,3 +1,18 @@
+.c-homepage__tagline {
+  // Structure
+  padding: 1rem; 
+
+  // Text
+  text-align: center; 
+  color: $color-text-extra-light;
+  font-size: px-to-em(14);
+
+  @media only screen and (min-width: $bp-desktop) {
+    // Structure
+    display: none;
+  }
+}
+
 @media only screen and (max-width: $bp-desktop) {
   .c-homepage {
     .c-article {
@@ -10,8 +25,7 @@
       // Border
       border-top: 1px solid $color-border;
 
-      &.c-article--1,
-      &.c-article--2 {
+      &.c-article--1 {
         // Structure
         padding-top: 0;
         padding-left: 0;
@@ -47,16 +61,6 @@
       // Structure
       padding-left: 1rem;
       padding-right: 1rem;
-    }
-
-    .c-subsection__row {
-      // Border
-      border-bottom: 1px solid $color-border;
-    }
-
-    .c-subsection__bottom {
-      // Structure
-      padding-bottom: 1.5rem;
     }
 
     .c-advertisement {

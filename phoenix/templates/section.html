@@ -8,15 +8,20 @@
   {% include 'components/small-header.html' %}
   {% include 'components/mobile-header.html' %}
 
-  <div class="c-section c-container c-container--unpadded">
-    <h1 class="c-section__title">{{ section.name }}</h1>
-    <nav class="c-section__topics">
-      <ul>{% zone section.slug section=section.slug current_topic=topic %}</ul>
-    </nav>
+  <div class="c-section c-container">
     {% include 'components/advertisement-leaderboard.html' %}
+
+    <h1 class="c-section__title">{{ section.name }}</h1>
+    <!-- <h3 class="c-section__subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h3> -->
+
     <div class="c-section__primary">
       {% include 'components/article-6.html' with article=articles.primary %}
     </div>
+
+    <h3 class="c-section__heading">
+      <i class="fas fa-fire"></i>Latest stories
+    </h3>
+
     <div class="c-section__secondary c-articles-list">
       {% for article in articles.secondary %}
         <a href="{% article_url article %}">
@@ -24,7 +29,7 @@
         </a>
       {% endfor %}
     </div>
-    <div class="c-section__archive">
+    <div class="c-section__archive" id="archive">
       <h2 class="c-section__archive__title">Archive</h2>
       <ul>
         {% for article in articles.archive %}
@@ -41,10 +46,10 @@
         </div>
         <div class="c-section__pagination__pages">
         {% if articles.archive.has_previous %}
-          <a class="c-button" href="?page={{ articles.archive.previous_page_number }}">Previous</a>
+          <a class="c-button" href="?page={{ articles.archive.previous_page_number }}#archive">Previous</a>
         {% endif %}
         {% if articles.archive.has_next %}
-          <a class="c-button" href="?page={{ articles.archive.next_page_number }}">Next</a>
+          <a class="c-button" href="?page={{ articles.archive.next_page_number }}#archive">Next</a>
         {% endif %}
         </div>
       </div>

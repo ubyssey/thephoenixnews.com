@@ -9,5 +9,6 @@ body {
   font-family: $font-default;
   font-size: $base-font-size + px;
   -webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: geometricPrecision;
 }
