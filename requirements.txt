@@ -1,4 +1,4 @@
-dispatch==0.5.7
+dispatch==0.5.13
 mysql-python
 django-phonenumber-field
 ua-parser
