@@ -5,7 +5,7 @@
 
 {% block body %}
 
-<link rel="stylesheet" href="{% static 'main-0.0.51.css' %}" type="text/css"/>
+<link rel="stylesheet" href="{% static 'main-0.0.52.css' %}" type="text/css"/>
 
 <div class="c-issue">
   <div class="c-issue__header">
@@ -19,7 +19,7 @@
     <div class="c-issue__header__right"></div>
   </div>
   <div class="c-issue__viewer">
-    <div id="js-pdf" data-url='{% get_media_prefix %}{{ issue.file }}' data-worker='{% static 'pdf.worker-0.0.51.js' %}'></div>
+    <div id="js-pdf" data-url='{% get_media_prefix %}{{ issue.file }}' data-worker='{% static 'pdf.worker-0.0.52.js' %}'></div>
   </div>
 </div>
 
@@ -35,5 +35,5 @@ html, body {
 {% endblock %}
 
 {% block scripts %}
-<script src="{% static 'pdf-0.0.51.js' %}" type="text/javascript"></script>
+<script src="{% static 'pdf-0.0.52.js' %}" type="text/javascript"></script>
 {% endblock %}
