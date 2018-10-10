@@ -7,6 +7,7 @@
         <div class="c-subsection__row__item">{% include 'components/article-3.html' with article=articles.1 %}</div>
         <div class="c-subsection__row__item">{% include 'components/article-3.html' with article=articles.2 %}</div>
         <div class="c-subsection__row__item">{% include 'components/article-3.html' with article=articles.3 %}</div>
+        <div class="c-subsection__row__item">{% include 'components/article-3.html' with article=articles.4 %}</div>
       </div>
       <div class="c-subsection__bottom">
         <a
@@ -17,6 +18,7 @@
     <div class="c-subsection__right">
       {% if issue %}
       {% include 'components/latest-issue.html' with issue=issue %}
+      {% include 'components/latest-podcast.html' %}
       {% endif %}
     </div>
   </div>
