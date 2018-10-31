@@ -1,4 +1,4 @@
-dispatch==0.5.16
+dispatch==0.5.24
 git+git://github.com/ubyssey/django-google-storage.git
 django-gae-backends
 django-canonical-domain
