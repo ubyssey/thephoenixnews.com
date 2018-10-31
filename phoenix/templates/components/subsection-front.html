@@ -1,4 +1,5 @@
 {% load phoenix %}
+{% load dispatch_tags %}
 <div class="c-subsection c-subsection--front">
   <div class="c-subsection__body">
     <div class="c-subsection__left">
@@ -18,7 +19,7 @@
     <div class="c-subsection__right">
       {% if issue %}
       {% include 'components/latest-issue.html' with issue=issue %}
-      {% include 'components/latest-podcast.html' %}
+      {% zone 'latest-podcast' %}
       {% endif %}
     </div>
   </div>

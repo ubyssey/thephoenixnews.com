@@ -7,12 +7,11 @@
   {% include 'components/large-header.html' %}
   {% include 'components/mobile-header.html' %}
 
-
   <div class="c-homepage">
     <div class="c-homepage__tagline">UBCO's student newspaper since 1989</div>
     {% zone 'homepage' %}
     <div class="c-container c-container--unpadded">
-      {% include 'components/subsection-front.html' with title='News' slug='news' articles=news issue=issue %}
+      {% include 'components/subsection-front.html' with title='News' slug='news' articles=news issue=issue podcast=podcast %}
       {% include 'components/subsection-secondary.html' with title='Lifestyle' slug='life' articles=lifestyle advertisement='components/advertisement-sidebar-a.html' %}
       {% include 'components/advertisement-leaderboard.html' with hide_mobile=True %}
       {% include 'components/subsection-primary.html' with title='Features' slug='features' articles=features %}

@@ -1,6 +1,6 @@
 from dispatch.theme import register
 from dispatch.theme.widgets import Zone, Widget
-from dispatch.theme.fields import ArticleField, TopicField
+from dispatch.theme.fields import CharField, TextField, ArticleField, TopicField, PodcastField
 
 @register.zone
 class HomepageZone(Zone):
@@ -37,6 +37,11 @@ class OpinionsZone(Zone):
     id = 'opinions'
     name = 'Opinions'
 
+@register.zone
+class LatestPodcast(Zone):
+    id = 'latest-podcast'
+    name = 'Latest Podcast'
+
 @register.widget
 class FeaturedArticle(Widget):
     id = 'featured-article'
@@ -57,3 +62,15 @@ class TopicsWidget(Widget):
     accepted_keywords = ('section', 'current_topic')
 
     topics = TopicField('Topics', many=True)
+
+@register.widget
+class LatestPodcastWidget(Widget):
+    id = 'latest-podcast'
+    name = 'Latest Podcast'
+    template = 'components/latest-podcast.html'
+
+    zones = (LatestPodcast,)
+
+    podcast = PodcastField('Podcast')
+    link = CharField('Link')
+    embed = TextField('Embed')
