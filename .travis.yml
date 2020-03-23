@@ -8,7 +8,7 @@ install:
 - git clone https://github.com/psiemens/react-book.git phoenix/static/src/js/react-book
 - pip install -r requirements-prd.txt -t lib/
 - pip install requests --upgrade -t lib/
-- pip install jsonfield==2.0.2 -t lib/
+- pip install jsonfield==2.0.2 --upgrade -t lib/
 
 # Use deployment settings
 - mv _settings/settings-dpl.py phoenix/settings.py
