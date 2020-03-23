@@ -4,8 +4,8 @@ from phoenix.secrets import Secrets
 
 from dispatch.default_settings import *
 
-BASE_URL = 'https://thephoenixnews.com/'
-CANONICAL_DOMAIN = 'thephoenixnews.com'
+BASE_URL = 'https://old.thephoenixnews.com/'
+CANONICAL_DOMAIN = 'old.thephoenixnews.com'
 
 SECRET_KEY = Secrets.get('SECRET_KEY')
 
@@ -13,7 +13,7 @@ INSTALLED_APPS += ['phoenix', 'django_user_agents']
 
 ALLOWED_HOSTS = [
     'thephoenixnews.com',
-    'www.thephoenixnews.com',
+    'old.thephoenixnews.com',
 ]
 
 ROOT_URLCONF = 'phoenix.urls'
