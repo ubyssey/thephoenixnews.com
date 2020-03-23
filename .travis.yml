@@ -38,6 +38,9 @@ script:
 after_success:
 - cd $TRAVIS_BUILD_DIR
 
+- mv _settings/settings-dpl.py phoenix/settings.py
+- mkdir ${TRAVIS_BUILD_DIR}/gcs
+
 - rm -rf phoenix/static/node_modules phoenix/static/src
 
 # Collect static files
