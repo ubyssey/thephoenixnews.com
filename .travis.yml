@@ -8,6 +8,7 @@ install:
 - git clone https://github.com/psiemens/react-book.git phoenix/static/src/js/react-book
 - pip install -r requirements-prd.txt -t lib/
 - pip install requests --upgrade -t lib/
+- pip install jsonfield==2.0.2 -t lib/
 
 # Use deployment settings
 - mv _settings/settings-dpl.py phoenix/settings.py
@@ -42,8 +43,6 @@ after_success:
 - mkdir ${TRAVIS_BUILD_DIR}/gcs
 
 - rm -rf phoenix/static/node_modules phoenix/static/src
-
-- pip install django-jsonfield==1.4.0
 
 # Collect static files
 - python manage.py collectstatic --noinput
