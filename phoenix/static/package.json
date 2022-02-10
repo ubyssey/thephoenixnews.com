@@ -22,7 +22,7 @@
     "jquery": "^3.3.1",
     "keymaster": "^1.6.2",
     "mobile-detect": "^1.4.1",
-    "node-sass": "^4.9.0",
+    "node-sass": "^7.0.0",
     "node-sass-glob-importer": "^5.1.0",
     "pdfjs-dist": "^2.0.487",
     "react": "^16.3.1",
